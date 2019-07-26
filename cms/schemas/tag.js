@@ -7,7 +7,15 @@ export default {
       name: 'tag',
       title: 'Tag',
       type: 'string',
-      //   must by unique
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'tag',
+        maxLength: 96,
+      },
     },
   ],
 }
