@@ -66,6 +66,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allSanityTag {
         edges {
           node {
+            tag
             slug {
               current
             }
@@ -83,6 +84,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/templates/tag.js`),
       context: {
         slug: edge.node.slug.current,
+        tag: edge.node.tag,
       },
     })
   })
