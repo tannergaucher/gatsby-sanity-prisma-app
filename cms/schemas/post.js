@@ -45,7 +45,14 @@ export default {
     {
       name: 'body',
       title: 'Body',
-      type: 'blockContent',
+      type: 'array',
+      of: [{ type: 'block' }],
+    },
+    {
+      name: 'postPlaces',
+      title: 'Post Places',
+      type: 'array',
+      of: [{ type: 'postPlace' }],
     },
   ],
 

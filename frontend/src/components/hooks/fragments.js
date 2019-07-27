@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 export const SANITY_POST_FRAGMENT = graphql`
   fragment SanityPostFragment on SanityPost {
     id
+    _rawBody
     title
     slug {
       current
@@ -19,6 +20,12 @@ export const SANITY_POST_FRAGMENT = graphql`
     }
     tags {
       ...SanityTagFragment
+    }
+    postPlaces {
+      _rawText
+      place {
+        ...SanityPlaceFragment
+      }
     }
   }
 `
@@ -47,5 +54,42 @@ export const SANITY_TAG_FRAGMENT = graphql`
     slug {
       current
     }
+  }
+`
+
+export const SANITY_PLACE_FRAGMENT = graphql`
+  fragment SanityPlaceFragment on SanityPlace {
+    id
+    image {
+      asset {
+        fluid {
+          ...GatsbySanityImageFluid
+        }
+      }
+    }
+    imageCaption
+    imageCredit
+    imageLink
+    name
+    slug {
+      current
+    }
+    details {
+      ...SanityPlaceDetailsFragment
+    }
+  }
+`
+
+export const SANITY_PLACE_DETAILS_FRAGMENT = graphql`
+  fragment SanityPlaceDetailsFragment on SanityPlaceDetails {
+    location {
+      lat
+      lng
+    }
+    facebookLink
+    instagramLink
+    twitterLink
+    websiteLink
+    phoneNumber
   }
 `

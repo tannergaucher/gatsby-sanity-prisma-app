@@ -5,9 +5,11 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 import author from './author'
-import blockContent from './blockContent'
 import post from './post'
 import tag from './tag'
+import place from './place'
+import postPlace from './postPlace'
+import placeDetails from './placeDetails'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -15,5 +17,12 @@ export default createSchema({
   name: 'default',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([author, blockContent, post, tag]),
+  types: schemaTypes.concat([
+    author,
+    post,
+    tag,
+    place,
+    postPlace,
+    placeDetails,
+  ]),
 })

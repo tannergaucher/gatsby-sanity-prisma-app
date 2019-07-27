@@ -88,4 +88,32 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  // Query all places and create place page for each.
+
+  const placesQuery = await graphql(`
+    query {
+      allSanityPlace {
+        edges {
+          node {
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const places = placesQuery.data.allSanityPlace.edges || []
+
+  places.forEach(edge => {
+    createPage({
+      path: edge.node.slug.current,
+      component: path.resolve(`./src/templates/place.js`),
+      context: {
+        slug: edge.node.slug.current,
+      },
+    })
+  })
 }
