@@ -1,18 +1,21 @@
 import React from "react"
+import Img from "gatsby-image"
 import { graphql } from "gatsby"
+import BlockContent from "@sanity/block-content-to-react"
 
-export default function Post({ data }) {
+import { PostTags, PostPlaces } from "../components/post"
+
+export default function PostTemplate({ data }) {
   const { sanityPost } = data
 
   return (
-    <div>
+    <>
       <h1>{sanityPost.title}</h1>
-      <ul>
-        {sanityPost.tags.map(tag => (
-          <li key={tag.id}>{tag.tag}</li>
-        ))}
-      </ul>
-    </div>
+      <PostTags tags={sanityPost.tags} />
+      <Img fluid={sanityPost.mainImage.asset.fluid} />
+      <BlockContent blocks={sanityPost._rawBody} />
+      <PostPlaces postPlaces={sanityPost.postPlaces} />
+    </>
   )
 }
 

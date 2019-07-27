@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Tags({ tags }) {
+export default function PostTags({ tags }) {
   return (
     <>
       {tags.map(tag => (

@@ -1,7 +1,7 @@
 import React from "react"
 
 import { useAllSanityPost } from "../hooks"
-import { Post } from "."
+import { PostCard } from "."
 
 export default function posts() {
   const { edges } = useAllSanityPost()
@@ -9,7 +9,7 @@ export default function posts() {
   return (
     <>
       {edges.map(edge => (
-        <Post key={edge.node.id} post={edge.node} />
+        <PostCard key={edge.node.id} post={edge.node} />
       ))}
     </>
   )
