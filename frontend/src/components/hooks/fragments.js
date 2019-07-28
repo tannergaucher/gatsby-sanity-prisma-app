@@ -74,22 +74,15 @@ export const SANITY_PLACE_FRAGMENT = graphql`
     slug {
       current
     }
-    details {
-      ...SanityPlaceDetailsFragment
-    }
-  }
-`
 
-export const SANITY_PLACE_DETAILS_FRAGMENT = graphql`
-  fragment SanityPlaceDetailsFragment on SanityPlaceDetails {
-    location {
-      lat
-      lng
-    }
     facebookLink
     instagramLink
     twitterLink
     websiteLink
     phoneNumber
+    location {
+      lat
+      lng
+    }
   }
 `

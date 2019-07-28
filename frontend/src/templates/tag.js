@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Post } from "../components/post"
+import { PostCard } from "../components/post"
 
 export default function Tag({ data }) {
   const { sanityTag, allSanityPost } = data
@@ -8,9 +8,8 @@ export default function Tag({ data }) {
   return (
     <>
       <h1>{sanityTag.tag}</h1>
-      {/* <Img fluid={}/> */}
       {allSanityPost.edges.map(edge => (
-        <Post key={edge.node.id} post={edge.node} />
+        <PostCard key={edge.node.id} post={edge.node} />
       ))}
     </>
   )

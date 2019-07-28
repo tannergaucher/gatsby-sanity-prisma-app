@@ -5,12 +5,12 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Title',
+      title: 'Post Title',
       type: 'string',
     },
     {
       name: 'slug',
-      title: 'Slug',
+      title: 'Post Slug',
       type: 'slug',
       options: {
         source: 'title',
@@ -19,7 +19,7 @@ export default {
     },
     {
       name: 'author',
-      title: 'Author',
+      title: 'Post Author',
       type: 'reference',
       to: { type: 'author' },
     },
@@ -33,7 +33,7 @@ export default {
     },
     {
       name: 'tags',
-      title: 'Tags',
+      title: 'Post Tags',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'tag' } }],
     },
@@ -44,7 +44,7 @@ export default {
     },
     {
       name: 'body',
-      title: 'Body',
+      title: 'Post Body',
       type: 'array',
       of: [{ type: 'block' }],
     },

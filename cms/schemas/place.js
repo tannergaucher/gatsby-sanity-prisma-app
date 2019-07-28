@@ -47,10 +47,34 @@ export default {
       type: 'url',
     },
     {
-      name: 'details',
-      title: 'Details',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'placeDetails' } }],
+      name: 'location',
+      title: 'location',
+      type: 'geopoint',
+    },
+    {
+      name: 'facebookLink',
+      title: 'Facebook Link',
+      type: 'url',
+    },
+    {
+      name: 'instagramLink',
+      title: 'Instagram Link',
+      type: 'url',
+    },
+    {
+      name: 'twitterLink',
+      title: 'Twitter Link',
+      type: 'url',
+    },
+    {
+      name: 'websiteLink',
+      title: 'Website Link',
+      type: 'url',
+    },
+    {
+      name: 'phoneNumber',
+      title: 'Phone Number',
+      type: 'string',
     },
   ],
 }

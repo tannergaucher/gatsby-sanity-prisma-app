@@ -20,7 +20,6 @@ export default {
   preview: {
     select: {
       title: 'place.name',
-      subtitle: 'text',
       media: 'place.image',
     },
   },
