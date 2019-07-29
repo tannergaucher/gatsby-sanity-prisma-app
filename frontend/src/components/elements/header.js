@@ -1,24 +1,25 @@
-import { Link } from "gatsby"
 import React from "react"
+import Link from "gatsby-link"
+import { Box } from "rebass"
 
-import { useSiteMetadata } from "../hooks"
+// import { useSiteMetadata } from "../hooks"
 
 export default function Header() {
-  const { title } = useSiteMetadata()
+  // const { siteMetadata } = useSiteMetadata()
 
   return (
-    <header>
-      <>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {title}
-        </Link>
-      </>
-    </header>
+    <Box as="header" bg="fuchsia">
+      <Link
+        to="/"
+        style={{
+          textDecoration: `none`,
+          fontFamily: `var(--sans)`,
+          color: "inherit",
+        }}
+      >
+        Untrip
+        {/* {siteMetadata.title} */}
+      </Link>
+    </Box>
   )
 }

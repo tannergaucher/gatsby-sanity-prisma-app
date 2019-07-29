@@ -1,16 +1,23 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { Box } from "rebass"
 
-import Header from "./header"
+import { Header, Footer } from "."
 import "./layout.css"
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <Box
+      p={2}
+      style={{
+        maxWidth: `var(--max-width)`,
+        margin: "0 auto",
+      }}
+    >
       <Header />
       <main>{children}</main>
-      <footer>© {new Date().getFullYear()}</footer>
-    </>
+      <Footer />
+    </Box>
   )
 }
 

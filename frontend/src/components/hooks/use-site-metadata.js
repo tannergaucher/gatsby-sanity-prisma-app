@@ -18,5 +18,5 @@ export default function useSiteMetadata() {
     `
   )
 
-  return site.siteMetadata
+  return site
 }

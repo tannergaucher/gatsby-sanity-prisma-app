@@ -74,7 +74,9 @@ export const SANITY_PLACE_FRAGMENT = graphql`
     slug {
       current
     }
-
+    placeTypes {
+      tag
+    }
     facebookLink
     instagramLink
     twitterLink

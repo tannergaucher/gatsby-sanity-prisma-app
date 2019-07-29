@@ -1,6 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
 import Img from "gatsby-image"
+
+import { Link } from "../styles"
 
 export default function Post({ post }) {
   return (
