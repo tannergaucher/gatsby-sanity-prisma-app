@@ -25,10 +25,8 @@ function PostPlace({ postPlace }) {
       >
         {postPlace.place.name}
       </Heading>
-
       <Button>Share</Button>
       <Button>Add to List</Button>
-
       <Img fluid={postPlace.place.image.asset.fluid} />
       <PostPlaceDetails place={postPlace.place} />
       <BlockContent blocks={postPlace._rawText} />
