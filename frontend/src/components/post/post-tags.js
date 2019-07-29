@@ -1,17 +1,17 @@
 import React from "react"
-import { Flex } from "rebass"
+import { Heading } from "rebass"
+import { Link } from "../styles"
 
-// Rename to PlaceTags
-// Move to /components/place directory
-
-export default function PostTags({ tags }) {
+export default function Tags({ tags }) {
   return (
-    <Flex justifyContent="center" bg="pink">
+    <>
       {tags.map(tag => (
-        <button key={tag.id}>
-          <h4>{tag.tag}</h4>
-        </button>
+        <Link key={tag.id} to={tag.slug.current}>
+          <Heading fontSize={[2]} fontWeight="lighter">
+            {tag.tag}
+          </Heading>
+        </Link>
       ))}
-    </Flex>
+    </>
   )
 }

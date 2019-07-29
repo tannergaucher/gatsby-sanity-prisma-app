@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:800|Merriweather:400,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato:900|Merriweather:400,900&display=swap");
 
 :root {
   /* COLOR */
@@ -25,7 +25,7 @@
   --desktop: 1200px;
   /* TYPOGRAPHY */
   --serif: "Merriweather", serif;
-  --sans: "Merriweather Sans", sans-serif;
+  --sans: "Lato", sans-serif;
   --mono: "", monospace;
   --text-color: black;
   --line-height: 1.667;

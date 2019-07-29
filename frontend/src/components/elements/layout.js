@@ -15,7 +15,9 @@ const Layout = ({ children }) => {
       }}
     >
       <Header />
-      <main>{children}</main>
+      <Box as="main" my={[4]}>
+        {children}
+      </Box>
       <Footer />
     </Box>
   )
