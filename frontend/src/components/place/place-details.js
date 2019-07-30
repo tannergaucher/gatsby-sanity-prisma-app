@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import { Button } from "rebass"
 
-import { Info } from "grommet-icons"
-
 export default function PlaceDetails({ place }) {
   const [show, setShow] = useState(false)
 
