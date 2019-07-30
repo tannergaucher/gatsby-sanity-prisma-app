@@ -1,7 +1,8 @@
 import React from "react"
 import Img from "gatsby-image"
 import { graphql } from "gatsby"
-import { Heading, Box, Flex, Button } from "rebass"
+import { Bookmark } from "grommet-icons"
+import { Heading, Box, Flex, Button, Text } from "rebass"
 import BlockContent from "@sanity/block-content-to-react"
 
 import { PostTags, PostPlaces, Share } from "../components/post"
@@ -11,17 +12,21 @@ export default function PostTemplate({ data }) {
 
   return (
     <>
-      <Heading fontSize={[5]} style={{ fontFamily: `var(--sans)` }}>
+      <Heading
+        fontSize={[5]}
+        mb={[2]}
+        style={{ fontFamily: `var(--sans)` }}
+        fontWeight="900"
+      >
         {sanityPost.title}
       </Heading>
-      <Flex my={[3]}>
-        <PostTags tags={sanityPost.tags} />
-      </Flex>
       <Img fluid={sanityPost.mainImage.asset.fluid} />
-      <Share />
-      <Button>Save This List</Button>
-      {/* AddToListDropdown */}
-      {/* View on Map Button */}
+      <Flex justifyContent="space-between" my={[3]} flexWrap="wrap">
+        <Share />
+        <Button bg="var(--light-1)" color="var(--dark-1)">
+          <Bookmark color="var(--dark-1)" />
+        </Button>
+      </Flex>
       <Box my={[4]}>
         <BlockContent blocks={sanityPost._rawBody} />
       </Box>

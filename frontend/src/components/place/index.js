@@ -1,5 +1,4 @@
-import PlaceTags from "./place-tags"
-import Place from "./"
+import Place from "./place"
 import PlaceDetails from "./place-details"
 
-export { PlaceDetails, PlaceTags, Place }
+export { PlaceDetails, Place }

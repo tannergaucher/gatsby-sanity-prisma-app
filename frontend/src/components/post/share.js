@@ -1,12 +1,20 @@
 import React from "react"
-import { Flex } from "rebass"
+import { Flex, Button } from "rebass"
+
+import { Facebook, Twitter, Pinterest } from "grommet-icons"
 
 export default function Share() {
   return (
-    <Flex>
-      <a href="http://facebook.com/share">Facebook</a>
-      <a href="http://twitter.com/share">Twitter</a>
-      <a href="http://tumbler.com/share">Tumbler</a>
+    <Flex flexWrap="wrap">
+      <Button bg="var(--light-1)" mr={[2]}>
+        <Facebook color="var(--dark-1)" />
+      </Button>
+      <Button bg="var(--light-1)" mr={[2]}>
+        <Twitter color="var(--dark-1)" />
+      </Button>
+      <Button bg="var(--light-1)">
+        <Pinterest color="var(--dark-1)" />
+      </Button>
     </Flex>
   )
 }

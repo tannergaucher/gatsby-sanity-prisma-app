@@ -2,7 +2,7 @@
 
 :root {
   /* COLOR */
-  --light-1: #fafafa;
+  --light-1: #ffffff;
   --light-2: #f2f2f2;
   --light-3: #ededed;
   --light-4: #dadada;
@@ -25,7 +25,7 @@
   --desktop: 1200px;
   /* TYPOGRAPHY */
   --serif: "Merriweather", serif;
-  --sans: "Lato", sans-serif;
+  --sans: "Avenir", sans-serif;
   --mono: "", monospace;
   --text-color: black;
   --line-height: 1.667;

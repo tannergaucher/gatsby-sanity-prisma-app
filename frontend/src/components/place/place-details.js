@@ -1,23 +1,32 @@
 import React, { useState } from "react"
+import { Button } from "rebass"
+
+import { Info } from "grommet-icons"
 
 export default function PlaceDetails({ place }) {
   const [show, setShow] = useState(false)
 
   return (
     <>
-      <button
+      <Button
+        bg="var(--light-1)"
+        color="var(--dark-1)"
+        style={{
+          fontFamily: `var(--sans)`,
+        }}
         onClick={() => {
           setShow(!show)
         }}
       >
-        Place Details
-      </button>
+        Details
+      </Button>
       {show && (
         <>
-          {place.facebookLink && <h6>{place.facebookLink}</h6>}
-          {place.instagramLink && <h6>{place.instagramLink}</h6>}
-          {place.twitterLink && <h6>{place.twitterLink}</h6>}
-          {place.websiteLink && <h6>{place.websiteLink}</h6>}
+          {place.place.facebookLink && <h6>{place.place.facebookLink}</h6>}
+          {place.place.instagramLink && <h6>{place.place.instagramLink}</h6>}
+          {place.place.twitterLink && <h6>{place.place.twitterLink}</h6>}
+          {place.place.websiteLink && <h6>{place.place.websiteLink}</h6>}
+          View on map
         </>
       )}
     </>

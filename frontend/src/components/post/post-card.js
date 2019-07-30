@@ -8,7 +8,12 @@ export default function PostCard({ post }) {
   return (
     <Box mb={[5]}>
       <Link to={`/${post.slug.current}`}>
-        <Heading fontSize={[5]} mb={[2]} style={{ fontFamily: `var(--sans)` }}>
+        <Heading
+          fontSize={[5, 6]}
+          mb={[2]}
+          style={{ fontFamily: `var(--sans)` }}
+          fontWeight="900"
+        >
           {post.title}
         </Heading>
         <Img fluid={post.mainImage.asset.fluid} />

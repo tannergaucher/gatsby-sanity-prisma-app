@@ -1,23 +1,40 @@
 import React from "react"
 import Img from "gatsby-image"
 import BlockContent from "@sanity/block-content-to-react"
+import { Heading, Button, Flex, Box } from "rebass"
 
-import { Link } from "../styles"
+import { AddCircle } from "grommet-icons"
 
-export default function Place({ place }) {
-  // const { place, _rawText } = place
+import { PlaceDetails } from "."
 
-  // console.log(place)
-
+// TODO change postPlace name
+export default function Place({ postPlace }) {
   return (
-    <>
-      Place
-      {/* <Link to={place.slug.current}>
-        <h1>{place.place.name}</h1>
-      </Link>
-      <Img fluid={place.image.asset.fluid} />
-      <BlockContent blocks={_rawText} /> */}
-      {/* <PlaceDetails place={place} /> */}
-    </>
+    <Box my={[4]}>
+      <Flex justifyContent="space-between" alignItems="center" mb={[3]}>
+        <Heading
+          fontSize={[4]}
+          fontWeight="900"
+          style={{ fontFamily: `var(--sans)` }}
+        >
+          {postPlace.place.name}
+        </Heading>
+        {/* Image Caption */}
+        <Button
+          bg="var(--light-1)"
+          color="var(--dark-1)"
+          style={{
+            fontFamily: `var(--sans)`,
+            textTransform: `uppercase`,
+          }}
+        >
+          <AddCircle color="var(--dark-1)" />
+        </Button>
+      </Flex>
+      <Img fluid={postPlace.place.image.asset.fluid} />
+      <BlockContent blocks={postPlace._rawText} />
+      <PlaceDetails place={postPlace} />
+      <hr />
+    </Box>
   )
 }

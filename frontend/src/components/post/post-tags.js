@@ -1,16 +1,18 @@
 import React from "react"
-import { Heading } from "rebass"
-import { Link } from "../styles"
+import { Button, Text } from "rebass"
+
+import { Tag } from "grommet-icons"
 
 export default function Tags({ tags }) {
   return (
     <>
       {tags.map(tag => (
-        <Link key={tag.id} to={tag.slug.current}>
-          <Heading fontSize={[2]} fontWeight="lighter">
-            {tag.tag}
-          </Heading>
-        </Link>
+        <Button key={tag.id} bg="">
+          <span>
+            <Tag color="var(--dark-1)" />
+            <Text color="var(--dark-1)">{tag.tag}</Text>
+          </span>
+        </Button>
       ))}
     </>
   )
