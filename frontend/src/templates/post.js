@@ -3,10 +3,9 @@ import Img from "gatsby-image"
 import { graphql } from "gatsby"
 import { Bookmark } from "grommet-icons"
 import { Heading, Box, Flex, Button } from "rebass"
-import BlockContent from "@sanity/block-content-to-react"
 
 import { PostPlaces, Share } from "../components/post"
-import { Divider } from "../components/styles"
+import { Divider, BlockContent } from "../components/styles"
 
 export default function PostTemplate({ data }) {
   const { sanityPost } = data
@@ -28,13 +27,9 @@ export default function PostTemplate({ data }) {
           <Bookmark color="var(--dark-1)" />
         </Button>
       </Flex>
-      <Box my={[4]}>
-        <BlockContent blocks={sanityPost._rawBody} />
-      </Box>
-      <Divider />
-      <Box my={[4]}>
-        <PostPlaces postPlaces={sanityPost.postPlaces} />
-      </Box>
+      <BlockContent blocks={sanityPost._rawBody} mb={[4]} />
+      <Divider mb={[4]} />
+      <PostPlaces postPlaces={sanityPost.postPlaces} />
     </>
   )
 }

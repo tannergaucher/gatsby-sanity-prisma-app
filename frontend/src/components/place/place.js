@@ -10,7 +10,7 @@ import { Divider } from "../styles"
 // chance postPlace name
 export default function Place({ postPlace }) {
   return (
-    <Box my={[4]}>
+    <Box mb={[4]}>
       <Flex justifyContent="space-between" alignItems="center" mb={[3]}>
         <Heading
           fontSize={[4]}
