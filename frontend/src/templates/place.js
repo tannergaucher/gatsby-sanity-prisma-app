@@ -3,8 +3,6 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { Heading, Text } from "rebass"
 
-import { Link } from "../components/styles"
-
 export default function Place({ data }) {
   const { sanityPlace } = data
   console.log(sanityPlace)

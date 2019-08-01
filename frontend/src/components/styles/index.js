@@ -1,3 +1,4 @@
 import Link from "./link"
+import Divider from "./divider"
 
-export { Link }
+export { Link, Divider }
