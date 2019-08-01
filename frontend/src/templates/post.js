@@ -2,7 +2,7 @@ import React from "react"
 import Img from "gatsby-image"
 import { graphql } from "gatsby"
 import { Bookmark } from "grommet-icons"
-import { Heading, Box, Flex, Button } from "rebass"
+import { Heading, Flex, Button } from "rebass"
 
 import { PostPlaces, Share } from "../components/post"
 import { Divider, BlockContent } from "../components/styles"
