@@ -30,6 +30,9 @@ export default function PlaceDetails({ place }) {
                 fontSize={[1]}
                 color="var(--dark-2)"
                 href="??"
+                style={{
+                  fontFamily: `var(--sans)`,
+                }}
               >
                 On Google Maps
               </RebassLink>
@@ -43,6 +46,9 @@ export default function PlaceDetails({ place }) {
                 ml={[3]}
                 fontSize={[1]}
                 color="var(--dark-2)"
+                style={{
+                  fontFamily: `var(--sans)`,
+                }}
               >
                 Visit Facebook
               </RebassLink>
@@ -56,6 +62,9 @@ export default function PlaceDetails({ place }) {
                 ml={[3]}
                 fontSize={[1]}
                 color="var(--dark-2)"
+                style={{
+                  fontFamily: `var(--sans)`,
+                }}
               >
                 Visit Instagram
               </RebassLink>
@@ -69,6 +78,9 @@ export default function PlaceDetails({ place }) {
                 ml={[3]}
                 fontSize={[1]}
                 color="var(--dark-2)"
+                style={{
+                  fontFamily: `var(--sans)`,
+                }}
               >
                 Visit Twitter
               </RebassLink>
@@ -82,6 +94,9 @@ export default function PlaceDetails({ place }) {
                 ml={[3]}
                 fontSize={[1]}
                 color="var(--dark-2)"
+                style={{
+                  fontFamily: `var(--sans)`,
+                }}
               >
                 Visit Website
               </RebassLink>
@@ -90,7 +105,14 @@ export default function PlaceDetails({ place }) {
           {place.place.phoneNumber && (
             <Flex mt={[3]}>
               <Phone size="18px" />
-              <Text ml={[3]} fontSize={[1]} color="var(--dark-2)">
+              <Text
+                ml={[3]}
+                fontSize={[1]}
+                color="var(--dark-2)"
+                style={{
+                  fontFamily: `var(--sans)`,
+                }}
+              >
                 {place.place.phoneNumber}
               </Text>
             </Flex>

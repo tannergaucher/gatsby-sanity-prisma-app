@@ -1,11 +1,10 @@
 import React from "react"
 import Img from "gatsby-image"
-import BlockContent from "@sanity/block-content-to-react"
 import { AddCircle } from "grommet-icons"
-import { Heading, Button, Flex, Box } from "rebass"
+import { Heading, Button, Flex, Box, Text, Link as RebassLink } from "rebass"
 
 import { PlaceDetails } from "."
-import { Divider } from "../styles"
+import { Divider, BlockContent } from "../styles"
 
 // chance postPlace name
 export default function Place({ postPlace }) {
@@ -19,7 +18,6 @@ export default function Place({ postPlace }) {
         >
           {postPlace.place.name}
         </Heading>
-        {/* Image Caption Here*/}
         <Button
           bg="var(--light-1)"
           color="var(--dark-1)"
@@ -32,6 +30,16 @@ export default function Place({ postPlace }) {
         </Button>
       </Flex>
       <Img fluid={postPlace.place.image.asset.fluid} />
+      <Text
+        fontFamily="var(--sans)"
+        fontWeight="100"
+        fontSize={[2]}
+        mt={[3]}
+        color="var(--dark-2)"
+      >
+        {postPlace.place.imageCaption}
+      </Text>
+      {/* Todo: position absolute photo credit over image */}
       <BlockContent blocks={postPlace._rawText} />
       <PlaceDetails place={postPlace} />
       <Divider mt={[4]} />
