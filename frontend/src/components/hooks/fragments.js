@@ -67,15 +67,15 @@ export const SANITY_PLACE_FRAGMENT = graphql`
         }
       }
     }
+    placeType {
+      type
+    }
     imageCaption
     imageCredit
     imageLink
     name
     slug {
       current
-    }
-    placeTypes {
-      tag
     }
     facebookLink
     instagramLink
@@ -85,6 +85,9 @@ export const SANITY_PLACE_FRAGMENT = graphql`
     location {
       lat
       lng
+    }
+    tags {
+      ...SanityTagFragment
     }
   }
 `

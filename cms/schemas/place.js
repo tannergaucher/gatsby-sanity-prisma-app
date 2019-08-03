@@ -18,8 +18,14 @@ export default {
       },
     },
     {
-      name: 'placeTypes',
-      title: 'Place Types',
+      name: 'placeType',
+      title: 'Place Type',
+      type: 'reference',
+      to: { type: 'placeType' },
+    },
+    {
+      name: 'tags',
+      title: 'Place Tags',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'tag' } }],
     },

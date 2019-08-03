@@ -4,8 +4,9 @@ import { graphql } from "gatsby"
 import { Bookmark } from "grommet-icons"
 import { Heading, Flex, Button } from "rebass"
 
+// Change PostPlaces to Places and import from /components/place
 import { PostPlaces, Share } from "../components/post"
-import { Divider, BlockContent } from "../components/styles"
+import { BlockContent } from "../components/styles"
 
 export default function PostTemplate({ data }) {
   const { sanityPost } = data
@@ -28,8 +29,8 @@ export default function PostTemplate({ data }) {
         </Button>
       </Flex>
       <BlockContent blocks={sanityPost._rawBody} mb={[4]} />
-      <Divider mb={[4]} />
       <PostPlaces postPlaces={sanityPost.postPlaces} />
+      {/* <PostPlacesMap/> */}
     </>
   )
 }

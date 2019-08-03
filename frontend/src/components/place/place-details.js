@@ -9,8 +9,9 @@ export default function PlaceDetails({ place }) {
     <>
       <Button
         bg="var(--light-1)"
-        color="var(--dark-1)"
-        border="1px solid var(--dark-1)"
+        color="var(--dark-2)"
+        border="var(--border) solid var(--dark-2)"
+        fontWeight="100"
         style={{
           fontFamily: `var(--sans)`,
         }}
@@ -21,7 +22,7 @@ export default function PlaceDetails({ place }) {
         Details
       </Button>
       {show && (
-        <Flex flexDirection="column" mt={[3]}>
+        <Flex flexDirection="column" mt={[3]} ml={[1]}>
           {place.place.location && (
             <Flex mt={[3]}>
               <Map size="18px" />
@@ -29,7 +30,7 @@ export default function PlaceDetails({ place }) {
                 ml={[3]}
                 fontSize={[1]}
                 color="var(--dark-2)"
-                href="??"
+                href="#"
                 style={{
                   fontFamily: `var(--sans)`,
                 }}
@@ -50,7 +51,7 @@ export default function PlaceDetails({ place }) {
                   fontFamily: `var(--sans)`,
                 }}
               >
-                Visit Facebook
+                Facebook
               </RebassLink>
             </Flex>
           )}
@@ -66,7 +67,7 @@ export default function PlaceDetails({ place }) {
                   fontFamily: `var(--sans)`,
                 }}
               >
-                Visit Instagram
+                Instagram
               </RebassLink>
             </Flex>
           )}
@@ -82,7 +83,7 @@ export default function PlaceDetails({ place }) {
                   fontFamily: `var(--sans)`,
                 }}
               >
-                Visit Twitter
+                Twitter
               </RebassLink>
             </Flex>
           )}
