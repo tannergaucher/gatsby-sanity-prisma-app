@@ -2,11 +2,10 @@ import React from "react"
 import { Box, Heading } from "rebass"
 
 import { Link } from "../styles"
-
 // import { useSiteMetadata } from "../hooks"
 
 export default function Header() {
-  // const { siteMetadata } = useSiteMetadata()
+  // const { title } = useSiteMetadata()
 
   return (
     <Box as="header">
@@ -16,10 +15,10 @@ export default function Header() {
           textDecoration: `none`,
         }}
       >
-        <Heading fontSize={[3]} style={{ fontWeight: `lighter` }}>
+        <Heading fontSize={[3]} fontWeight="lighter">
+          {/*GATSBY BUG: NOT WORKING IN DEV  {title} */}
           Untrip
         </Heading>
-        {/* {siteMetadata.title} */}
       </Link>
     </Box>
   )

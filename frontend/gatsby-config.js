@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Untrip`,
     description: `Insider's Guide to Kuala Lumpur`,
-    author: `tannermichaelgaucher@gmail.com`,
+    author: `Tanner Gaucher <tannermichaelgaucher@gmail.com>`,
     social: {
       github: `http://github.com/tannergaucher`,
     },
