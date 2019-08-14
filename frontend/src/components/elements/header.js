@@ -1,14 +1,16 @@
 import React from "react"
-import { Box, Heading } from "rebass"
+import { Flex, Heading } from "rebass"
 
 import { Link } from "../styles"
+import { Menu } from "."
+
 // import { useSiteMetadata } from "../hooks"
 
 export default function Header() {
   // const { title } = useSiteMetadata()
 
   return (
-    <Box as="header">
+    <Flex as="header" justifyContent="space-between">
       <Link
         to="/"
         style={{
@@ -20,6 +22,8 @@ export default function Header() {
           Untrip
         </Heading>
       </Link>
-    </Box>
+
+      <Menu />
+    </Flex>
   )
 }
