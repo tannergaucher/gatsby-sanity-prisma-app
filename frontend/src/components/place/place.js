@@ -1,10 +1,10 @@
 import React from "react"
 import Img from "gatsby-image"
-import { AddCircle } from "grommet-icons"
-import { Heading, Button, Flex, Box, Text } from "rebass"
+import { Heading, Flex, Box, Text } from "rebass"
 
 import { PlaceDetails } from "."
 import { Divider, BlockContent } from "../styles"
+import { AddToListModal } from "../list"
 
 export default function Place({ postPlace }) {
   console.log(postPlace)
@@ -37,16 +37,7 @@ export default function Place({ postPlace }) {
             ))}
           </Flex>
         </Box>
-        <Button
-          bg="var(--light-1)"
-          color="var(--dark-1)"
-          style={{
-            fontFamily: `var(--sans)`,
-            textTransform: `uppercase`,
-          }}
-        >
-          <AddCircle color="var(--dark-1)" />
-        </Button>
+        <AddToListModal />
       </Flex>
       <Img fluid={postPlace.place.image.asset.fluid} />
       <Text

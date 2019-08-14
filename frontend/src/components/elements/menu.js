@@ -59,7 +59,7 @@ function MenuNav() {
       flex={1}
     >
       <MenuNavItem text="Guide" to="/" />
-      <MenuNavItem text="Lists" to="/lists" />
+      <MenuNavItem text="Untrips" to="/lists" />
       <MenuNavItem text="Account" to="/account" />
     </Flex>
   )
