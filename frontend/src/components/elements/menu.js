@@ -58,9 +58,12 @@ function MenuNav() {
       bg="var(--light-1)"
       flex={1}
     >
-      <MenuNavItem text="Guide" to="/" />
-      <MenuNavItem text="Untrips" to="/lists" />
-      <MenuNavItem text="Account" to="/account" />
+      <MenuNavItem text="Home" to="/" />
+      <MenuNavItem text="Guide" to="guide" />
+      {/* Dont' display if not logged in */}
+      {/* <MenuNavItem text="Untrips" to="/lists" /> */}
+      {/* Query isLoggedIn and disply sign up or sign in */}
+      <MenuNavItem text="Sign In" to="/signin" />
     </Flex>
   )
 }

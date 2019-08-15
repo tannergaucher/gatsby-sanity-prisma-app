@@ -69,6 +69,7 @@ export const SANITY_PLACE_FRAGMENT = graphql`
     }
     placeType {
       type
+      # add image
     }
     imageCaption
     imageCredit
