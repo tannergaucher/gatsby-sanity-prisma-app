@@ -69,7 +69,13 @@ export const SANITY_PLACE_FRAGMENT = graphql`
     }
     placeType {
       type
-      # add image
+      image {
+        asset {
+          fluid {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
     }
     imageCaption
     imageCredit

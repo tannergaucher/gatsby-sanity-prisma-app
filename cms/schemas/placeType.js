@@ -5,8 +5,16 @@ export default {
   fields: [
     {
       name: 'type',
-      title: 'Type',
+      title: 'Place Type',
       type: 'string',
+    },
+    {
+      name: 'image',
+      title: 'Place Type Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
     },
   ],
 }
