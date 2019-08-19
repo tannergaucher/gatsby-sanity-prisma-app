@@ -83,5 +83,4 @@ p {
 ul,
 li {
   line-height: var(--line-height);
-  /* font-family: var(--serif); */
 }

@@ -3,12 +3,10 @@ import Img from "gatsby-image"
 import { Heading, Flex, Box, Text } from "rebass"
 
 import { PlaceDetails } from "."
-import { Divider, BlockContent } from "../styles"
 import { AddToListModal } from "../list"
+import { Divider, BlockContent } from "../styles"
 
 export default function Place({ postPlace }) {
-  console.log(postPlace)
-
   return (
     <Box>
       <Divider mb={[3]} mt={[4]} />

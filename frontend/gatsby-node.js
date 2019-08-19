@@ -90,7 +90,6 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   // Query all places and create place page for each.
-
   const placesQuery = await graphql(`
     query {
       allSanityPlace {
@@ -113,6 +112,35 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/templates/place.js`),
       context: {
         slug: edge.node.slug.current,
+      },
+    })
+  })
+
+  // Query all sanity categories and create category template page for each.
+  const categoriesQuery = await graphql(`
+    query {
+      allSanityCategory {
+        edges {
+          node {
+            slug {
+              current
+            }
+            category
+          }
+        }
+      }
+    }
+  `)
+
+  const categories = categoriesQuery.data.allSanityCategory.edges || []
+
+  categories.forEach(edge => {
+    createPage({
+      path: edge.node.slug.current,
+      component: path.resolve(`./src/templates/category.js`),
+      context: {
+        slug: edge.node.slug.current,
+        category: edge.node.category,
       },
     })
   })

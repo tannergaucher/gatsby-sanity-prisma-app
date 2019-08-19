@@ -8,6 +8,9 @@ export const SANITY_POST_FRAGMENT = graphql`
     slug {
       current
     }
+    category {
+      ...SanityCategoryFragment
+    }
     mainImage {
       asset {
         fluid {
@@ -95,6 +98,23 @@ export const SANITY_PLACE_FRAGMENT = graphql`
     }
     tags {
       ...SanityTagFragment
+    }
+  }
+`
+
+export const SANITY_CATEGORY_FRAGMENT = graphql`
+  fragment SanityCategoryFragment on SanityCategory {
+    id
+    category
+    slug {
+      current
+    }
+    image {
+      asset {
+        fluid {
+          ...GatsbySanityImageFluid
+        }
+      }
     }
   }
 `

@@ -11,8 +11,19 @@ import { BlockContent } from "../components/styles"
 export default function PostTemplate({ data }) {
   const { sanityPost } = data
 
+  console.log(sanityPost)
+
   return (
     <>
+      <Heading
+        fontSize={[1]}
+        fontWeight="lighter"
+        fontFamily="var(--sans)"
+        mb={[0]}
+        style={{ textTransform: `uppercase` }}
+      >
+        {sanityPost.category.category}
+      </Heading>
       <Heading
         fontSize={[5]}
         mb={[2]}
