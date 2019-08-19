@@ -4,6 +4,7 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'category',
       title: 'Category',
       type: 'string',
     },
