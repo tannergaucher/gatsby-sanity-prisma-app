@@ -1,7 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
-import { Heading, Box, Flex } from "rebass"
+import { Heading, Box } from "rebass"
 
 import { useAllSanityCategory } from "../hooks"
 
@@ -19,7 +19,7 @@ export default function Categories() {
 
 function Category({ category }) {
   return (
-    <Box mb={[2]} style={{ position: `relative` }}>
+    <Box mb={[3]} style={{ position: `relative` }}>
       <Link to={category.slug.current}>
         <Heading
           color="var(--light-1)"

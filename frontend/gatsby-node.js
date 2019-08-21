@@ -3,7 +3,7 @@ const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  // Query all posts and create post page for each.
+  // Query all posts and create post page for each. Query the post category for the URL.
   const postsQuery = await graphql(`
     query {
       allSanityPost {
@@ -13,6 +13,11 @@ exports.createPages = async ({ graphql, actions }) => {
             title
             slug {
               current
+            }
+            category {
+              slug {
+                current
+              }
             }
           }
         }
@@ -24,7 +29,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
   posts.forEach(edge => {
     createPage({
-      path: edge.node.slug.current,
+      // TODO: create pages with /:category/:post-slug
+      path: `${edge.node.slug.current}`,
       component: path.resolve(`./src/templates/post.js`),
       context: {
         slug: edge.node.slug.current,
@@ -56,35 +62,6 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/templates/author.js`),
       context: {
         slug: edge.node.slug.current,
-      },
-    })
-  })
-
-  // Query all tags and create tag page for each.
-  const tagsQuery = await graphql(`
-    query {
-      allSanityTag {
-        edges {
-          node {
-            tag
-            slug {
-              current
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  const tags = tagsQuery.data.allSanityTag.edges || []
-
-  tags.forEach(edge => {
-    createPage({
-      path: edge.node.slug.current,
-      component: path.resolve(`./src/templates/tag.js`),
-      context: {
-        slug: edge.node.slug.current,
-        tag: edge.node.tag,
       },
     })
   })
@@ -144,4 +121,7 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-}
+
+  // Create pages for all tags for each category. With a slug of /:category/:tag
+  // use categories
+

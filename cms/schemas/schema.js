@@ -11,6 +11,7 @@ import tag from './tag'
 import place from './place'
 import postPlace from './postPlace'
 import placeType from './placeType'
+import categoryWithTags from './categoryWithTags'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -26,5 +27,6 @@ export default createSchema({
     place,
     postPlace,
     placeType,
+    categoryWithTags,
   ]),
 })

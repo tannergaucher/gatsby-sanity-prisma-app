@@ -18,12 +18,6 @@ export default {
       },
     },
     {
-      name: 'category',
-      title: 'Category',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'category' } }],
-    },
-    {
       name: 'author',
       title: 'Post Author',
       type: 'reference',
@@ -37,13 +31,26 @@ export default {
         hotspot: true,
       },
     },
-
     {
       name: 'tags',
       title: 'Post Tags',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'tag' } }],
     },
+    {
+      name: 'category',
+      title: 'Category',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'category' } }],
+    },
+    // TEST
+    {
+      name: 'postCategoryWithTags',
+      title: 'Post Category And Tags',
+      type: 'categoryWithTags',
+    },
+
+    // TEST
     {
       name: 'publishedAt',
       title: 'Published at',
