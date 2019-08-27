@@ -41,7 +41,6 @@ export default function PostTemplate({ data }) {
       </Flex>
       <BlockContent blocks={sanityPost._rawBody} mb={[4]} />
       <PostPlaces postPlaces={sanityPost.postPlaces} />
-      {/* <PostPlacesMap/> */}
     </>
   )
 }

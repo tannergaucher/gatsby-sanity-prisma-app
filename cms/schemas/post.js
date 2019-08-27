@@ -46,11 +46,6 @@ export default {
       of: [{ type: 'reference', to: { type: 'category' } }],
     },
     // TEST: IT WORKS
-    {
-      name: 'categoryWithTags',
-      title: 'Post Category And Tags',
-      type: 'categoryWithTags',
-    },
 
     // TEST
     {

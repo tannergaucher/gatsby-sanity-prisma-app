@@ -13,10 +13,6 @@ export default function Place({ data }) {
       <Img fluid={sanityPlace.image.asset.fluid} />
       <Text>{sanityPlace.imageCaption}</Text>
       <a href={sanityPlace.imageLink}>By {sanityPlace.imageCredit}</a>
-      {/* Tags of place */}
-      {/* All Posts with Place */}
-      {/* Place details */}
-      {/* Google Map with place centered */}
     </div>
   )
 }

@@ -28,8 +28,12 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = postsQuery.data.allSanityPost.edges || []
 
   posts.forEach(edge => {
+    // create a slug of /:category/:post-title
+    console.log(edge.node.category.slug)
+
     createPage({
       // TODO: create pages with /:category/:post-slug
+
       path: `${edge.node.slug.current}`,
       component: path.resolve(`./src/templates/post.js`),
       context: {
@@ -37,61 +41,6 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-
-  //Query all authors and create author page for each.
-  // const authorsQuery = await graphql(`
-  //   query {
-  //     allSanityAuthor {
-  //       edges {
-  //         node {
-  //           id
-  //           slug {
-  //             current
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-
-  // const authors = authorsQuery.data.allSanityAuthor.edges || []
-
-  // authors.forEach(edge => {
-  //   createPage({
-  //     path: edge.node.slug.current,
-  //     component: path.resolve(`./src/templates/author.js`),
-  //     context: {
-  //       slug: edge.node.slug.current,
-  //     },
-  //   })
-  // })
-
-  // Query all places and create place page for each.
-  // const placesQuery = await graphql(`
-  //   query {
-  //     allSanityPlace {
-  //       edges {
-  //         node {
-  //           slug {
-  //             current
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-
-  // const places = placesQuery.data.allSanityPlace.edges || []
-
-  // places.forEach(edge => {
-  //   createPage({
-  //     path: edge.node.slug.current,
-  //     component: path.resolve(`./src/templates/place.js`),
-  //     context: {
-  //       slug: edge.node.slug.current,
-  //     },
-  //   })
-  // })
 
   // Query all sanity categories and create category template page for each.
   const categoriesQuery = await graphql(`
@@ -121,6 +70,4 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-
-  //
 }
