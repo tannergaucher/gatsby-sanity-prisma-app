@@ -28,9 +28,11 @@
   --sans: "Avenir", sans-serif;
   --mono: "", monospace;
   --text-color: black;
+  --heading-line-height: 1.2;
   --line-height: 1.667;
   --font-size: 16px;
   --letter-spacing: 0.5px;
+
   /* ELEVATION */
   --shadow: rgba(0, 0, 0, 0.2);
   --elevation-1: 0px 0px 4px var(--shadow);

@@ -29,6 +29,7 @@ export default function PostTemplate({ data }) {
         mb={[2]}
         style={{ fontFamily: `var(--sans)` }}
         fontWeight="900"
+        lineHeight="1.2"
       >
         {sanityPost.title}
       </Heading>

@@ -1,3 +1,4 @@
 import Categories from "./categories"
+import CategoryTagsSelect from "./category-tags-select"
 
-export { Categories }
+export { Categories, CategoryTagsSelect }
