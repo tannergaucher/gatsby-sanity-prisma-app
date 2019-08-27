@@ -11,6 +11,18 @@ export const SANITY_POST_FRAGMENT = graphql`
     category {
       ...SanityCategoryFragment
     }
+    tags {
+      ...SanityTagFragment
+    }
+    # NEED THIS?
+    categoryWithTags {
+      category {
+        ...SanityCategoryFragment
+      }
+      tags {
+        ...SanityTagFragment
+      }
+    }
     mainImage {
       asset {
         fluid {
@@ -20,9 +32,6 @@ export const SANITY_POST_FRAGMENT = graphql`
     }
     author {
       ...SanityAuthorFragment
-    }
-    tags {
-      ...SanityTagFragment
     }
     postPlaces {
       _rawText

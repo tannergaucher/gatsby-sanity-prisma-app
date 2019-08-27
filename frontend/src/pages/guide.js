@@ -4,7 +4,6 @@ import { Heading } from "rebass"
 import { Categories } from "../components/category"
 
 export default function Guide() {
-  // Eventually, the guide template will display each city first
   return (
     <>
       <Heading
@@ -16,7 +15,6 @@ export default function Guide() {
       >
         Guide
       </Heading>
-      {/* Categories will change to <Cities/> */}
       <Categories />
     </>
   )

@@ -39,59 +39,59 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   //Query all authors and create author page for each.
-  const authorsQuery = await graphql(`
-    query {
-      allSanityAuthor {
-        edges {
-          node {
-            id
-            slug {
-              current
-            }
-          }
-        }
-      }
-    }
-  `)
+  // const authorsQuery = await graphql(`
+  //   query {
+  //     allSanityAuthor {
+  //       edges {
+  //         node {
+  //           id
+  //           slug {
+  //             current
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
-  const authors = authorsQuery.data.allSanityAuthor.edges || []
+  // const authors = authorsQuery.data.allSanityAuthor.edges || []
 
-  authors.forEach(edge => {
-    createPage({
-      path: edge.node.slug.current,
-      component: path.resolve(`./src/templates/author.js`),
-      context: {
-        slug: edge.node.slug.current,
-      },
-    })
-  })
+  // authors.forEach(edge => {
+  //   createPage({
+  //     path: edge.node.slug.current,
+  //     component: path.resolve(`./src/templates/author.js`),
+  //     context: {
+  //       slug: edge.node.slug.current,
+  //     },
+  //   })
+  // })
 
   // Query all places and create place page for each.
-  const placesQuery = await graphql(`
-    query {
-      allSanityPlace {
-        edges {
-          node {
-            slug {
-              current
-            }
-          }
-        }
-      }
-    }
-  `)
+  // const placesQuery = await graphql(`
+  //   query {
+  //     allSanityPlace {
+  //       edges {
+  //         node {
+  //           slug {
+  //             current
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
-  const places = placesQuery.data.allSanityPlace.edges || []
+  // const places = placesQuery.data.allSanityPlace.edges || []
 
-  places.forEach(edge => {
-    createPage({
-      path: edge.node.slug.current,
-      component: path.resolve(`./src/templates/place.js`),
-      context: {
-        slug: edge.node.slug.current,
-      },
-    })
-  })
+  // places.forEach(edge => {
+  //   createPage({
+  //     path: edge.node.slug.current,
+  //     component: path.resolve(`./src/templates/place.js`),
+  //     context: {
+  //       slug: edge.node.slug.current,
+  //     },
+  //   })
+  // })
 
   // Query all sanity categories and create category template page for each.
   const categoriesQuery = await graphql(`
@@ -122,6 +122,5 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // Create pages for all tags for each category. With a slug of /:category/:tag
-  // use categories
-
+  //
+}

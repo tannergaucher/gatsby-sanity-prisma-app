@@ -4,6 +4,7 @@ import { Flex, Heading } from "rebass"
 import { Link } from "../styles"
 import { Menu } from "."
 
+// THIS HOOK ERRORS IN DEV MODE
 // import { useSiteMetadata } from "../hooks"
 
 export default function Header() {
@@ -22,7 +23,6 @@ export default function Header() {
           Untrip
         </Heading>
       </Link>
-
       <Menu />
     </Flex>
   )

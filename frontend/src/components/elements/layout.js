@@ -5,13 +5,13 @@ import { Box } from "rebass"
 import { Header, Footer } from "."
 import "./layout.css"
 
-const Layout = ({ children }) => {
+export default function Layout({ children }) {
   return (
     <Box
       p={2}
       style={{
-        maxWidth: `var(--max-width)`,
         margin: "0 auto",
+        maxWidth: `var(--max-width)`,
       }}
     >
       <Header />
@@ -26,5 +26,3 @@ const Layout = ({ children }) => {
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
-
-export default Layout

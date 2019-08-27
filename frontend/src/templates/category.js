@@ -4,6 +4,7 @@ import { Heading } from "rebass"
 
 export default function CategoryTemplate({ data, pageContext }) {
   const { allSanityPost } = data
+
   const { category } = pageContext
 
   return (

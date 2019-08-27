@@ -1,9 +1,8 @@
 import React, { useState } from "react"
-import { Menu as MenuIcon } from "grommet-icons"
 import { Link } from "gatsby"
 import { Layer } from "grommet"
 import { Heading, Flex } from "rebass"
-import { Close } from "grommet-icons"
+import { Menu as MenuIcon, Close } from "grommet-icons"
 
 export default function Menu() {
   const [show, setShow] = useState(false)
@@ -15,12 +14,12 @@ export default function Menu() {
       </button>
       {show && (
         <Layer
+          full={true}
           onEsc={() => setShow(false)}
           onClickOutside={() => setShow(false)}
           onClickCapture={() => setShow(false)}
-          full={true}
         >
-          <Flex p={[2]} bg="var(--light-1)" flexDirection="column" flex={1}>
+          <Flex flex={1} flexDirection="column" p={[2]} bg="var(--light-1)">
             <Flex justifyContent="space-between">
               <Link
                 to="/"
@@ -49,24 +48,20 @@ export default function Menu() {
   )
 }
 
-function MenuNav() {
-  return (
-    <Flex
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      bg="var(--light-1)"
-      flex={1}
-    >
-      <MenuNavItem text="Home" to="/" />
-      <MenuNavItem text="Guide" to="guide" />
-      {/* Dont' display if not logged in */}
-      {/* <MenuNavItem text="Untrips" to="/lists" /> */}
-      {/* Query isLoggedIn and disply sign up or sign in */}
-      <MenuNavItem text="Sign In" to="/signin" />
-    </Flex>
-  )
-}
+const MenuNav = () => (
+  <Flex
+    flex={1}
+    flexDirection="column"
+    justifyContent="center"
+    alignItems="center"
+    bg="var(--light-1)"
+  >
+    <MenuNavItem text="Home" to="/" />
+    <MenuNavItem text="Guide" to="guide" />
+    {/* Query isLoggedIn and disply sign up / sign in or Account */}
+    <MenuNavItem text="Sign In" to="/signin" />
+  </Flex>
+)
 
 const MenuNavItem = ({ text, to }) => (
   <Link to={to} color="inherit" style={{ textDecoration: `none` }}>

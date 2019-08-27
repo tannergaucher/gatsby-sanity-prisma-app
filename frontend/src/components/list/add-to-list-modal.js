@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { Button, Heading, Flex } from "rebass"
-import { AddCircle } from "grommet-icons"
 import { Layer } from "grommet"
+import { AddCircle } from "grommet-icons"
+import { Button, Heading, Flex } from "rebass"
 
 export default function AddToListModal() {
   const [show, setShow] = useState(false)
@@ -26,7 +26,7 @@ export default function AddToListModal() {
           responsive={false}
         >
           <Flex width={1}>
-            <Heading>Add PLACE to list</Heading>
+            <Heading>Add PLACE NAME to list</Heading>
             {/* Query users lists */}
             {/* Map lists to checkboxes */}
           </Flex>

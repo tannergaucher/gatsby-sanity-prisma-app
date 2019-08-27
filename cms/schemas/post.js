@@ -31,21 +31,23 @@ export default {
         hotspot: true,
       },
     },
+    // REMOVE TAGS AND UPDATE POST FRAGMENT
     {
       name: 'tags',
       title: 'Post Tags',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'tag' } }],
     },
+    // REMOVE CATEGORY AND UPDATE POST FRAGMENT
     {
       name: 'category',
       title: 'Category',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'category' } }],
     },
-    // TEST
+    // TEST: IT WORKS
     {
-      name: 'postCategoryWithTags',
+      name: 'categoryWithTags',
       title: 'Post Category And Tags',
       type: 'categoryWithTags',
     },
