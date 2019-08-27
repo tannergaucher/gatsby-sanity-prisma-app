@@ -28,13 +28,13 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = postsQuery.data.allSanityPost.edges || []
 
   posts.forEach(edge => {
-    // create a slug of /:category/:post-title
-    console.log(edge.node.category.slug)
+    // TODO: create post pages with a slug of /:category/:post-title
+    console.log(edge.node.category.slug.current)
+
+    // const postSlug = `${edge.node.category.slug.current}/${edge.node.slug}`
 
     createPage({
-      // TODO: create pages with /:category/:post-slug
-
-      path: `${edge.node.slug.current}`,
+      path: `${edge.node.category.slug.current}/${edge.node.slug.current}`,
       component: path.resolve(`./src/templates/post.js`),
       context: {
         slug: edge.node.slug.current,
@@ -59,6 +59,8 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   const categories = categoriesQuery.data.allSanityCategory.edges || []
+
+  // Make a set from all post tags and pass in via context
 
   categories.forEach(edge => {
     createPage({

@@ -14,15 +14,6 @@ export const SANITY_POST_FRAGMENT = graphql`
     tags {
       ...SanityTagFragment
     }
-    # NEED THIS?
-    categoryWithTags {
-      category {
-        ...SanityCategoryFragment
-      }
-      tags {
-        ...SanityTagFragment
-      }
-    }
     mainImage {
       asset {
         fluid {

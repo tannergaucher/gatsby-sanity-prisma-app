@@ -3,9 +3,9 @@ import { graphql } from "gatsby"
 import { Heading } from "rebass"
 
 export default function CategoryTemplate({ data, pageContext }) {
-  const { allSanityPost } = data
-
   const { category } = pageContext
+
+  console.log(data)
 
   return (
     <>
@@ -18,9 +18,7 @@ export default function CategoryTemplate({ data, pageContext }) {
 
 export const CATEGORY_PAGE_QUERY = graphql`
   query($slug: String!) {
-    allSanityPost(
-      filter: { category: { elemMatch: { slug: { current: { eq: $slug } } } } }
-    ) {
+    allSanityPost(filter: { category: { slug: { current: { eq: $slug } } } }) {
       edges {
         node {
           ...SanityPostFragment
