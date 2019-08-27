@@ -2,8 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Heading } from "rebass"
 
-import { CategoryTagsSelect } from "../components/category"
-
 import { PostCardThumbnail } from "../components/post"
 
 export default function CategoryTemplate({ data, pageContext }) {
@@ -14,7 +12,6 @@ export default function CategoryTemplate({ data, pageContext }) {
 
   // TODO: CREATE A SET FROM TAGS ARR
   // MOVE ALL THIS INTO GATSBY NODE?
-
   const uniqueTags = []
 
   edges.map(edge => {
@@ -28,7 +25,6 @@ export default function CategoryTemplate({ data, pageContext }) {
       <Heading textAlign="center" mb={[3]} fontFamily="var(--sans)">
         {category}
       </Heading>
-      <CategoryTagsSelect tags={uniqueTags} />
       {edges.map(edge => (
         <PostCardThumbnail post={edge.node} />
       ))}
