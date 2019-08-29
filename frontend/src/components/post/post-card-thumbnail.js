@@ -9,7 +9,7 @@ export default function PostCardThumbnail({ post }) {
   return (
     <Box mb={[4]}>
       <Link
-        to={post.slug.current}
+        to={`${post.category.slug.current}/${post.slug.current}`}
         style={{ textDecoration: `none`, color: `inherit` }}
       >
         <Flex flexDirection="row">

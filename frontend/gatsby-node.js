@@ -19,28 +19,17 @@ exports.createPages = async ({ graphql, actions }) => {
                 current
               }
             }
+            tags {
+              tag
+              slug {
+                current
+              }
+            }
           }
         }
       }
     }
   `)
-
-  const posts = postsQuery.data.allSanityPost.edges || []
-
-  posts.forEach(edge => {
-    // TODO: create post pages with a slug of /:category/:post-title
-    console.log(edge.node.category.slug.current)
-
-    // const postSlug = `${edge.node.category.slug.current}/${edge.node.slug}`
-
-    createPage({
-      path: `${edge.node.category.slug.current}/${edge.node.slug.current}`,
-      component: path.resolve(`./src/templates/post.js`),
-      context: {
-        slug: edge.node.slug.current,
-      },
-    })
-  })
 
   // Query all sanity categories and create category template page for each.
   const categoriesQuery = await graphql(`
@@ -58,9 +47,38 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
+  const posts = postsQuery.data.allSanityPost.edges || []
   const categories = categoriesQuery.data.allSanityCategory.edges || []
+  const categoriesWithTags = []
 
-  // Make a set from all post tags and pass in via context
+  categories.forEach(category => {
+    categoriesWithTags.push({
+      ...category.node,
+      tags: [],
+    })
+  })
+
+  posts.forEach(post => {
+    categoriesWithTags.forEach(categoryWithTags => {
+      if (post.node.category.slug.current === categoryWithTags.slug.current) {
+        post.node.tags.map(tag => {
+          if (categoryWithTags.tags.indexOf(tag === -1)) {
+            categoryWithTags.tags.push(tag)
+          }
+        })
+      }
+    })
+  })
+
+  posts.forEach(edge => {
+    createPage({
+      path: `${edge.node.category.slug.current}/${edge.node.slug.current}`,
+      component: path.resolve(`./src/templates/post.js`),
+      context: {
+        slug: edge.node.slug.current,
+      },
+    })
+  })
 
   categories.forEach(edge => {
     createPage({
@@ -70,6 +88,21 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: edge.node.slug.current,
         category: edge.node.category,
       },
+    })
+  })
+
+  categoriesWithTags.forEach(edge => {
+    edge.tags.forEach(tag => {
+      createPage({
+        path: `${edge.slug.current}/${tag.slug.current}`,
+        component: path.resolve(`./src/templates/category-tag.js`),
+        context: {
+          category: edge.category,
+          categorySlug: edge.slug.current,
+          tag: tag.tag,
+          tagSlug: tag.slug.current,
+        },
+      })
     })
   })
 }

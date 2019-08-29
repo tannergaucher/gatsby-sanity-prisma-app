@@ -27,8 +27,6 @@ export default function AddToListModal() {
         >
           <Flex width={1}>
             <Heading>Add PLACE NAME to list</Heading>
-            {/* Query users lists */}
-            {/* Map lists to checkboxes */}
           </Flex>
         </Layer>
       )}

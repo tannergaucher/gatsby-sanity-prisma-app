@@ -4,14 +4,11 @@ import { graphql } from "gatsby"
 import { Bookmark } from "grommet-icons"
 import { Heading, Flex, Button } from "rebass"
 
-// Change PostPlaces to Places and import from /components/place
 import { PostPlaces, Share } from "../components/post"
 import { BlockContent } from "../components/styles"
 
 export default function PostTemplate({ data }) {
   const { sanityPost } = data
-
-  console.log(sanityPost)
 
   return (
     <>

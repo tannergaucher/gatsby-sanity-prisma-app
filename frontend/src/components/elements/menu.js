@@ -58,8 +58,7 @@ const MenuNav = () => (
   >
     <MenuNavItem text="Home" to="/" />
     <MenuNavItem text="Guide" to="guide" />
-    {/* Query isLoggedIn and disply sign up / sign in or Account */}
-    <MenuNavItem text="Sign In" to="/signin" />
+    <MenuNavItem text="Profile" to="/profile" />
   </Flex>
 )
 

@@ -47,7 +47,7 @@ export default function Place({ postPlace }) {
       >
         {postPlace.place.imageCaption}
       </Text>
-      {/* Todo: position absolute photo credit over image */}
+      {/* TODO: position absolute photo credit over image */}
       <BlockContent blocks={postPlace._rawText} />
       <PlaceDetails place={postPlace} />
     </Box>
