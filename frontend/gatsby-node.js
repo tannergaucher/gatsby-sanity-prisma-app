@@ -55,6 +55,7 @@ exports.createPages = async ({ graphql, actions }) => {
   categories.forEach(category => {
     categoriesWithTags.push({
       ...category.node,
+      // Change name to tagSlugs
       tags: [],
     })
   })
@@ -90,9 +91,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         category: edge.category,
         categorySlug: edge.slug.current,
-        // remove
         tags: edge.tags,
-        // pass in array of tag slugs
       },
     })
   })

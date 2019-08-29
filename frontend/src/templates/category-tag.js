@@ -16,7 +16,7 @@ export default function CategoryTag({ pageContext, data }) {
   )
 }
 
-// Query all posts with category slug of category slug and tag slug of  tag slug
+// Query all posts with category slug of category slug and tag slug of tag slug
 export const CATEGORY_PAGE_QUERY = graphql`
   query($categorySlug: String!, $tagSlug: String!) {
     allSanityPost(

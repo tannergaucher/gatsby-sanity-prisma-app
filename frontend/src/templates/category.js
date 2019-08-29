@@ -4,10 +4,8 @@ import Img from "gatsby-image"
 import { Heading, Box } from "rebass"
 
 export default function CategoryTemplate({ pageContext, data }) {
-  console.log(pageContext)
   const { category, categorySlug } = pageContext
   const { edges } = data.allSanityTag
-  console.log(edges)
 
   return (
     <>
