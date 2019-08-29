@@ -57,6 +57,13 @@ export const SANITY_TAG_FRAGMENT = graphql`
     slug {
       current
     }
+    image {
+      asset {
+        fluid {
+          ...GatsbySanityImageFluid
+        }
+      }
+    }
   }
 `
 

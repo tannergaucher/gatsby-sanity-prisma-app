@@ -3,7 +3,7 @@ const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  // Query all posts and create post page for each. Query the post category for the URL.
+  // Query all posts.
   const postsQuery = await graphql(`
     query {
       allSanityPost {
@@ -31,7 +31,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  // Query all sanity categories and create category template page for each.
+  // Query all categories.
   const categoriesQuery = await graphql(`
     query {
       allSanityCategory {
@@ -51,6 +51,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const categories = categoriesQuery.data.allSanityCategory.edges || []
   const categoriesWithTags = []
 
+  // Make a new data structure that holds tags of posts for each category.
   categories.forEach(category => {
     categoriesWithTags.push({
       ...category.node,
@@ -63,13 +64,14 @@ exports.createPages = async ({ graphql, actions }) => {
       if (post.node.category.slug.current === categoryWithTags.slug.current) {
         post.node.tags.map(tag => {
           if (categoryWithTags.tags.indexOf(tag === -1)) {
-            categoryWithTags.tags.push(tag)
+            categoryWithTags.tags.push(tag.slug.current)
           }
         })
       }
     })
   })
 
+  // Create page for each post.
   posts.forEach(edge => {
     createPage({
       path: `${edge.node.category.slug.current}/${edge.node.slug.current}`,
@@ -80,27 +82,31 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  categories.forEach(edge => {
+  // Create page for each category.
+  categoriesWithTags.forEach(edge => {
     createPage({
-      path: edge.node.slug.current,
+      path: edge.slug.current,
       component: path.resolve(`./src/templates/category.js`),
       context: {
-        slug: edge.node.slug.current,
-        category: edge.node.category,
+        category: edge.category,
+        categorySlug: edge.slug.current,
+        // remove
+        tags: edge.tags,
+        // pass in array of tag slugs
       },
     })
   })
 
+  // Create page for each category tag with path of /:category/:tag.
   categoriesWithTags.forEach(edge => {
     edge.tags.forEach(tag => {
       createPage({
-        path: `${edge.slug.current}/${tag.slug.current}`,
+        path: `${edge.slug.current}/${tag}`,
         component: path.resolve(`./src/templates/category-tag.js`),
         context: {
           category: edge.category,
           categorySlug: edge.slug.current,
-          tag: tag.tag,
-          tagSlug: tag.slug.current,
+          tagSlug: tag,
         },
       })
     })
