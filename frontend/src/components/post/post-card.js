@@ -10,9 +10,11 @@ export default function PostCard({ post }) {
       <Box mb={[5]}>
         <Heading
           fontSize={[1]}
-          fontWeight="lighter"
+          fontWeight="500"
           fontFamily="var(--sans)"
-          mb={[0]}
+          color="var(--dark-2)"
+          letterSpacing="1px"
+          mb={[1]}
           style={{ textTransform: `uppercase` }}
         >
           {post.category.category}
@@ -20,7 +22,8 @@ export default function PostCard({ post }) {
         <Heading
           fontSize={[5, 6]}
           mb={[2]}
-          lineHeight="1.2"
+          lineHeight="1.1"
+          letterSpacing="-.5px"
           style={{ fontFamily: `var(--sans)` }}
           fontWeight="900"
         >
