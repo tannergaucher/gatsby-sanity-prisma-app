@@ -1,25 +1,52 @@
 import React from "react"
 import { Heading } from "rebass"
+import { Link } from "gatsby"
 
-import { PostCardThumbnail } from "../components/post"
+import { HeroCard } from "../components/styles"
 
 export default function CategoryTag({ pageContext, data }) {
   const { category } = pageContext
 
   return (
     <>
-      <Heading>{category}</Heading>
-      {data.allSanityPost.edges.map(edge => (
-        <PostCardThumbnail key={edge.node.id} post={edge.node} />
+      <Heading
+        textAlign="center"
+        fontFamily="var(--sans)"
+        fontWeight="900"
+        fontSize={[3]}
+        mb={0}
+      >
+        {category}
+      </Heading>
+      <Heading
+        textAlign="center"
+        fontFamily="var(--sans)"
+        fontWeight="900"
+        fontSize={[4]}
+        mb={4}
+      >
+        {data.tag.tag}
+      </Heading>
+      {data.posts.edges.map(edge => (
+        <Link
+          to={`${edge.node.category.slug.current}/${edge.node.slug.current}`}
+        >
+          <HeroCard
+            key={edge.node.id}
+            text={edge.node.title}
+            fluid={edge.node.mainImage.asset.fluid}
+          />
+        </Link>
       ))}
     </>
   )
 }
 
 // Query all posts with category slug of category slug and tag slug of tag slug
+// Query the tag with a slug of tagSlug
 export const CATEGORY_PAGE_QUERY = graphql`
   query($categorySlug: String!, $tagSlug: String!) {
-    allSanityPost(
+    posts: allSanityPost(
       filter: {
         category: { slug: { current: { eq: $categorySlug } } }
         tags: { elemMatch: { slug: { current: { eq: $tagSlug } } } }
@@ -30,6 +57,9 @@ export const CATEGORY_PAGE_QUERY = graphql`
           ...SanityPostFragment
         }
       }
+    }
+    tag: sanityTag(slug: { current: { eq: $tagSlug } }) {
+      tag
     }
   }
 `

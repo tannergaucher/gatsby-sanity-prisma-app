@@ -1,7 +1,8 @@
 import React from "react"
+import { Heading } from "rebass"
 import { Link } from "gatsby"
-import Img from "gatsby-image"
-import { Heading, Box } from "rebass"
+
+import { HeroCard } from "../components/styles"
 
 export default function CategoryTemplate({ pageContext, data }) {
   const { category, categorySlug } = pageContext
@@ -23,8 +24,7 @@ export default function CategoryTemplate({ pageContext, data }) {
           key={edge.node.id}
           to={`${categorySlug}/${edge.node.slug.current}`}
         >
-          <h4>{edge.node.tag}</h4>
-          <Img fluid={edge.node.image.asset.fluid} />
+          <HeroCard text={edge.node.tag} fluid={edge.node.image.asset.fluid} />
         </Link>
       ))}
     </>

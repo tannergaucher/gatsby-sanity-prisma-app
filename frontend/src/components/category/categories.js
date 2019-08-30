@@ -1,8 +1,7 @@
 import React from "react"
-import Img from "gatsby-image"
 import { Link } from "gatsby"
-import { Heading, Box } from "rebass"
 
+import { HeroCard } from "../styles"
 import { useAllSanityCategory } from "../hooks"
 
 export default function Categories() {
@@ -11,40 +10,14 @@ export default function Categories() {
   return (
     <>
       {edges.map(edge => (
-        <Category key={edge.node.id} category={edge.node} />
+        <Link key={edge.node.id} to={edge.node.slug.current}>
+          <HeroCard
+            key={edge.node.id}
+            text={edge.node.category}
+            fluid={edge.node.image.asset.fluid}
+          />
+        </Link>
       ))}
     </>
-  )
-}
-
-function Category({ category }) {
-  return (
-    <Box mb={[3]} style={{ position: `relative` }}>
-      <Link to={category.slug.current}>
-        <Heading
-          color="var(--light-1)"
-          fontSize={[4]}
-          fontFamily="var(--sans)"
-          fontWeight="400"
-          style={{
-            zIndex: `1`,
-            position: `absolute`,
-            top: `50%`,
-            left: `50%`,
-            transform: `translate(-50%, -50%)`,
-            textTransform: `uppercase`,
-            textAlign: `center`,
-          }}
-        >
-          {category.category}
-        </Heading>
-        <Img
-          fluid={category.image.asset.fluid}
-          style={{
-            filter: `brightness(.5)`,
-          }}
-        />
-      </Link>
-    </Box>
   )
 }

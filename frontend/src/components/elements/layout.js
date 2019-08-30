@@ -15,7 +15,7 @@ export default function Layout({ children }) {
       }}
     >
       <Header />
-      <Box as="main" my={[4]}>
+      <Box as="main" my={[4]} style={{ minHeight: `100vh` }}>
         {children}
       </Box>
       <Footer />

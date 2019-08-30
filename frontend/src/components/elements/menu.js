@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Link } from "gatsby"
 import { Layer } from "grommet"
 import { Heading, Flex } from "rebass"
-import { Menu as MenuIcon, Close } from "grommet-icons"
+import { Menu as MenuIcon, Close, Home, Navigate, User } from "grommet-icons"
 
 export default function Menu() {
   const [show, setShow] = useState(false)
@@ -56,23 +56,40 @@ const MenuNav = () => (
     alignItems="center"
     bg="var(--light-1)"
   >
-    <MenuNavItem text="Home" to="/" />
-    <MenuNavItem text="Guide" to="guide" />
-    <MenuNavItem text="Profile" to="/profile" />
+    <MenuNavItem
+      text="Home"
+      to="/"
+      icon={<Home color="var(--dark-1)" size="40px" />}
+    />
+    <MenuNavItem
+      text="Guide"
+      to="guide"
+      icon={<Navigate color="var(--dark-1)" size="40px" />}
+    />
+    <MenuNavItem
+      text="Profile"
+      to="/profile"
+      icon={<User color="var(--dark-1)" size="40px" />}
+    />
   </Flex>
 )
 
-const MenuNavItem = ({ text, to }) => (
+const MenuNavItem = ({ text, to, icon }) => (
   <Link to={to} color="inherit" style={{ textDecoration: `none` }}>
-    <Heading
-      my={[4]}
-      fontSize={[5]}
-      color="var(--dark-1)"
-      style={{ textTransform: `uppercase` }}
-      fontFamily="var(--sans)"
-      fontWeight="900"
-    >
-      {text}
-    </Heading>
+    <Flex flexDirection="column" alignItems="center">
+      {icon}
+      <Heading
+        mb={[5]}
+        mt={[3]}
+        ml={[2]}
+        fontSize={[5]}
+        color="var(--dark-1)"
+        style={{ textTransform: `uppercase` }}
+        fontFamily="var(--sans)"
+        fontWeight="900"
+      >
+        {text}
+      </Heading>
+    </Flex>
   </Link>
 )
