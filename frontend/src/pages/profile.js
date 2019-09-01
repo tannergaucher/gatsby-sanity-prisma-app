@@ -7,8 +7,6 @@ import { IS_LOGGED_IN } from "../components/apollo/graphql"
 export default function Profile() {
   const { data, loading, error } = useQuery(IS_LOGGED_IN)
 
-  console.log(data)
-
   return (
     <>
       {loading && "Loading..."}
