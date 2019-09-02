@@ -4,8 +4,6 @@ import Img from "gatsby-image"
 import { Heading, Box, Flex } from "rebass"
 
 export default function PostCardThumbnail({ post }) {
-  console.log(post)
-
   return (
     <Box mb={[4]}>
       <Link

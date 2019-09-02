@@ -1,11 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Box } from "rebass"
+import { useQuery, useMutation } from "@apollo/react-hooks"
 
 import { Header, Footer } from "."
+import { CURRENT_USER_QUERY } from "../apollo/graphql"
 import "./layout.css"
 
 export default function Layout({ children }) {
+  const { loading, error, data } = useQuery(CURRENT_USER_QUERY)
+
   return (
     <Box
       p={2}

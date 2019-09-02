@@ -26,7 +26,7 @@ export default function HeroCard({ text, fluid }) {
         fluid={fluid}
         style={{
           filter: `brightness(.5)`,
-          height: "300px",
+          height: "250px",
         }}
       />
     </Box>

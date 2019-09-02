@@ -5,7 +5,6 @@ import { Heading, Text } from "rebass"
 
 export default function Place({ data }) {
   const { sanityPlace } = data
-  console.log(sanityPlace)
 
   return (
     <div>

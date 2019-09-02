@@ -31,6 +31,7 @@ export const client = new ApolloClient({
     Mutation: {},
     Query: {},
   },
+  connectToDevTools: true,
 })
 
 const data = {
