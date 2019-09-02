@@ -2,7 +2,14 @@ import React, { useState } from "react"
 import { Link } from "gatsby"
 import { Layer } from "grommet"
 import { Heading, Flex } from "rebass"
-import { Menu as MenuIcon, Close, Home, Navigate, User } from "grommet-icons"
+import {
+  Menu as MenuIcon,
+  Close,
+  Home,
+  Navigate,
+  User,
+  List,
+} from "grommet-icons"
 
 export default function Menu() {
   const [show, setShow] = useState(false)
@@ -67,8 +74,13 @@ const MenuNav = () => (
       icon={<Navigate color="var(--dark-1)" size="40px" />}
     />
     <MenuNavItem
-      text="Profile"
-      to="/profile"
+      text="Lists"
+      to="lists"
+      icon={<List color="var(--dark-1)" size="40px" />}
+    />
+    <MenuNavItem
+      text="Account"
+      to="account"
       icon={<User color="var(--dark-1)" size="40px" />}
     />
   </Flex>
@@ -84,7 +96,6 @@ const MenuNavItem = ({ text, to, icon }) => (
         ml={[2]}
         fontSize={[5]}
         color="var(--dark-1)"
-        style={{ textTransform: `uppercase` }}
         fontFamily="var(--sans)"
         fontWeight="900"
       >
