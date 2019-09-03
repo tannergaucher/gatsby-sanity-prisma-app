@@ -178,10 +178,10 @@ export interface ClientConstructor<T> {
 export type PlaceOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "imageUrl_ASC"
-  | "imageUrl_DESC"
+  | "placeName_ASC"
+  | "placeName_DESC"
+  | "placeImageUrl_ASC"
+  | "placeImageUrl_DESC"
   | "placeSlug_ASC"
   | "placeSlug_DESC";
 
@@ -216,34 +216,34 @@ export interface PlaceWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  imageUrl?: Maybe<String>;
-  imageUrl_not?: Maybe<String>;
-  imageUrl_in?: Maybe<String[] | String>;
-  imageUrl_not_in?: Maybe<String[] | String>;
-  imageUrl_lt?: Maybe<String>;
-  imageUrl_lte?: Maybe<String>;
-  imageUrl_gt?: Maybe<String>;
-  imageUrl_gte?: Maybe<String>;
-  imageUrl_contains?: Maybe<String>;
-  imageUrl_not_contains?: Maybe<String>;
-  imageUrl_starts_with?: Maybe<String>;
-  imageUrl_not_starts_with?: Maybe<String>;
-  imageUrl_ends_with?: Maybe<String>;
-  imageUrl_not_ends_with?: Maybe<String>;
+  placeName?: Maybe<String>;
+  placeName_not?: Maybe<String>;
+  placeName_in?: Maybe<String[] | String>;
+  placeName_not_in?: Maybe<String[] | String>;
+  placeName_lt?: Maybe<String>;
+  placeName_lte?: Maybe<String>;
+  placeName_gt?: Maybe<String>;
+  placeName_gte?: Maybe<String>;
+  placeName_contains?: Maybe<String>;
+  placeName_not_contains?: Maybe<String>;
+  placeName_starts_with?: Maybe<String>;
+  placeName_not_starts_with?: Maybe<String>;
+  placeName_ends_with?: Maybe<String>;
+  placeName_not_ends_with?: Maybe<String>;
+  placeImageUrl?: Maybe<String>;
+  placeImageUrl_not?: Maybe<String>;
+  placeImageUrl_in?: Maybe<String[] | String>;
+  placeImageUrl_not_in?: Maybe<String[] | String>;
+  placeImageUrl_lt?: Maybe<String>;
+  placeImageUrl_lte?: Maybe<String>;
+  placeImageUrl_gt?: Maybe<String>;
+  placeImageUrl_gte?: Maybe<String>;
+  placeImageUrl_contains?: Maybe<String>;
+  placeImageUrl_not_contains?: Maybe<String>;
+  placeImageUrl_starts_with?: Maybe<String>;
+  placeImageUrl_not_starts_with?: Maybe<String>;
+  placeImageUrl_ends_with?: Maybe<String>;
+  placeImageUrl_not_ends_with?: Maybe<String>;
   placeSlug?: Maybe<String>;
   placeSlug_not?: Maybe<String>;
   placeSlug_in?: Maybe<String[] | String>;
@@ -258,6 +258,7 @@ export interface PlaceWhereInput {
   placeSlug_not_starts_with?: Maybe<String>;
   placeSlug_ends_with?: Maybe<String>;
   placeSlug_not_ends_with?: Maybe<String>;
+  list?: Maybe<ListWhereInput>;
   AND?: Maybe<PlaceWhereInput[] | PlaceWhereInput>;
   OR?: Maybe<PlaceWhereInput[] | PlaceWhereInput>;
   NOT?: Maybe<PlaceWhereInput[] | PlaceWhereInput>;
@@ -281,19 +282,11 @@ export interface ListWhereInput {
   places_every?: Maybe<PlaceWhereInput>;
   places_some?: Maybe<PlaceWhereInput>;
   places_none?: Maybe<PlaceWhereInput>;
+  user?: Maybe<UserWhereInput>;
   AND?: Maybe<ListWhereInput[] | ListWhereInput>;
   OR?: Maybe<ListWhereInput[] | ListWhereInput>;
   NOT?: Maybe<ListWhereInput[] | ListWhereInput>;
 }
-
-export type PlaceWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  email?: Maybe<String>;
-}>;
 
 export interface UserWhereInput {
   id?: Maybe<ID_Input>;
@@ -346,62 +339,84 @@ export interface UserWhereInput {
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
+export type PlaceWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  email?: Maybe<String>;
+}>;
+
 export interface ListCreateInput {
   id?: Maybe<ID_Input>;
-  places?: Maybe<PlaceCreateManyInput>;
+  places?: Maybe<PlaceCreateManyWithoutListInput>;
+  user: UserCreateOneWithoutListsInput;
 }
 
-export interface PlaceCreateManyInput {
-  create?: Maybe<PlaceCreateInput[] | PlaceCreateInput>;
+export interface PlaceCreateManyWithoutListInput {
+  create?: Maybe<PlaceCreateWithoutListInput[] | PlaceCreateWithoutListInput>;
   connect?: Maybe<PlaceWhereUniqueInput[] | PlaceWhereUniqueInput>;
 }
 
-export interface PlaceCreateInput {
+export interface PlaceCreateWithoutListInput {
   id?: Maybe<ID_Input>;
-  name: String;
-  imageUrl: String;
+  placeName: String;
+  placeImageUrl: String;
   placeSlug: String;
 }
 
-export interface ListUpdateInput {
-  places?: Maybe<PlaceUpdateManyInput>;
+export interface UserCreateOneWithoutListsInput {
+  create?: Maybe<UserCreateWithoutListsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export interface PlaceUpdateManyInput {
-  create?: Maybe<PlaceCreateInput[] | PlaceCreateInput>;
-  update?: Maybe<
-    | PlaceUpdateWithWhereUniqueNestedInput[]
-    | PlaceUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | PlaceUpsertWithWhereUniqueNestedInput[]
-    | PlaceUpsertWithWhereUniqueNestedInput
-  >;
+export interface UserCreateWithoutListsInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+  password: String;
+}
+
+export interface ListUpdateInput {
+  places?: Maybe<PlaceUpdateManyWithoutListInput>;
+  user?: Maybe<UserUpdateOneRequiredWithoutListsInput>;
+}
+
+export interface PlaceUpdateManyWithoutListInput {
+  create?: Maybe<PlaceCreateWithoutListInput[] | PlaceCreateWithoutListInput>;
   delete?: Maybe<PlaceWhereUniqueInput[] | PlaceWhereUniqueInput>;
   connect?: Maybe<PlaceWhereUniqueInput[] | PlaceWhereUniqueInput>;
   set?: Maybe<PlaceWhereUniqueInput[] | PlaceWhereUniqueInput>;
   disconnect?: Maybe<PlaceWhereUniqueInput[] | PlaceWhereUniqueInput>;
+  update?: Maybe<
+    | PlaceUpdateWithWhereUniqueWithoutListInput[]
+    | PlaceUpdateWithWhereUniqueWithoutListInput
+  >;
+  upsert?: Maybe<
+    | PlaceUpsertWithWhereUniqueWithoutListInput[]
+    | PlaceUpsertWithWhereUniqueWithoutListInput
+  >;
   deleteMany?: Maybe<PlaceScalarWhereInput[] | PlaceScalarWhereInput>;
   updateMany?: Maybe<
     PlaceUpdateManyWithWhereNestedInput[] | PlaceUpdateManyWithWhereNestedInput
   >;
 }
 
-export interface PlaceUpdateWithWhereUniqueNestedInput {
+export interface PlaceUpdateWithWhereUniqueWithoutListInput {
   where: PlaceWhereUniqueInput;
-  data: PlaceUpdateDataInput;
+  data: PlaceUpdateWithoutListDataInput;
 }
 
-export interface PlaceUpdateDataInput {
-  name?: Maybe<String>;
-  imageUrl?: Maybe<String>;
+export interface PlaceUpdateWithoutListDataInput {
+  placeName?: Maybe<String>;
+  placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
 }
 
-export interface PlaceUpsertWithWhereUniqueNestedInput {
+export interface PlaceUpsertWithWhereUniqueWithoutListInput {
   where: PlaceWhereUniqueInput;
-  update: PlaceUpdateDataInput;
-  create: PlaceCreateInput;
+  update: PlaceUpdateWithoutListDataInput;
+  create: PlaceCreateWithoutListInput;
 }
 
 export interface PlaceScalarWhereInput {
@@ -419,34 +434,34 @@ export interface PlaceScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  imageUrl?: Maybe<String>;
-  imageUrl_not?: Maybe<String>;
-  imageUrl_in?: Maybe<String[] | String>;
-  imageUrl_not_in?: Maybe<String[] | String>;
-  imageUrl_lt?: Maybe<String>;
-  imageUrl_lte?: Maybe<String>;
-  imageUrl_gt?: Maybe<String>;
-  imageUrl_gte?: Maybe<String>;
-  imageUrl_contains?: Maybe<String>;
-  imageUrl_not_contains?: Maybe<String>;
-  imageUrl_starts_with?: Maybe<String>;
-  imageUrl_not_starts_with?: Maybe<String>;
-  imageUrl_ends_with?: Maybe<String>;
-  imageUrl_not_ends_with?: Maybe<String>;
+  placeName?: Maybe<String>;
+  placeName_not?: Maybe<String>;
+  placeName_in?: Maybe<String[] | String>;
+  placeName_not_in?: Maybe<String[] | String>;
+  placeName_lt?: Maybe<String>;
+  placeName_lte?: Maybe<String>;
+  placeName_gt?: Maybe<String>;
+  placeName_gte?: Maybe<String>;
+  placeName_contains?: Maybe<String>;
+  placeName_not_contains?: Maybe<String>;
+  placeName_starts_with?: Maybe<String>;
+  placeName_not_starts_with?: Maybe<String>;
+  placeName_ends_with?: Maybe<String>;
+  placeName_not_ends_with?: Maybe<String>;
+  placeImageUrl?: Maybe<String>;
+  placeImageUrl_not?: Maybe<String>;
+  placeImageUrl_in?: Maybe<String[] | String>;
+  placeImageUrl_not_in?: Maybe<String[] | String>;
+  placeImageUrl_lt?: Maybe<String>;
+  placeImageUrl_lte?: Maybe<String>;
+  placeImageUrl_gt?: Maybe<String>;
+  placeImageUrl_gte?: Maybe<String>;
+  placeImageUrl_contains?: Maybe<String>;
+  placeImageUrl_not_contains?: Maybe<String>;
+  placeImageUrl_starts_with?: Maybe<String>;
+  placeImageUrl_not_starts_with?: Maybe<String>;
+  placeImageUrl_ends_with?: Maybe<String>;
+  placeImageUrl_not_ends_with?: Maybe<String>;
   placeSlug?: Maybe<String>;
   placeSlug_not?: Maybe<String>;
   placeSlug_in?: Maybe<String[] | String>;
@@ -472,20 +487,72 @@ export interface PlaceUpdateManyWithWhereNestedInput {
 }
 
 export interface PlaceUpdateManyDataInput {
-  name?: Maybe<String>;
-  imageUrl?: Maybe<String>;
+  placeName?: Maybe<String>;
+  placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
+}
+
+export interface UserUpdateOneRequiredWithoutListsInput {
+  create?: Maybe<UserCreateWithoutListsInput>;
+  update?: Maybe<UserUpdateWithoutListsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutListsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutListsDataInput {
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+}
+
+export interface UserUpsertWithoutListsInput {
+  update: UserUpdateWithoutListsDataInput;
+  create: UserCreateWithoutListsInput;
+}
+
+export interface PlaceCreateInput {
+  id?: Maybe<ID_Input>;
+  placeName: String;
+  placeImageUrl: String;
+  placeSlug: String;
+  list: ListCreateOneWithoutPlacesInput;
+}
+
+export interface ListCreateOneWithoutPlacesInput {
+  create?: Maybe<ListCreateWithoutPlacesInput>;
+  connect?: Maybe<ListWhereUniqueInput>;
+}
+
+export interface ListCreateWithoutPlacesInput {
+  id?: Maybe<ID_Input>;
+  user: UserCreateOneWithoutListsInput;
 }
 
 export interface PlaceUpdateInput {
-  name?: Maybe<String>;
-  imageUrl?: Maybe<String>;
+  placeName?: Maybe<String>;
+  placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
+  list?: Maybe<ListUpdateOneRequiredWithoutPlacesInput>;
+}
+
+export interface ListUpdateOneRequiredWithoutPlacesInput {
+  create?: Maybe<ListCreateWithoutPlacesInput>;
+  update?: Maybe<ListUpdateWithoutPlacesDataInput>;
+  upsert?: Maybe<ListUpsertWithoutPlacesInput>;
+  connect?: Maybe<ListWhereUniqueInput>;
+}
+
+export interface ListUpdateWithoutPlacesDataInput {
+  user?: Maybe<UserUpdateOneRequiredWithoutListsInput>;
+}
+
+export interface ListUpsertWithoutPlacesInput {
+  update: ListUpdateWithoutPlacesDataInput;
+  create: ListCreateWithoutPlacesInput;
 }
 
 export interface PlaceUpdateManyMutationInput {
-  name?: Maybe<String>;
-  imageUrl?: Maybe<String>;
+  placeName?: Maybe<String>;
+  placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
 }
 
@@ -493,50 +560,55 @@ export interface UserCreateInput {
   id?: Maybe<ID_Input>;
   email: String;
   password: String;
-  lists?: Maybe<ListCreateManyInput>;
+  lists?: Maybe<ListCreateManyWithoutUserInput>;
 }
 
-export interface ListCreateManyInput {
-  create?: Maybe<ListCreateInput[] | ListCreateInput>;
+export interface ListCreateManyWithoutUserInput {
+  create?: Maybe<ListCreateWithoutUserInput[] | ListCreateWithoutUserInput>;
   connect?: Maybe<ListWhereUniqueInput[] | ListWhereUniqueInput>;
+}
+
+export interface ListCreateWithoutUserInput {
+  id?: Maybe<ID_Input>;
+  places?: Maybe<PlaceCreateManyWithoutListInput>;
 }
 
 export interface UserUpdateInput {
   email?: Maybe<String>;
   password?: Maybe<String>;
-  lists?: Maybe<ListUpdateManyInput>;
+  lists?: Maybe<ListUpdateManyWithoutUserInput>;
 }
 
-export interface ListUpdateManyInput {
-  create?: Maybe<ListCreateInput[] | ListCreateInput>;
-  update?: Maybe<
-    | ListUpdateWithWhereUniqueNestedInput[]
-    | ListUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | ListUpsertWithWhereUniqueNestedInput[]
-    | ListUpsertWithWhereUniqueNestedInput
-  >;
+export interface ListUpdateManyWithoutUserInput {
+  create?: Maybe<ListCreateWithoutUserInput[] | ListCreateWithoutUserInput>;
   delete?: Maybe<ListWhereUniqueInput[] | ListWhereUniqueInput>;
   connect?: Maybe<ListWhereUniqueInput[] | ListWhereUniqueInput>;
   set?: Maybe<ListWhereUniqueInput[] | ListWhereUniqueInput>;
   disconnect?: Maybe<ListWhereUniqueInput[] | ListWhereUniqueInput>;
+  update?: Maybe<
+    | ListUpdateWithWhereUniqueWithoutUserInput[]
+    | ListUpdateWithWhereUniqueWithoutUserInput
+  >;
+  upsert?: Maybe<
+    | ListUpsertWithWhereUniqueWithoutUserInput[]
+    | ListUpsertWithWhereUniqueWithoutUserInput
+  >;
   deleteMany?: Maybe<ListScalarWhereInput[] | ListScalarWhereInput>;
 }
 
-export interface ListUpdateWithWhereUniqueNestedInput {
+export interface ListUpdateWithWhereUniqueWithoutUserInput {
   where: ListWhereUniqueInput;
-  data: ListUpdateDataInput;
+  data: ListUpdateWithoutUserDataInput;
 }
 
-export interface ListUpdateDataInput {
-  places?: Maybe<PlaceUpdateManyInput>;
+export interface ListUpdateWithoutUserDataInput {
+  places?: Maybe<PlaceUpdateManyWithoutListInput>;
 }
 
-export interface ListUpsertWithWhereUniqueNestedInput {
+export interface ListUpsertWithWhereUniqueWithoutUserInput {
   where: ListWhereUniqueInput;
-  update: ListUpdateDataInput;
-  create: ListCreateInput;
+  update: ListUpdateWithoutUserDataInput;
+  create: ListCreateWithoutUserInput;
 }
 
 export interface ListScalarWhereInput {
@@ -616,6 +688,7 @@ export interface ListPromise extends Promise<List>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
+  user: <T = UserPromise>() => T;
 }
 
 export interface ListSubscription
@@ -631,6 +704,7 @@ export interface ListSubscription
     first?: Int;
     last?: Int;
   }) => T;
+  user: <T = UserSubscription>() => T;
 }
 
 export interface ListNullablePromise
@@ -646,38 +720,97 @@ export interface ListNullablePromise
     first?: Int;
     last?: Int;
   }) => T;
+  user: <T = UserPromise>() => T;
 }
 
 export interface Place {
   id: ID_Output;
-  name: String;
-  imageUrl: String;
+  placeName: String;
+  placeImageUrl: String;
   placeSlug: String;
 }
 
 export interface PlacePromise extends Promise<Place>, Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  imageUrl: () => Promise<String>;
+  placeName: () => Promise<String>;
+  placeImageUrl: () => Promise<String>;
   placeSlug: () => Promise<String>;
+  list: <T = ListPromise>() => T;
 }
 
 export interface PlaceSubscription
   extends Promise<AsyncIterator<Place>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  imageUrl: () => Promise<AsyncIterator<String>>;
+  placeName: () => Promise<AsyncIterator<String>>;
+  placeImageUrl: () => Promise<AsyncIterator<String>>;
   placeSlug: () => Promise<AsyncIterator<String>>;
+  list: <T = ListSubscription>() => T;
 }
 
 export interface PlaceNullablePromise
   extends Promise<Place | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  imageUrl: () => Promise<String>;
+  placeName: () => Promise<String>;
+  placeImageUrl: () => Promise<String>;
   placeSlug: () => Promise<String>;
+  list: <T = ListPromise>() => T;
+}
+
+export interface User {
+  id: ID_Output;
+  email: String;
+  password: String;
+}
+
+export interface UserPromise extends Promise<User>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  lists: <T = FragmentableArray<List>>(args?: {
+    where?: ListWhereInput;
+    orderBy?: ListOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface UserSubscription
+  extends Promise<AsyncIterator<User>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  lists: <T = Promise<AsyncIterator<ListSubscription>>>(args?: {
+    where?: ListWhereInput;
+    orderBy?: ListOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface UserNullablePromise
+  extends Promise<User | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  lists: <T = FragmentableArray<List>>(args?: {
+    where?: ListWhereInput;
+    orderBy?: ListOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
 export interface ListConnection {
@@ -809,61 +942,6 @@ export interface AggregatePlaceSubscription
   extends Promise<AsyncIterator<AggregatePlace>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface User {
-  id: ID_Output;
-  email: String;
-  password: String;
-}
-
-export interface UserPromise extends Promise<User>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  lists: <T = FragmentableArray<List>>(args?: {
-    where?: ListWhereInput;
-    orderBy?: ListOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  lists: <T = Promise<AsyncIterator<ListSubscription>>>(args?: {
-    where?: ListWhereInput;
-    orderBy?: ListOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface UserNullablePromise
-  extends Promise<User | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  lists: <T = FragmentableArray<List>>(args?: {
-    where?: ListWhereInput;
-    orderBy?: ListOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
 }
 
 export interface UserConnection {
@@ -1004,8 +1082,8 @@ export interface PlaceSubscriptionPayloadSubscription
 
 export interface PlacePreviousValues {
   id: ID_Output;
-  name: String;
-  imageUrl: String;
+  placeName: String;
+  placeImageUrl: String;
   placeSlug: String;
 }
 
@@ -1013,8 +1091,8 @@ export interface PlacePreviousValuesPromise
   extends Promise<PlacePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  imageUrl: () => Promise<String>;
+  placeName: () => Promise<String>;
+  placeImageUrl: () => Promise<String>;
   placeSlug: () => Promise<String>;
 }
 
@@ -1022,8 +1100,8 @@ export interface PlacePreviousValuesSubscription
   extends Promise<AsyncIterator<PlacePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  imageUrl: () => Promise<AsyncIterator<String>>;
+  placeName: () => Promise<AsyncIterator<String>>;
+  placeImageUrl: () => Promise<AsyncIterator<String>>;
   placeSlug: () => Promise<AsyncIterator<String>>;
 }
 

@@ -17,6 +17,7 @@ type BatchPayload {
 type List {
   id: ID!
   places(where: PlaceWhereInput, orderBy: PlaceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Place!]
+  user: User!
 }
 
 type ListConnection {
@@ -27,12 +28,28 @@ type ListConnection {
 
 input ListCreateInput {
   id: ID
-  places: PlaceCreateManyInput
+  places: PlaceCreateManyWithoutListInput
+  user: UserCreateOneWithoutListsInput!
 }
 
-input ListCreateManyInput {
-  create: [ListCreateInput!]
+input ListCreateManyWithoutUserInput {
+  create: [ListCreateWithoutUserInput!]
   connect: [ListWhereUniqueInput!]
+}
+
+input ListCreateOneWithoutPlacesInput {
+  create: ListCreateWithoutPlacesInput
+  connect: ListWhereUniqueInput
+}
+
+input ListCreateWithoutPlacesInput {
+  id: ID
+  user: UserCreateOneWithoutListsInput!
+}
+
+input ListCreateWithoutUserInput {
+  id: ID
+  places: PlaceCreateManyWithoutListInput
 }
 
 type ListEdge {
@@ -87,34 +104,51 @@ input ListSubscriptionWhereInput {
   NOT: [ListSubscriptionWhereInput!]
 }
 
-input ListUpdateDataInput {
-  places: PlaceUpdateManyInput
-}
-
 input ListUpdateInput {
-  places: PlaceUpdateManyInput
+  places: PlaceUpdateManyWithoutListInput
+  user: UserUpdateOneRequiredWithoutListsInput
 }
 
-input ListUpdateManyInput {
-  create: [ListCreateInput!]
-  update: [ListUpdateWithWhereUniqueNestedInput!]
-  upsert: [ListUpsertWithWhereUniqueNestedInput!]
+input ListUpdateManyWithoutUserInput {
+  create: [ListCreateWithoutUserInput!]
   delete: [ListWhereUniqueInput!]
   connect: [ListWhereUniqueInput!]
   set: [ListWhereUniqueInput!]
   disconnect: [ListWhereUniqueInput!]
+  update: [ListUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [ListUpsertWithWhereUniqueWithoutUserInput!]
   deleteMany: [ListScalarWhereInput!]
 }
 
-input ListUpdateWithWhereUniqueNestedInput {
-  where: ListWhereUniqueInput!
-  data: ListUpdateDataInput!
+input ListUpdateOneRequiredWithoutPlacesInput {
+  create: ListCreateWithoutPlacesInput
+  update: ListUpdateWithoutPlacesDataInput
+  upsert: ListUpsertWithoutPlacesInput
+  connect: ListWhereUniqueInput
 }
 
-input ListUpsertWithWhereUniqueNestedInput {
+input ListUpdateWithoutPlacesDataInput {
+  user: UserUpdateOneRequiredWithoutListsInput
+}
+
+input ListUpdateWithoutUserDataInput {
+  places: PlaceUpdateManyWithoutListInput
+}
+
+input ListUpdateWithWhereUniqueWithoutUserInput {
   where: ListWhereUniqueInput!
-  update: ListUpdateDataInput!
-  create: ListCreateInput!
+  data: ListUpdateWithoutUserDataInput!
+}
+
+input ListUpsertWithoutPlacesInput {
+  update: ListUpdateWithoutPlacesDataInput!
+  create: ListCreateWithoutPlacesInput!
+}
+
+input ListUpsertWithWhereUniqueWithoutUserInput {
+  where: ListWhereUniqueInput!
+  update: ListUpdateWithoutUserDataInput!
+  create: ListCreateWithoutUserInput!
 }
 
 input ListWhereInput {
@@ -135,6 +169,7 @@ input ListWhereInput {
   places_every: PlaceWhereInput
   places_some: PlaceWhereInput
   places_none: PlaceWhereInput
+  user: UserWhereInput
   AND: [ListWhereInput!]
   OR: [ListWhereInput!]
   NOT: [ListWhereInput!]
@@ -185,9 +220,10 @@ type PageInfo {
 
 type Place {
   id: ID!
-  name: String!
-  imageUrl: String!
+  placeName: String!
+  placeImageUrl: String!
   placeSlug: String!
+  list: List!
 }
 
 type PlaceConnection {
@@ -198,14 +234,22 @@ type PlaceConnection {
 
 input PlaceCreateInput {
   id: ID
-  name: String!
-  imageUrl: String!
+  placeName: String!
+  placeImageUrl: String!
   placeSlug: String!
+  list: ListCreateOneWithoutPlacesInput!
 }
 
-input PlaceCreateManyInput {
-  create: [PlaceCreateInput!]
+input PlaceCreateManyWithoutListInput {
+  create: [PlaceCreateWithoutListInput!]
   connect: [PlaceWhereUniqueInput!]
+}
+
+input PlaceCreateWithoutListInput {
+  id: ID
+  placeName: String!
+  placeImageUrl: String!
+  placeSlug: String!
 }
 
 type PlaceEdge {
@@ -216,18 +260,18 @@ type PlaceEdge {
 enum PlaceOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
-  imageUrl_ASC
-  imageUrl_DESC
+  placeName_ASC
+  placeName_DESC
+  placeImageUrl_ASC
+  placeImageUrl_DESC
   placeSlug_ASC
   placeSlug_DESC
 }
 
 type PlacePreviousValues {
   id: ID!
-  name: String!
-  imageUrl: String!
+  placeName: String!
+  placeImageUrl: String!
   placeSlug: String!
 }
 
@@ -246,34 +290,34 @@ input PlaceScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  imageUrl: String
-  imageUrl_not: String
-  imageUrl_in: [String!]
-  imageUrl_not_in: [String!]
-  imageUrl_lt: String
-  imageUrl_lte: String
-  imageUrl_gt: String
-  imageUrl_gte: String
-  imageUrl_contains: String
-  imageUrl_not_contains: String
-  imageUrl_starts_with: String
-  imageUrl_not_starts_with: String
-  imageUrl_ends_with: String
-  imageUrl_not_ends_with: String
+  placeName: String
+  placeName_not: String
+  placeName_in: [String!]
+  placeName_not_in: [String!]
+  placeName_lt: String
+  placeName_lte: String
+  placeName_gt: String
+  placeName_gte: String
+  placeName_contains: String
+  placeName_not_contains: String
+  placeName_starts_with: String
+  placeName_not_starts_with: String
+  placeName_ends_with: String
+  placeName_not_ends_with: String
+  placeImageUrl: String
+  placeImageUrl_not: String
+  placeImageUrl_in: [String!]
+  placeImageUrl_not_in: [String!]
+  placeImageUrl_lt: String
+  placeImageUrl_lte: String
+  placeImageUrl_gt: String
+  placeImageUrl_gte: String
+  placeImageUrl_contains: String
+  placeImageUrl_not_contains: String
+  placeImageUrl_starts_with: String
+  placeImageUrl_not_starts_with: String
+  placeImageUrl_ends_with: String
+  placeImageUrl_not_ends_with: String
   placeSlug: String
   placeSlug_not: String
   placeSlug_in: [String!]
@@ -311,40 +355,35 @@ input PlaceSubscriptionWhereInput {
   NOT: [PlaceSubscriptionWhereInput!]
 }
 
-input PlaceUpdateDataInput {
-  name: String
-  imageUrl: String
-  placeSlug: String
-}
-
 input PlaceUpdateInput {
-  name: String
-  imageUrl: String
+  placeName: String
+  placeImageUrl: String
   placeSlug: String
+  list: ListUpdateOneRequiredWithoutPlacesInput
 }
 
 input PlaceUpdateManyDataInput {
-  name: String
-  imageUrl: String
+  placeName: String
+  placeImageUrl: String
   placeSlug: String
 }
 
-input PlaceUpdateManyInput {
-  create: [PlaceCreateInput!]
-  update: [PlaceUpdateWithWhereUniqueNestedInput!]
-  upsert: [PlaceUpsertWithWhereUniqueNestedInput!]
+input PlaceUpdateManyMutationInput {
+  placeName: String
+  placeImageUrl: String
+  placeSlug: String
+}
+
+input PlaceUpdateManyWithoutListInput {
+  create: [PlaceCreateWithoutListInput!]
   delete: [PlaceWhereUniqueInput!]
   connect: [PlaceWhereUniqueInput!]
   set: [PlaceWhereUniqueInput!]
   disconnect: [PlaceWhereUniqueInput!]
+  update: [PlaceUpdateWithWhereUniqueWithoutListInput!]
+  upsert: [PlaceUpsertWithWhereUniqueWithoutListInput!]
   deleteMany: [PlaceScalarWhereInput!]
   updateMany: [PlaceUpdateManyWithWhereNestedInput!]
-}
-
-input PlaceUpdateManyMutationInput {
-  name: String
-  imageUrl: String
-  placeSlug: String
 }
 
 input PlaceUpdateManyWithWhereNestedInput {
@@ -352,15 +391,21 @@ input PlaceUpdateManyWithWhereNestedInput {
   data: PlaceUpdateManyDataInput!
 }
 
-input PlaceUpdateWithWhereUniqueNestedInput {
-  where: PlaceWhereUniqueInput!
-  data: PlaceUpdateDataInput!
+input PlaceUpdateWithoutListDataInput {
+  placeName: String
+  placeImageUrl: String
+  placeSlug: String
 }
 
-input PlaceUpsertWithWhereUniqueNestedInput {
+input PlaceUpdateWithWhereUniqueWithoutListInput {
   where: PlaceWhereUniqueInput!
-  update: PlaceUpdateDataInput!
-  create: PlaceCreateInput!
+  data: PlaceUpdateWithoutListDataInput!
+}
+
+input PlaceUpsertWithWhereUniqueWithoutListInput {
+  where: PlaceWhereUniqueInput!
+  update: PlaceUpdateWithoutListDataInput!
+  create: PlaceCreateWithoutListInput!
 }
 
 input PlaceWhereInput {
@@ -378,34 +423,34 @@ input PlaceWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  imageUrl: String
-  imageUrl_not: String
-  imageUrl_in: [String!]
-  imageUrl_not_in: [String!]
-  imageUrl_lt: String
-  imageUrl_lte: String
-  imageUrl_gt: String
-  imageUrl_gte: String
-  imageUrl_contains: String
-  imageUrl_not_contains: String
-  imageUrl_starts_with: String
-  imageUrl_not_starts_with: String
-  imageUrl_ends_with: String
-  imageUrl_not_ends_with: String
+  placeName: String
+  placeName_not: String
+  placeName_in: [String!]
+  placeName_not_in: [String!]
+  placeName_lt: String
+  placeName_lte: String
+  placeName_gt: String
+  placeName_gte: String
+  placeName_contains: String
+  placeName_not_contains: String
+  placeName_starts_with: String
+  placeName_not_starts_with: String
+  placeName_ends_with: String
+  placeName_not_ends_with: String
+  placeImageUrl: String
+  placeImageUrl_not: String
+  placeImageUrl_in: [String!]
+  placeImageUrl_not_in: [String!]
+  placeImageUrl_lt: String
+  placeImageUrl_lte: String
+  placeImageUrl_gt: String
+  placeImageUrl_gte: String
+  placeImageUrl_contains: String
+  placeImageUrl_not_contains: String
+  placeImageUrl_starts_with: String
+  placeImageUrl_not_starts_with: String
+  placeImageUrl_ends_with: String
+  placeImageUrl_not_ends_with: String
   placeSlug: String
   placeSlug_not: String
   placeSlug_in: [String!]
@@ -420,6 +465,7 @@ input PlaceWhereInput {
   placeSlug_not_starts_with: String
   placeSlug_ends_with: String
   placeSlug_not_ends_with: String
+  list: ListWhereInput
   AND: [PlaceWhereInput!]
   OR: [PlaceWhereInput!]
   NOT: [PlaceWhereInput!]
@@ -465,7 +511,18 @@ input UserCreateInput {
   id: ID
   email: String!
   password: String!
-  lists: ListCreateManyInput
+  lists: ListCreateManyWithoutUserInput
+}
+
+input UserCreateOneWithoutListsInput {
+  create: UserCreateWithoutListsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutListsInput {
+  id: ID
+  email: String!
+  password: String!
 }
 
 type UserEdge {
@@ -509,12 +566,29 @@ input UserSubscriptionWhereInput {
 input UserUpdateInput {
   email: String
   password: String
-  lists: ListUpdateManyInput
+  lists: ListUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
   email: String
   password: String
+}
+
+input UserUpdateOneRequiredWithoutListsInput {
+  create: UserCreateWithoutListsInput
+  update: UserUpdateWithoutListsDataInput
+  upsert: UserUpsertWithoutListsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateWithoutListsDataInput {
+  email: String
+  password: String
+}
+
+input UserUpsertWithoutListsInput {
+  update: UserUpdateWithoutListsDataInput!
+  create: UserCreateWithoutListsInput!
 }
 
 input UserWhereInput {
