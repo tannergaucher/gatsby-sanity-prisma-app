@@ -7,6 +7,28 @@ export const USER_FRAGMENT = gql`
     password
     lists {
       id
+      title
+      places {
+        id
+        placeSanityId
+        placeName
+        placeImageUrl
+        placeSlug
+      }
+    }
+  }
+`
+
+export const LIST_FRAGMENT = gql`
+  fragment ListFragment on List {
+    id
+    title
+    places {
+      id
+      placeSanityId
+      placeName
+      placeImageUrl
+      placeSlug
     }
   }
 `
@@ -49,3 +71,26 @@ export const LOGIN_MUTATION = gql`
   }
   ${USER_FRAGMENT}
 `
+
+export const CREATE_LIST_MUTATION = gql`
+  mutation CREATE_LIST_MUTATION(
+    $title: String!
+    $placeSanityId: String!
+    $placeName: String!
+    $placeImageUrl: String!
+    $placeSlug: String!
+  ) {
+    createList(
+      title: $title
+      placeSanityId: $placeSanityId
+      placeName: $placeName
+      placeImageUrl: $placeImageUrl
+      placeSlug: $placeSlug
+    ) {
+      ...ListFragment
+    }
+  }
+  ${LIST_FRAGMENT}
+`
+
+// TOGGLE_PLACE_MUTATION

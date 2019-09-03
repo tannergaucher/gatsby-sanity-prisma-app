@@ -10,6 +10,8 @@ import "./layout.css"
 export default function Layout({ children }) {
   const { loading, error, data } = useQuery(CURRENT_USER_QUERY)
 
+  console.log(data)
+
   return (
     <Box
       p={2}

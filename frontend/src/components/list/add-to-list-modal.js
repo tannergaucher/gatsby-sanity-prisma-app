@@ -2,21 +2,18 @@ import React, { useState } from "react"
 import { AddCircle } from "grommet-icons"
 import { Button, Heading, Flex } from "rebass"
 import { useQuery } from "@apollo/react-hooks"
-import {
-  Layer,
-  CheckBox,
-  Form,
-  FormField,
-  Button as GrommetButton,
-} from "grommet"
+import { Layer } from "grommet"
 
 import { IS_LOGGED_IN } from "../apollo/graphql"
 import { AuthTabs } from "../auth"
+import { UserLists } from "."
 
-export default function AddToListModal({ placeName, placeImage, placeSlug }) {
+export default function AddToListModal({ place }) {
   const [show, setShow] = useState(false)
+  const { error, loading, data } = useQuery(IS_LOGGED_IN)
 
-  const { data } = useQuery(IS_LOGGED_IN)
+  if (loading) return `Loading...`
+  if (error) return `Error: ${error.message}`
 
   return (
     <>
@@ -40,7 +37,7 @@ export default function AddToListModal({ placeName, placeImage, placeSlug }) {
         >
           <Flex width={1} flexDirection="column" p={[2]}>
             {data && data.isLoggedIn ? (
-              <UserLists placeName={placeName} />
+              <UserLists place={place} />
             ) : (
               <PleaseSignIn />
             )}
@@ -56,33 +53,6 @@ function PleaseSignIn() {
     <>
       <Heading>You must be signed in to do that.</Heading>
       <AuthTabs />
-    </>
-  )
-}
-
-function UserLists({ placeName }) {
-  const [show, setShow] = useState(false)
-
-  // query data.me.lists and map
-  // if !data.me.lists, display message: you have no lists yet. Create one.
-  return (
-    <>
-      <Heading mb={[2]} fontFamily="var(--sans)">
-        Add {placeName} to:
-      </Heading>
-      <CheckBox label="List number uno" checked={false} />
-      <CheckBox label="List number dose" checked={true} />
-      <GrommetButton
-        label="Create new list"
-        plain
-        onClick={() => setShow(true)}
-      />
-      {show && (
-        <Form>
-          <FormField name="List Name" />
-          <GrommetButton type="submit" primay label="Create" />
-        </Form>
-      )}
     </>
   )
 }

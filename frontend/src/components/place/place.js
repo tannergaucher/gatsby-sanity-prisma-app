@@ -35,11 +35,7 @@ export default function Place({ postPlace }) {
             ))}
           </Flex>
         </Box>
-        <AddToListModal
-          placeName={postPlace.place.name}
-          placeImage={postPlace.place.image.asset.fluid}
-          placeSlug={postPlace.place.slug.current}
-        />
+        <AddToListModal place={postPlace} />
       </Flex>
       <Img fluid={postPlace.place.image.asset.fluid} />
       <Text
