@@ -6,16 +6,17 @@ type User {
 }
 
 type List {
-  id: ID! @id
+  id: ID! @id 
+  title: String!
   places: [Place!]
   user: User!
 }
 
 type Place {
   id: ID! @id
+  placeSanityId: String!
   placeName: String!
   placeImageUrl: String!
   placeSlug: String!
   list: List!
 }
-

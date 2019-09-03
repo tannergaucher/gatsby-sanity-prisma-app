@@ -1,5 +1,11 @@
 const { verify } = require('jsonwebtoken')
 
+class AuthError extends Error {
+  constructor() {
+    super('You are not authorized')
+  }
+}
+
 function getUserId(context) {
   const Authorization = context.request.get('Authorization')
 
@@ -13,4 +19,5 @@ function getUserId(context) {
 
 module.exports = {
   getUserId,
+  AuthError,
 }

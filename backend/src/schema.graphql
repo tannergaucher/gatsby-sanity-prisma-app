@@ -1,4 +1,5 @@
 # import User from "../prisma/generated/prisma.graphql"
+# import List from "../prisma/generated/prisma.graphql"
 
 type AuthPayload {
   token: String!
@@ -12,4 +13,11 @@ type Query {
 type Mutation {
   signup(email: String!, password: String!): AuthPayload!
   login(email: String!, password: String): AuthPayload!
+  createList(
+    title: String!
+    placeSanityId: String!
+    placeName: String!
+    placeImageUrl: String!
+    placeSlug: String!
+  ): List!
 }

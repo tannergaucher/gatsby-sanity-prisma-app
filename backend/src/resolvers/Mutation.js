@@ -1,6 +1,8 @@
 const { hash, compare } = require('bcrypt')
 const { sign } = require('jsonwebtoken')
 
+const { getUserId, AuthError } = require('../utils/get-user-id')
+
 const Mutation = {
   signup: async (parent, { email, password }, context) => {
     const hashedPassword = await hash(password, 10)
@@ -41,6 +43,36 @@ const Mutation = {
       token,
       user,
     }
+  },
+  createList: async (
+    parent,
+    { title, placeSanityId, placeName, placeImageUrl, placeSlug },
+    context
+  ) => {
+    const userId = getUserId(context)
+
+    if (!userId) {
+      throw new AuthError()
+    }
+
+    const list = await context.prisma.createList({
+      title,
+      places: {
+        create: {
+          placeSanityId,
+          placeName,
+          placeImageUrl,
+          placeSlug,
+        },
+      },
+      user: {
+        connect: {
+          id: userId,
+        },
+      },
+    })
+
+    return list
   },
 }
 

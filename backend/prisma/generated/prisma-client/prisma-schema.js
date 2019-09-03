@@ -21,6 +21,7 @@ type BatchPayload {
 
 type List {
   id: ID!
+  title: String!
   places(where: PlaceWhereInput, orderBy: PlaceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Place!]
   user: User!
 }
@@ -33,6 +34,7 @@ type ListConnection {
 
 input ListCreateInput {
   id: ID
+  title: String!
   places: PlaceCreateManyWithoutListInput
   user: UserCreateOneWithoutListsInput!
 }
@@ -49,11 +51,13 @@ input ListCreateOneWithoutPlacesInput {
 
 input ListCreateWithoutPlacesInput {
   id: ID
+  title: String!
   user: UserCreateOneWithoutListsInput!
 }
 
 input ListCreateWithoutUserInput {
   id: ID
+  title: String!
   places: PlaceCreateManyWithoutListInput
 }
 
@@ -65,10 +69,13 @@ type ListEdge {
 enum ListOrderByInput {
   id_ASC
   id_DESC
+  title_ASC
+  title_DESC
 }
 
 type ListPreviousValues {
   id: ID!
+  title: String!
 }
 
 input ListScalarWhereInput {
@@ -86,6 +93,20 @@ input ListScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
   AND: [ListScalarWhereInput!]
   OR: [ListScalarWhereInput!]
   NOT: [ListScalarWhereInput!]
@@ -110,8 +131,17 @@ input ListSubscriptionWhereInput {
 }
 
 input ListUpdateInput {
+  title: String
   places: PlaceUpdateManyWithoutListInput
   user: UserUpdateOneRequiredWithoutListsInput
+}
+
+input ListUpdateManyDataInput {
+  title: String
+}
+
+input ListUpdateManyMutationInput {
+  title: String
 }
 
 input ListUpdateManyWithoutUserInput {
@@ -123,6 +153,12 @@ input ListUpdateManyWithoutUserInput {
   update: [ListUpdateWithWhereUniqueWithoutUserInput!]
   upsert: [ListUpsertWithWhereUniqueWithoutUserInput!]
   deleteMany: [ListScalarWhereInput!]
+  updateMany: [ListUpdateManyWithWhereNestedInput!]
+}
+
+input ListUpdateManyWithWhereNestedInput {
+  where: ListScalarWhereInput!
+  data: ListUpdateManyDataInput!
 }
 
 input ListUpdateOneRequiredWithoutPlacesInput {
@@ -133,10 +169,12 @@ input ListUpdateOneRequiredWithoutPlacesInput {
 }
 
 input ListUpdateWithoutPlacesDataInput {
+  title: String
   user: UserUpdateOneRequiredWithoutListsInput
 }
 
 input ListUpdateWithoutUserDataInput {
+  title: String
   places: PlaceUpdateManyWithoutListInput
 }
 
@@ -171,6 +209,20 @@ input ListWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
   places_every: PlaceWhereInput
   places_some: PlaceWhereInput
   places_none: PlaceWhereInput
@@ -189,6 +241,7 @@ scalar Long
 type Mutation {
   createList(data: ListCreateInput!): List!
   updateList(data: ListUpdateInput!, where: ListWhereUniqueInput!): List
+  updateManyLists(data: ListUpdateManyMutationInput!, where: ListWhereInput): BatchPayload!
   upsertList(where: ListWhereUniqueInput!, create: ListCreateInput!, update: ListUpdateInput!): List!
   deleteList(where: ListWhereUniqueInput!): List
   deleteManyLists(where: ListWhereInput): BatchPayload!
@@ -225,6 +278,7 @@ type PageInfo {
 
 type Place {
   id: ID!
+  placeSanityId: String!
   placeName: String!
   placeImageUrl: String!
   placeSlug: String!
@@ -239,6 +293,7 @@ type PlaceConnection {
 
 input PlaceCreateInput {
   id: ID
+  placeSanityId: String!
   placeName: String!
   placeImageUrl: String!
   placeSlug: String!
@@ -252,6 +307,7 @@ input PlaceCreateManyWithoutListInput {
 
 input PlaceCreateWithoutListInput {
   id: ID
+  placeSanityId: String!
   placeName: String!
   placeImageUrl: String!
   placeSlug: String!
@@ -265,6 +321,8 @@ type PlaceEdge {
 enum PlaceOrderByInput {
   id_ASC
   id_DESC
+  placeSanityId_ASC
+  placeSanityId_DESC
   placeName_ASC
   placeName_DESC
   placeImageUrl_ASC
@@ -275,6 +333,7 @@ enum PlaceOrderByInput {
 
 type PlacePreviousValues {
   id: ID!
+  placeSanityId: String!
   placeName: String!
   placeImageUrl: String!
   placeSlug: String!
@@ -295,6 +354,20 @@ input PlaceScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  placeSanityId: String
+  placeSanityId_not: String
+  placeSanityId_in: [String!]
+  placeSanityId_not_in: [String!]
+  placeSanityId_lt: String
+  placeSanityId_lte: String
+  placeSanityId_gt: String
+  placeSanityId_gte: String
+  placeSanityId_contains: String
+  placeSanityId_not_contains: String
+  placeSanityId_starts_with: String
+  placeSanityId_not_starts_with: String
+  placeSanityId_ends_with: String
+  placeSanityId_not_ends_with: String
   placeName: String
   placeName_not: String
   placeName_in: [String!]
@@ -361,6 +434,7 @@ input PlaceSubscriptionWhereInput {
 }
 
 input PlaceUpdateInput {
+  placeSanityId: String
   placeName: String
   placeImageUrl: String
   placeSlug: String
@@ -368,12 +442,14 @@ input PlaceUpdateInput {
 }
 
 input PlaceUpdateManyDataInput {
+  placeSanityId: String
   placeName: String
   placeImageUrl: String
   placeSlug: String
 }
 
 input PlaceUpdateManyMutationInput {
+  placeSanityId: String
   placeName: String
   placeImageUrl: String
   placeSlug: String
@@ -397,6 +473,7 @@ input PlaceUpdateManyWithWhereNestedInput {
 }
 
 input PlaceUpdateWithoutListDataInput {
+  placeSanityId: String
   placeName: String
   placeImageUrl: String
   placeSlug: String
@@ -428,6 +505,20 @@ input PlaceWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  placeSanityId: String
+  placeSanityId_not: String
+  placeSanityId_in: [String!]
+  placeSanityId_not_in: [String!]
+  placeSanityId_lt: String
+  placeSanityId_lte: String
+  placeSanityId_gt: String
+  placeSanityId_gte: String
+  placeSanityId_contains: String
+  placeSanityId_not_contains: String
+  placeSanityId_starts_with: String
+  placeSanityId_not_starts_with: String
+  placeSanityId_ends_with: String
+  placeSanityId_not_ends_with: String
   placeName: String
   placeName_not: String
   placeName_in: [String!]
