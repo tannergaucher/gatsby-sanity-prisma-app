@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Box } from "rebass"
-import { useQuery, useMutation } from "@apollo/react-hooks"
+import { useQuery } from "@apollo/react-hooks"
 
 import { Header, Footer } from "."
 import { CURRENT_USER_QUERY } from "../apollo/graphql"

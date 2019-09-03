@@ -3,7 +3,15 @@ module.exports = {
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-/* GraphQL */ `type AggregateUser {
+/* GraphQL */ `type AggregateList {
+  count: Int!
+}
+
+type AggregatePlace {
+  count: Int!
+}
+
+type AggregateUser {
   count: Int!
 }
 
@@ -11,9 +19,150 @@ type BatchPayload {
   count: Long!
 }
 
+type List {
+  id: ID!
+  places(where: PlaceWhereInput, orderBy: PlaceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Place!]
+}
+
+type ListConnection {
+  pageInfo: PageInfo!
+  edges: [ListEdge]!
+  aggregate: AggregateList!
+}
+
+input ListCreateInput {
+  id: ID
+  places: PlaceCreateManyInput
+}
+
+input ListCreateManyInput {
+  create: [ListCreateInput!]
+  connect: [ListWhereUniqueInput!]
+}
+
+type ListEdge {
+  node: List!
+  cursor: String!
+}
+
+enum ListOrderByInput {
+  id_ASC
+  id_DESC
+}
+
+type ListPreviousValues {
+  id: ID!
+}
+
+input ListScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  AND: [ListScalarWhereInput!]
+  OR: [ListScalarWhereInput!]
+  NOT: [ListScalarWhereInput!]
+}
+
+type ListSubscriptionPayload {
+  mutation: MutationType!
+  node: List
+  updatedFields: [String!]
+  previousValues: ListPreviousValues
+}
+
+input ListSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ListWhereInput
+  AND: [ListSubscriptionWhereInput!]
+  OR: [ListSubscriptionWhereInput!]
+  NOT: [ListSubscriptionWhereInput!]
+}
+
+input ListUpdateDataInput {
+  places: PlaceUpdateManyInput
+}
+
+input ListUpdateInput {
+  places: PlaceUpdateManyInput
+}
+
+input ListUpdateManyInput {
+  create: [ListCreateInput!]
+  update: [ListUpdateWithWhereUniqueNestedInput!]
+  upsert: [ListUpsertWithWhereUniqueNestedInput!]
+  delete: [ListWhereUniqueInput!]
+  connect: [ListWhereUniqueInput!]
+  set: [ListWhereUniqueInput!]
+  disconnect: [ListWhereUniqueInput!]
+  deleteMany: [ListScalarWhereInput!]
+}
+
+input ListUpdateWithWhereUniqueNestedInput {
+  where: ListWhereUniqueInput!
+  data: ListUpdateDataInput!
+}
+
+input ListUpsertWithWhereUniqueNestedInput {
+  where: ListWhereUniqueInput!
+  update: ListUpdateDataInput!
+  create: ListCreateInput!
+}
+
+input ListWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  places_every: PlaceWhereInput
+  places_some: PlaceWhereInput
+  places_none: PlaceWhereInput
+  AND: [ListWhereInput!]
+  OR: [ListWhereInput!]
+  NOT: [ListWhereInput!]
+}
+
+input ListWhereUniqueInput {
+  id: ID
+}
+
 scalar Long
 
 type Mutation {
+  createList(data: ListCreateInput!): List!
+  updateList(data: ListUpdateInput!, where: ListWhereUniqueInput!): List
+  upsertList(where: ListWhereUniqueInput!, create: ListCreateInput!, update: ListUpdateInput!): List!
+  deleteList(where: ListWhereUniqueInput!): List
+  deleteManyLists(where: ListWhereInput): BatchPayload!
+  createPlace(data: PlaceCreateInput!): Place!
+  updatePlace(data: PlaceUpdateInput!, where: PlaceWhereUniqueInput!): Place
+  updateManyPlaces(data: PlaceUpdateManyMutationInput!, where: PlaceWhereInput): BatchPayload!
+  upsertPlace(where: PlaceWhereUniqueInput!, create: PlaceCreateInput!, update: PlaceUpdateInput!): Place!
+  deletePlace(where: PlaceWhereUniqueInput!): Place
+  deleteManyPlaces(where: PlaceWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -39,7 +188,259 @@ type PageInfo {
   endCursor: String
 }
 
+type Place {
+  id: ID!
+  name: String!
+  imageUrl: String!
+  placeSlug: String!
+}
+
+type PlaceConnection {
+  pageInfo: PageInfo!
+  edges: [PlaceEdge]!
+  aggregate: AggregatePlace!
+}
+
+input PlaceCreateInput {
+  id: ID
+  name: String!
+  imageUrl: String!
+  placeSlug: String!
+}
+
+input PlaceCreateManyInput {
+  create: [PlaceCreateInput!]
+  connect: [PlaceWhereUniqueInput!]
+}
+
+type PlaceEdge {
+  node: Place!
+  cursor: String!
+}
+
+enum PlaceOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  imageUrl_ASC
+  imageUrl_DESC
+  placeSlug_ASC
+  placeSlug_DESC
+}
+
+type PlacePreviousValues {
+  id: ID!
+  name: String!
+  imageUrl: String!
+  placeSlug: String!
+}
+
+input PlaceScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  imageUrl: String
+  imageUrl_not: String
+  imageUrl_in: [String!]
+  imageUrl_not_in: [String!]
+  imageUrl_lt: String
+  imageUrl_lte: String
+  imageUrl_gt: String
+  imageUrl_gte: String
+  imageUrl_contains: String
+  imageUrl_not_contains: String
+  imageUrl_starts_with: String
+  imageUrl_not_starts_with: String
+  imageUrl_ends_with: String
+  imageUrl_not_ends_with: String
+  placeSlug: String
+  placeSlug_not: String
+  placeSlug_in: [String!]
+  placeSlug_not_in: [String!]
+  placeSlug_lt: String
+  placeSlug_lte: String
+  placeSlug_gt: String
+  placeSlug_gte: String
+  placeSlug_contains: String
+  placeSlug_not_contains: String
+  placeSlug_starts_with: String
+  placeSlug_not_starts_with: String
+  placeSlug_ends_with: String
+  placeSlug_not_ends_with: String
+  AND: [PlaceScalarWhereInput!]
+  OR: [PlaceScalarWhereInput!]
+  NOT: [PlaceScalarWhereInput!]
+}
+
+type PlaceSubscriptionPayload {
+  mutation: MutationType!
+  node: Place
+  updatedFields: [String!]
+  previousValues: PlacePreviousValues
+}
+
+input PlaceSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PlaceWhereInput
+  AND: [PlaceSubscriptionWhereInput!]
+  OR: [PlaceSubscriptionWhereInput!]
+  NOT: [PlaceSubscriptionWhereInput!]
+}
+
+input PlaceUpdateDataInput {
+  name: String
+  imageUrl: String
+  placeSlug: String
+}
+
+input PlaceUpdateInput {
+  name: String
+  imageUrl: String
+  placeSlug: String
+}
+
+input PlaceUpdateManyDataInput {
+  name: String
+  imageUrl: String
+  placeSlug: String
+}
+
+input PlaceUpdateManyInput {
+  create: [PlaceCreateInput!]
+  update: [PlaceUpdateWithWhereUniqueNestedInput!]
+  upsert: [PlaceUpsertWithWhereUniqueNestedInput!]
+  delete: [PlaceWhereUniqueInput!]
+  connect: [PlaceWhereUniqueInput!]
+  set: [PlaceWhereUniqueInput!]
+  disconnect: [PlaceWhereUniqueInput!]
+  deleteMany: [PlaceScalarWhereInput!]
+  updateMany: [PlaceUpdateManyWithWhereNestedInput!]
+}
+
+input PlaceUpdateManyMutationInput {
+  name: String
+  imageUrl: String
+  placeSlug: String
+}
+
+input PlaceUpdateManyWithWhereNestedInput {
+  where: PlaceScalarWhereInput!
+  data: PlaceUpdateManyDataInput!
+}
+
+input PlaceUpdateWithWhereUniqueNestedInput {
+  where: PlaceWhereUniqueInput!
+  data: PlaceUpdateDataInput!
+}
+
+input PlaceUpsertWithWhereUniqueNestedInput {
+  where: PlaceWhereUniqueInput!
+  update: PlaceUpdateDataInput!
+  create: PlaceCreateInput!
+}
+
+input PlaceWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  imageUrl: String
+  imageUrl_not: String
+  imageUrl_in: [String!]
+  imageUrl_not_in: [String!]
+  imageUrl_lt: String
+  imageUrl_lte: String
+  imageUrl_gt: String
+  imageUrl_gte: String
+  imageUrl_contains: String
+  imageUrl_not_contains: String
+  imageUrl_starts_with: String
+  imageUrl_not_starts_with: String
+  imageUrl_ends_with: String
+  imageUrl_not_ends_with: String
+  placeSlug: String
+  placeSlug_not: String
+  placeSlug_in: [String!]
+  placeSlug_not_in: [String!]
+  placeSlug_lt: String
+  placeSlug_lte: String
+  placeSlug_gt: String
+  placeSlug_gte: String
+  placeSlug_contains: String
+  placeSlug_not_contains: String
+  placeSlug_starts_with: String
+  placeSlug_not_starts_with: String
+  placeSlug_ends_with: String
+  placeSlug_not_ends_with: String
+  AND: [PlaceWhereInput!]
+  OR: [PlaceWhereInput!]
+  NOT: [PlaceWhereInput!]
+}
+
+input PlaceWhereUniqueInput {
+  id: ID
+}
+
 type Query {
+  list(where: ListWhereUniqueInput!): List
+  lists(where: ListWhereInput, orderBy: ListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [List]!
+  listsConnection(where: ListWhereInput, orderBy: ListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ListConnection!
+  place(where: PlaceWhereUniqueInput!): Place
+  places(where: PlaceWhereInput, orderBy: PlaceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Place]!
+  placesConnection(where: PlaceWhereInput, orderBy: PlaceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PlaceConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
@@ -47,6 +448,8 @@ type Query {
 }
 
 type Subscription {
+  list(where: ListSubscriptionWhereInput): ListSubscriptionPayload
+  place(where: PlaceSubscriptionWhereInput): PlaceSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 
@@ -54,6 +457,7 @@ type User {
   id: ID!
   email: String!
   password: String!
+  lists(where: ListWhereInput, orderBy: ListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [List!]
 }
 
 type UserConnection {
@@ -66,6 +470,7 @@ input UserCreateInput {
   id: ID
   email: String!
   password: String!
+  lists: ListCreateManyInput
 }
 
 type UserEdge {
@@ -109,6 +514,7 @@ input UserSubscriptionWhereInput {
 input UserUpdateInput {
   email: String
   password: String
+  lists: ListUpdateManyInput
 }
 
 input UserUpdateManyMutationInput {
@@ -159,6 +565,9 @@ input UserWhereInput {
   password_not_starts_with: String
   password_ends_with: String
   password_not_ends_with: String
+  lists_every: ListWhereInput
+  lists_some: ListWhereInput
+  lists_none: ListWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

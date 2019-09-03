@@ -2,6 +2,19 @@ type User {
   id: ID! @id
   email: String! @unique
   password: String!
+  lists: [List!]
+}
+
+type List {
+  id: ID! @id
+  places: [Place!]
+}
+
+type Place {
+  id: ID! @id
+  placeName: String!
+  placeImageUrl: String!
+  placeSlug: String!
 }
 
 

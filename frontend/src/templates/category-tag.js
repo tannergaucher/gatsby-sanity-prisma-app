@@ -13,17 +13,8 @@ export default function CategoryTag({ pageContext, data }) {
         textAlign="center"
         fontFamily="var(--sans)"
         fontWeight="900"
-        fontSize={[3]}
-        mb={0}
-      >
-        {category}
-      </Heading>
-      <Heading
-        textAlign="center"
-        fontFamily="var(--sans)"
-        fontWeight="900"
-        fontSize={[4]}
-        mb={4}
+        fontSize={[5]}
+        mb={[2]}
       >
         {data.tag.tag}
       </Heading>

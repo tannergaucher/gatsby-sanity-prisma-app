@@ -92,7 +92,7 @@ const MenuNavItem = ({ text, to, icon }) => (
       {icon}
       <Heading
         mb={[5]}
-        mt={[3]}
+        mt={2}
         ml={[2]}
         fontSize={[5]}
         color="var(--dark-1)"
