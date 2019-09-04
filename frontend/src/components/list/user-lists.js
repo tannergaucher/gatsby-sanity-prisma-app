@@ -1,15 +1,21 @@
 import React, { useState } from "react"
 import { useMutation, useQuery } from "@apollo/react-hooks"
-import { Heading } from "rebass"
+import { Heading, Text } from "rebass"
 import { CheckBox, Button, Form, FormField } from "grommet"
 
 import { CREATE_LIST_MUTATION, CURRENT_USER_QUERY } from "../apollo/graphql"
 
+function isPlaceInList(places, placeId) {
+  const isPlace = places.filter(place => place.placeSanityId === placeId)
+  return isPlace.length ? true : false
+}
+
 export default function UserLists({ place }) {
+  console.log("PLACE", place)
+
   const [show, setShow] = useState(false)
   const [listTitle, setListTitle] = useState("")
   const { loading, error, data } = useQuery(CURRENT_USER_QUERY)
-
   const [createList] = useMutation(CREATE_LIST_MUTATION, {
     variables: {
       title: listTitle,
@@ -35,10 +41,8 @@ export default function UserLists({ place }) {
             console.log(list) || (
               <CheckBox
                 key={list.id}
-                label={list.title}
-                // checked={list.places.filter(listPlace =>
-                //   listPlace.placeSanityId === place.place.id ? true : false
-                // )}
+                label={<Text fontFamily="var(--sans)">{list.title}</Text>}
+                checked={isPlaceInList(list.places, place.place.id)}
                 onChange={() => {
                   console.log("TOGGLE_PLACE_MUTATION")
                 }}
@@ -51,7 +55,7 @@ export default function UserLists({ place }) {
           onSubmit={async e => {
             e.preventDefault()
             const { data } = await createList()
-            console.log(data)
+
             setShow(false)
           }}
         >
