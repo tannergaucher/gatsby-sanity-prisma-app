@@ -74,6 +74,64 @@ const Mutation = {
 
     return list
   },
+  togglePlace: async (
+    parent,
+    { listId, placeSanityId, placeName, placeImageUrl, placeSlug },
+    context
+  ) => {
+    const userId = getUserId(context)
+
+    if (!userId) {
+      throw new AuthError()
+    }
+
+    const [existing] = await context.prisma
+      .user({ id: userId })
+      .lists({
+        where: {
+          id: listId,
+        },
+      })
+      .places({
+        where: {
+          placeSanityId: placeSanityId,
+        },
+      })
+
+    if (existing.places.length) {
+      // remove place from list
+
+      return context.prisma.updateList({
+        where: {
+          id: listId,
+        },
+        data: {
+          places: {
+            delete: {
+              id: existing.places[0].id,
+            },
+          },
+        },
+      })
+    } else {
+      // add place to list
+      return context.prisma.updateList({
+        where: {
+          id: listId,
+        },
+        data: {
+          places: {
+            create: {
+              placeSanityId: placeSanityId,
+              placeName: placeName,
+              placeImageUrl: placeImageUrl,
+              placeSlug: placeSlug,
+            },
+          },
+        },
+      })
+    }
+  },
 }
 
 module.exports = {

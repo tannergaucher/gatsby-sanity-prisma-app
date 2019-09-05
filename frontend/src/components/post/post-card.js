@@ -6,7 +6,7 @@ import { Link } from "../styles"
 
 export default function PostCard({ post }) {
   return (
-    <Link to={`${post.category.slug.current}/${post.slug.current}`}>
+    <Link to={`/${post.category.slug.current}/${post.slug.current}`}>
       <Box mb={[5]}>
         <Heading
           fontSize={[1]}

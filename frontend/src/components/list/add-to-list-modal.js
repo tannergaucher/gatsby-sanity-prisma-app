@@ -37,7 +37,7 @@ export default function AddToListModal({ place }) {
         >
           <Flex width={1} flexDirection="column" p={[2]}>
             {data && data.isLoggedIn ? (
-              <UserLists place={place} />
+              <UserLists place={place.place} />
             ) : (
               <PleaseSignIn />
             )}

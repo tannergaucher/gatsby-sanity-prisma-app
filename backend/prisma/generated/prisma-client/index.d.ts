@@ -400,10 +400,10 @@ export interface PlaceCreateManyWithoutListInput {
 
 export interface PlaceCreateWithoutListInput {
   id?: Maybe<ID_Input>;
-  placeSanityId: String;
-  placeName: String;
-  placeImageUrl: String;
-  placeSlug: String;
+  placeSanityId?: Maybe<String>;
+  placeName?: Maybe<String>;
+  placeImageUrl?: Maybe<String>;
+  placeSlug?: Maybe<String>;
 }
 
 export interface UserCreateOneWithoutListsInput {
@@ -572,10 +572,10 @@ export interface ListUpdateManyMutationInput {
 
 export interface PlaceCreateInput {
   id?: Maybe<ID_Input>;
-  placeSanityId: String;
-  placeName: String;
-  placeImageUrl: String;
-  placeSlug: String;
+  placeSanityId?: Maybe<String>;
+  placeName?: Maybe<String>;
+  placeImageUrl?: Maybe<String>;
+  placeSlug?: Maybe<String>;
   list: ListCreateOneWithoutPlacesInput;
 }
 
@@ -823,10 +823,10 @@ export interface ListNullablePromise
 
 export interface Place {
   id: ID_Output;
-  placeSanityId: String;
-  placeName: String;
-  placeImageUrl: String;
-  placeSlug: String;
+  placeSanityId?: String;
+  placeName?: String;
+  placeImageUrl?: String;
+  placeSlug?: String;
 }
 
 export interface PlacePromise extends Promise<Place>, Fragmentable {
@@ -1187,10 +1187,10 @@ export interface PlaceSubscriptionPayloadSubscription
 
 export interface PlacePreviousValues {
   id: ID_Output;
-  placeSanityId: String;
-  placeName: String;
-  placeImageUrl: String;
-  placeSlug: String;
+  placeSanityId?: String;
+  placeName?: String;
+  placeImageUrl?: String;
+  placeSlug?: String;
 }
 
 export interface PlacePreviousValuesPromise

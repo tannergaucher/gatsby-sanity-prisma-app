@@ -278,10 +278,10 @@ type PageInfo {
 
 type Place {
   id: ID!
-  placeSanityId: String!
-  placeName: String!
-  placeImageUrl: String!
-  placeSlug: String!
+  placeSanityId: String
+  placeName: String
+  placeImageUrl: String
+  placeSlug: String
   list: List!
 }
 
@@ -293,10 +293,10 @@ type PlaceConnection {
 
 input PlaceCreateInput {
   id: ID
-  placeSanityId: String!
-  placeName: String!
-  placeImageUrl: String!
-  placeSlug: String!
+  placeSanityId: String
+  placeName: String
+  placeImageUrl: String
+  placeSlug: String
   list: ListCreateOneWithoutPlacesInput!
 }
 
@@ -307,10 +307,10 @@ input PlaceCreateManyWithoutListInput {
 
 input PlaceCreateWithoutListInput {
   id: ID
-  placeSanityId: String!
-  placeName: String!
-  placeImageUrl: String!
-  placeSlug: String!
+  placeSanityId: String
+  placeName: String
+  placeImageUrl: String
+  placeSlug: String
 }
 
 type PlaceEdge {
@@ -333,10 +333,10 @@ enum PlaceOrderByInput {
 
 type PlacePreviousValues {
   id: ID!
-  placeSanityId: String!
-  placeName: String!
-  placeImageUrl: String!
-  placeSlug: String!
+  placeSanityId: String
+  placeName: String
+  placeImageUrl: String
+  placeSlug: String
 }
 
 input PlaceScalarWhereInput {

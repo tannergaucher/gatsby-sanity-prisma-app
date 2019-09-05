@@ -5,8 +5,6 @@ import { Link } from "gatsby"
 import { HeroCard } from "../components/styles"
 
 export default function CategoryTag({ pageContext, data }) {
-  const { category } = pageContext
-
   return (
     <>
       <Heading
@@ -33,8 +31,6 @@ export default function CategoryTag({ pageContext, data }) {
   )
 }
 
-// Query all posts with category slug of category slug and tag slug of tag slug
-// Query the tag with a slug of tagSlug
 export const CATEGORY_PAGE_QUERY = graphql`
   query($categorySlug: String!, $tagSlug: String!) {
     posts: allSanityPost(

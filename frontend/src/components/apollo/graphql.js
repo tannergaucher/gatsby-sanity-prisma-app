@@ -33,6 +33,16 @@ export const LIST_FRAGMENT = gql`
   }
 `
 
+export const PLACE_FRAGMENT = gql`
+  fragment PlaceFragment on Place {
+    id
+    placeSanityId
+    placeName
+    placeImageUrl
+    placeSlug
+  }
+`
+
 export const IS_LOGGED_IN = gql`
   query IS_LOGGED_IN {
     isLoggedIn @client
@@ -93,4 +103,23 @@ export const CREATE_LIST_MUTATION = gql`
   ${LIST_FRAGMENT}
 `
 
-// TOGGLE_PLACE_MUTATION
+export const TOGGLE_PLACE_MUTATION = gql`
+  mutation TOGGLE_PLACE_MUTATION(
+    $listId: ID!
+    $placeSanityId: String!
+    $placeName: String!
+    $placeImageUrl: String!
+    $placeSlug: String!
+  ) {
+    togglePlace(
+      listId: $listId
+      placeSanityId: $placeSanityId
+      placeName: $placeName
+      placeImageUrl: $placeImageUrl
+      placeSlug: $placeSlug
+    ) {
+      ...PlaceFragment
+    }
+  }
+  ${PLACE_FRAGMENT}
+`

@@ -14,9 +14,11 @@ type List {
 
 type Place {
   id: ID! @id
-  placeSanityId: String!
-  placeName: String!
-  placeImageUrl: String!
-  placeSlug: String!
+  placeSanityId: String
+  placeName: String
+  placeImageUrl: String
+  placeSlug: String
   list: List!
 }
+
+
