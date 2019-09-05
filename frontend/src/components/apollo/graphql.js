@@ -118,8 +118,8 @@ export const TOGGLE_PLACE_MUTATION = gql`
       placeImageUrl: $placeImageUrl
       placeSlug: $placeSlug
     ) {
-      ...PlaceFragment
+      ...ListFragment
     }
   }
-  ${PLACE_FRAGMENT}
+  ${LIST_FRAGMENT}
 `

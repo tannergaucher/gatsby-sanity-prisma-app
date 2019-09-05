@@ -18,7 +18,7 @@ type Place {
   placeName: String
   placeImageUrl: String
   placeSlug: String
-  list: List!
+  list: List
 }
 
 

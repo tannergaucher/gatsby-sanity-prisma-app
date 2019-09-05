@@ -161,10 +161,12 @@ input ListUpdateManyWithWhereNestedInput {
   data: ListUpdateManyDataInput!
 }
 
-input ListUpdateOneRequiredWithoutPlacesInput {
+input ListUpdateOneWithoutPlacesInput {
   create: ListCreateWithoutPlacesInput
   update: ListUpdateWithoutPlacesDataInput
   upsert: ListUpsertWithoutPlacesInput
+  delete: Boolean
+  disconnect: Boolean
   connect: ListWhereUniqueInput
 }
 
@@ -282,7 +284,7 @@ type Place {
   placeName: String
   placeImageUrl: String
   placeSlug: String
-  list: List!
+  list: List
 }
 
 type PlaceConnection {
@@ -297,7 +299,7 @@ input PlaceCreateInput {
   placeName: String
   placeImageUrl: String
   placeSlug: String
-  list: ListCreateOneWithoutPlacesInput!
+  list: ListCreateOneWithoutPlacesInput
 }
 
 input PlaceCreateManyWithoutListInput {
@@ -438,7 +440,7 @@ input PlaceUpdateInput {
   placeName: String
   placeImageUrl: String
   placeSlug: String
-  list: ListUpdateOneRequiredWithoutPlacesInput
+  list: ListUpdateOneWithoutPlacesInput
 }
 
 input PlaceUpdateManyDataInput {

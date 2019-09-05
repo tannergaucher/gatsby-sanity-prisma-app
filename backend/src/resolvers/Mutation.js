@@ -74,6 +74,7 @@ const Mutation = {
 
     return list
   },
+
   togglePlace: async (
     parent,
     { listId, placeSanityId, placeName, placeImageUrl, placeSlug },

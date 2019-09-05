@@ -34,5 +34,5 @@ type Mutation {
     placeName: String
     placeImageUrl: String
     placeSlug: String
-  ): Place
+  ): List!
 }

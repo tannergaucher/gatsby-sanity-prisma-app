@@ -576,7 +576,7 @@ export interface PlaceCreateInput {
   placeName?: Maybe<String>;
   placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
-  list: ListCreateOneWithoutPlacesInput;
+  list?: Maybe<ListCreateOneWithoutPlacesInput>;
 }
 
 export interface ListCreateOneWithoutPlacesInput {
@@ -595,13 +595,15 @@ export interface PlaceUpdateInput {
   placeName?: Maybe<String>;
   placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
-  list?: Maybe<ListUpdateOneRequiredWithoutPlacesInput>;
+  list?: Maybe<ListUpdateOneWithoutPlacesInput>;
 }
 
-export interface ListUpdateOneRequiredWithoutPlacesInput {
+export interface ListUpdateOneWithoutPlacesInput {
   create?: Maybe<ListCreateWithoutPlacesInput>;
   update?: Maybe<ListUpdateWithoutPlacesDataInput>;
   upsert?: Maybe<ListUpsertWithoutPlacesInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
   connect?: Maybe<ListWhereUniqueInput>;
 }
 
