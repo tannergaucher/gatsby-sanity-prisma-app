@@ -21,10 +21,6 @@ export default function AddToListModal({ place }) {
         bg="var(--light-1)"
         color="var(--dark-1)"
         onClick={() => setShow(!show)}
-        style={{
-          fontFamily: `var(--sans)`,
-          textTransform: `uppercase`,
-        }}
       >
         <AddCircle color="var(--dark-1)" />
       </Button>
