@@ -7,7 +7,7 @@ export default function Guide() {
   return (
     <>
       <Heading
-        mb={[2]}
+        mb={[3]}
         textAlign="center"
         fontFamily="var(--sans)"
         fontWeight="900"

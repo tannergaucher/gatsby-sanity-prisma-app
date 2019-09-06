@@ -41,6 +41,7 @@ export default function TogglePlaceCheckBox({ place, list }) {
     <Box my={[1]}>
       <CheckBox
         key={list.id}
+        disabled={loading}
         label={<Text fontFamily="var(--sans)">{list.title}</Text>}
         checked={isPlaceInList(list.places, place.id)}
         onChange={async e => {

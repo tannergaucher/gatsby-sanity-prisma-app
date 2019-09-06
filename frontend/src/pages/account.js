@@ -22,7 +22,15 @@ function UserProfile() {
 
   return (
     <>
-      <Heading>Profile Page</Heading>
+      <Heading
+        mb={[3]}
+        textAlign="center"
+        fontFamily="var(--sans)"
+        fontWeight="900"
+        fontSize={[5]}
+      >
+        Profile Page
+      </Heading>
       {loading && `Loading...`}
       {error && `Error: ${error.message}`}
       {data && data.me && (
