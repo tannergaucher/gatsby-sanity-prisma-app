@@ -1,11 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Heading, Text } from "rebass"
+import { Heading } from "rebass"
 import { useQuery } from "@apollo/react-hooks"
 
-import { IS_LOGGED_IN, CURRENT_USER_QUERY } from "../components/apollo/graphql"
 import { AuthTabs } from "../components/auth"
 import { HeroCard } from "../components/styles"
+import { IS_LOGGED_IN, CURRENT_USER_QUERY } from "../components/apollo/graphql"
 
 export default function ListsPage() {
   const { loading, error, data } = useQuery(IS_LOGGED_IN)
@@ -19,7 +19,7 @@ export default function ListsPage() {
         fontWeight="900"
         fontSize={[5]}
       >
-        My Untrips
+        Untrips
       </Heading>
       {loading && `Loading...`}
       {error && `Error: ${error.message}`}

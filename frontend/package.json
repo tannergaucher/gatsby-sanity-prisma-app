@@ -20,6 +20,7 @@
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-source-sanity": "^5.0.1",
     "gatsby-transformer-sharp": "^2.2.4",
+    "google-maps-react": "^2.0.2",
     "graphql-tag": "^2.10.1",
     "grommet": "^2.7.6",
     "grommet-icons": "^4.3.0",

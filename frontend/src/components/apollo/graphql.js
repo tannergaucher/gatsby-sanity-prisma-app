@@ -123,3 +123,12 @@ export const TOGGLE_PLACE_MUTATION = gql`
   }
   ${LIST_FRAGMENT}
 `
+
+export const LIST_QUERY = gql`
+  query list($listId: ID!) {
+    list(listId: $listId) {
+      ...ListFragment
+    }
+  }
+  ${LIST_FRAGMENT}
+`

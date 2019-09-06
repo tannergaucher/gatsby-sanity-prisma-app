@@ -1,13 +1,46 @@
 import React from "react"
+import { Link } from "gatsby"
+import Img from "gatsby-image"
+
+import { Heading, Box } from "rebass"
+import { useQuery } from "@apollo/react-hooks"
+import { LIST_QUERY } from "../apollo/graphql"
 
 export default function ListPage(props) {
-  console.log(props.listId)
-  // Query the list with an id of props.listId and maps
+  const { loading, error, data } = useQuery(LIST_QUERY, {
+    variables: { listId: props.listId },
+  })
+
+  console.log(data)
 
   return (
-    <div>
-      I'm a list page.
-      {/*  */}
-    </div>
+    <>
+      {loading && `Loading list...`}
+      {error && `Error: ${error.message}`}
+      {data && data.list && (
+        <>
+          <Heading
+            mb={[3]}
+            textAlign="center"
+            fontFamily="var(--sans)"
+            fontWeight="900"
+            fontSize={[5]}
+          >
+            {data.list.title}
+          </Heading>
+
+          {/* GOOGLE MAP HERE  */}
+
+          {data.list.places.map(place => (
+            <Box key={place.id}>
+              <Link to={`/place/${place.placeSlug}`}>
+                <Heading fontFamily="var(--sans)">{place.placeName}</Heading>
+                <Img fluid={JSON.parse(place.placeImageUrl)} />
+              </Link>
+            </Box>
+          ))}
+        </>
+      )}
+    </>
   )
 }

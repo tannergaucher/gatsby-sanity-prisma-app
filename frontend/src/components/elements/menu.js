@@ -74,7 +74,7 @@ const MenuNav = () => (
       icon={<Navigate color="var(--dark-1)" size="40px" />}
     />
     <MenuNavItem
-      text="Lists"
+      text="Untrips"
       to="lists"
       icon={<List color="var(--dark-1)" size="40px" />}
     />

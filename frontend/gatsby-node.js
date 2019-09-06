@@ -110,6 +110,8 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   })
+
+  // create page for each place
 }
 
 exports.onCreatePage = async ({ page, actions }) => {
