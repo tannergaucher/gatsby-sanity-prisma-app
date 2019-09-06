@@ -40,7 +40,7 @@ function UserLists() {
         // TODO: Handle case of user not having any lists. Display you have no lists message
         // TODO: Handle case of list not having any places. Display this list has no places message and default to generic background img
         data.me.lists.map(list => (
-          <Link to={`/lists&id=?${list.id}`}>
+          <Link to={`/app/lists/list/${list.id}`}>
             {/* TODO: ADD edit and delete list icons on hover to hero card */}
             <HeroCard
               key={list.id}
