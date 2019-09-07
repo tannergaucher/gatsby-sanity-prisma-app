@@ -1,4 +1,4 @@
-endpoint: https://eu1.prisma.sh/tanner-gaucher/untrip-backend/dev
+endpoint: https://untrip-4b79800630.herokuapp.com/untrip-prod/prod
 datamodel: datamodel.prisma
 
 generate:
