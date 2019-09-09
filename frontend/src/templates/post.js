@@ -1,6 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { Bookmark } from "grommet-icons"
 import { Heading, Flex, Button, Card, Box } from "rebass"
 
@@ -12,36 +12,52 @@ export default function PostTemplate({ data }) {
 
   return (
     <Card>
-      <Img fluid={sanityPost.mainImage.asset.fluid} />
-      <Box p={[2]}>
-        <Heading
-          fontSize={[1]}
-          fontWeight="500"
-          fontFamily="var(--sans)"
-          color="var(--dark-2)"
-          letterSpacing="1px"
-          mb={[1]}
-          style={{ textTransform: `uppercase` }}
-        >
-          {sanityPost.category.category}
-        </Heading>
-        <Heading
-          fontSize={[5, 6]}
-          mb={[2]}
-          lineHeight="1.1"
-          letterSpacing="-.5px"
-          style={{ fontFamily: `var(--sans)` }}
-          fontWeight="900"
-        >
-          {sanityPost.title}
-        </Heading>
-        <Flex justifyContent="space-between" my={[3]} flexWrap="wrap">
+      <Box style={{ position: `relative` }}>
+        <Img
+          fluid={sanityPost.mainImage.asset.fluid}
+          style={{ filter: `brightness(.5)` }}
+        />
+        <Box style={{ position: `absolute`, top: `0` }} p={[3]}>
+          <Heading
+            fontSize={[1]}
+            fontWeight="500"
+            fontFamily="var(--sans)"
+            color="var(--light-1)"
+            letterSpacing="1px"
+            mt={[2]}
+            mb={[2]}
+            style={{ textTransform: `uppercase` }}
+          >
+            <Link to="/" style={{ textDecoration: `none`, color: `inherit` }}>
+              Untrip
+            </Link>{" "}
+            /{" "}
+            <Link
+              to={`/guide/categories/${sanityPost.category.slug.current}`}
+              style={{ textDecoration: `none`, color: `inherit` }}
+            >
+              {sanityPost.category.category}
+            </Link>
+          </Heading>
+          <Heading
+            fontSize={[5, 6]}
+            mb={[2]}
+            lineHeight="1.1"
+            letterSpacing="-.5px"
+            color="var(--light-1)"
+            style={{ fontFamily: `var(--sans)` }}
+            fontWeight="900"
+          >
+            {sanityPost.title}
+          </Heading>
+        </Box>
+        <Box style={{ position: `absolute`, top: `calc(100% - 44px)` }}>
           <Share />
-          <Button bg="var(--light-1)" color="var(--dark-1)">
-            <Bookmark color="var(--dark-1)" />
-          </Button>
-        </Flex>
-        <BlockContent blocks={sanityPost._rawBody} mb={[4]} />
+        </Box>
+      </Box>
+
+      <Box as="article">
+        <BlockContent blocks={sanityPost._rawBody} mb={[4]} p={[2]} />
         <PostPlaces postPlaces={sanityPost.postPlaces} />
       </Box>
     </Card>

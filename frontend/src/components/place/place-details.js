@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Button, Flex, Link as RebassLink, Text } from "rebass"
+import { Flex, Link as RebassLink, Text, Heading } from "rebass"
 import { Facebook, Instagram, Twitter, Domain, Phone, Map } from "grommet-icons"
 
 export default function PlaceDetails({ place }) {
@@ -7,11 +7,7 @@ export default function PlaceDetails({ place }) {
 
   return (
     <>
-      <Button
-        bg="var(--light-1)"
-        color="var(--dark-2)"
-        border="var(--border) solid var(--dark-2)"
-        fontWeight="100"
+      <button
         style={{
           fontFamily: `var(--sans)`,
         }}
@@ -19,8 +15,10 @@ export default function PlaceDetails({ place }) {
           setShow(!show)
         }}
       >
-        Details
-      </Button>
+        <Heading fontSize={2} fontWeight="lighter">
+          Details
+        </Heading>
+      </button>
       {show && (
         <Flex flexDirection="column" mt={[3]} ml={[1]}>
           {place.place.location && (

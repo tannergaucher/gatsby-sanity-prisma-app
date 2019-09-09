@@ -6,7 +6,7 @@ export default function Divider(props) {
     <Box
       {...props}
       as="hr"
-      style={{ border: `none`, borderTop: `6px solid var(--dark-1)` }}
+      style={{ border: `none`, borderTop: `4px solid var(--dark-1)` }}
     />
   )
 }

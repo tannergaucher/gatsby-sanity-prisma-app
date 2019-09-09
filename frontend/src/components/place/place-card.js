@@ -1,17 +1,22 @@
 import React from "react"
 import Img from "gatsby-image"
-import { Heading, Flex, Box, Text } from "rebass"
+import { Heading, Flex, Box, Text, Card } from "rebass"
 
 import { PlaceDetails } from "."
 import { AddToListModal } from "../list"
-import { Divider, BlockContent } from "../styles"
+import { BlockContent } from "../styles"
 
-export default function Place({ postPlace }) {
+export default function PlaceCard({ postPlace }) {
   return (
-    <Box>
-      <Divider mb={[3]} mt={[4]} />
+    <Card
+      mx={[2]}
+      my={[5]}
+      p={[2]}
+      boxShadow="0px 4px 12px rgba(0, 0, 0, .2)"
+      borderRadius="12px"
+    >
       <Flex justifyContent="space-between" alignItems="center" mb={[3]}>
-        <Box>
+        <Box px={[2]}>
           <Heading
             fontSize={[4]}
             fontWeight="900"
@@ -39,17 +44,17 @@ export default function Place({ postPlace }) {
       </Flex>
       <Img fluid={postPlace.place.image.asset.fluid} />
       <Text
-        fontFamily="var(--sans)"
         fontWeight="100"
         fontSize={[3]}
         mt={[3]}
         color="var(--dark-2)"
+        fontFamily="var(--sans)"
       >
         {postPlace.place.imageCaption}
       </Text>
       {/* TODO: position absolute photo credit over image */}
-      <BlockContent blocks={postPlace._rawText} />
+      <BlockContent blocks={postPlace._rawText} fontFamily="var(--sans)" />
       <PlaceDetails place={postPlace} />
-    </Box>
+    </Card>
   )
 }

@@ -1,4 +1,4 @@
-import Place from "./place"
+import PlaceCard from "./place-card"
 import PlaceDetails from "./place-details"
 
-export { PlaceDetails, Place }
+export { PlaceDetails, PlaceCard }

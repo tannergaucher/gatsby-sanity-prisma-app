@@ -18,7 +18,12 @@ export default function Header() {
           textDecoration: `none`,
         }}
       >
-        <Heading fontSize={[3]} fontWeight="lighter">
+        <Heading
+          fontSize={[3]}
+          fontWeight="lighter"
+          fontFamily="var(--sans)"
+          style={{ textDecoration: `uppercase` }}
+        >
           {/*GATSBY BUG: NOT WORKING IN DEV  {title} */}
           Untrip
         </Heading>
