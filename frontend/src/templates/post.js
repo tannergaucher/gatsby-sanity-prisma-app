@@ -11,12 +11,8 @@ export default function PostTemplate({ data }) {
   const { sanityPost } = data
 
   return (
-    <Card boxShadow="0px 4px 12px rgba(0, 0, 0, .2)" borderRadius="25px">
-      <Img
-        fluid={sanityPost.mainImage.asset.fluid}
-        style={{ borderRadius: `25px 25px 0px 0px` }}
-      />
-
+    <Card>
+      <Img fluid={sanityPost.mainImage.asset.fluid} />
       <Box p={[2]}>
         <Heading
           fontSize={[1]}

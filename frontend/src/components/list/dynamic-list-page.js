@@ -13,8 +13,6 @@ export default function ListPage(props) {
     variables: { listId: props.listId },
   })
 
-  console.log(data)
-
   return (
     <>
       {loading && `Loading list...`}
