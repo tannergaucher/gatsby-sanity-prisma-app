@@ -75,7 +75,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create page for each post.
   posts.forEach(edge => {
     createPage({
-      path: `${edge.node.category.slug.current}/${edge.node.slug.current}`,
+      path: `/posts/${edge.node.category.slug.current}/${edge.node.slug.current}`,
       component: path.resolve(`./src/templates/post.js`),
       context: {
         slug: edge.node.slug.current,
@@ -86,7 +86,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create page for each category.
   categoriesWithTags.forEach(edge => {
     createPage({
-      path: edge.slug.current,
+      path: `/guide/categories/${edge.slug.current}`,
       component: path.resolve(`./src/templates/category.js`),
       context: {
         category: edge.category,
@@ -100,7 +100,7 @@ exports.createPages = async ({ graphql, actions }) => {
   categoriesWithTags.forEach(edge => {
     edge.tags.forEach(tag => {
       createPage({
-        path: `${edge.slug.current}/${tag}`,
+        path: `/guide/categories/${edge.slug.current}/${tag}`,
         component: path.resolve(`./src/templates/category-tag.js`),
         context: {
           category: edge.category,

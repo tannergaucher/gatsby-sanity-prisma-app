@@ -1,10 +1,15 @@
 import React from "react"
 import Img from "gatsby-image"
-import { Box, Heading } from "rebass"
+import { Card, Heading } from "rebass"
 
 export default function HeroCard({ text, fluid }) {
   return (
-    <Box mb={[3]} style={{ position: `relative` }}>
+    <Card
+      mb={[3]}
+      boxShadow="0px 10px 12px rgba(0, 0, 0, .2)"
+      borderRadius="25px"
+      style={{ position: `relative` }}
+    >
       <Heading
         color="var(--light-1)"
         fontSize={[4]}
@@ -26,9 +31,10 @@ export default function HeroCard({ text, fluid }) {
         fluid={fluid}
         style={{
           filter: `brightness(.5)`,
-          height: "200px",
+          height: "250px",
+          borderRadius: `25px 25px 25px 25px`,
         }}
       />
-    </Box>
+    </Card>
   )
 }

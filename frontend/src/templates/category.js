@@ -22,7 +22,7 @@ export default function CategoryTemplate({ pageContext, data }) {
       {edges.map(edge => (
         <Link
           key={edge.node.id}
-          to={`${categorySlug}/${edge.node.slug.current}`}
+          to={`/guide/categories/${categorySlug}/${edge.node.slug.current}`}
         >
           <HeroCard text={edge.node.tag} fluid={edge.node.image.asset.fluid} />
         </Link>

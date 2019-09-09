@@ -18,7 +18,7 @@ export default function CategoryTag({ pageContext, data }) {
       </Heading>
       {data.posts.edges.map(edge => (
         <Link
-          to={`${edge.node.category.slug.current}/${edge.node.slug.current}`}
+          to={`/posts/${edge.node.category.slug.current}/${edge.node.slug.current}`}
         >
           <HeroCard
             key={edge.node.id}

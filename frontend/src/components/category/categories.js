@@ -10,7 +10,10 @@ export default function Categories() {
   return (
     <>
       {edges.map(edge => (
-        <Link key={edge.node.id} to={edge.node.slug.current}>
+        <Link
+          key={edge.node.id}
+          to={`/guide/categories/${edge.node.slug.current}`}
+        >
           <HeroCard
             key={edge.node.id}
             text={edge.node.category}

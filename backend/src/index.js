@@ -19,7 +19,10 @@ server.start(
   {
     cors: {
       credentials: true,
-      origin: process.env.FRONTEND_DEV_URL,
+      origin:
+        process.env.NODE_ENV === 'production'
+          ? 'https://untrip.app'
+          : 'http://localhost:8000',
     },
   },
   details => {
