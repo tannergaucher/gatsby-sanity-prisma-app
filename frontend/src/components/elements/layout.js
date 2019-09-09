@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { Link } from "gatsby"
 import { Box } from "rebass"
 import { useQuery } from "@apollo/react-hooks"
 
@@ -49,10 +50,27 @@ function WithoutHeader({ children }) {
       style={{
         margin: "0 auto",
         maxWidth: `var(--max-width)`,
+        position: `relative`,
+        top: `0`,
       }}
     >
+      <Box
+        style={{
+          position: `absolute`,
+          top: `0`,
+
+          zIndex: `3`,
+          height: `100%`,
+        }}
+      >
+        <Link to="/">
+          <button style={{ position: `sticky`, top: `0`, right: `0` }}>
+            X
+          </button>
+        </Link>
+      </Box>
       <Box as="main" style={{ minHeight: `100vh` }}>
-        <>{children}</>
+        {children}
       </Box>
       <Footer />
     </Box>
