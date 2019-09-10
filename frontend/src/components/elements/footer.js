@@ -5,7 +5,7 @@ import { Link } from "../styles"
 
 export default function Footer() {
   return (
-    <Box as="footer" bg="var(--dark-1)" p={[4]}>
+    <Box as="footer" bg="var(--dark-1)" px={[4]} py={[5]}>
       <NavLink text="About" to="/about" />
       <NavLink text="Contact" to="/contact" />
       <NavLink text="Sign Up" to="signup" />
