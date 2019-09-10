@@ -14,10 +14,19 @@ export default function Header({ location }) {
       p={[2]}
       opacity=".95"
     >
-      <Previous
-        color="var(--dark-1)"
-        style={{ visibility: location.pathname === "/" ? "hidden" : "visible" }}
-      />
+      <button
+        onClick={e => {
+          e.preventDefault()
+          window.history.back()
+        }}
+      >
+        <Previous
+          color="var(--dark-1)"
+          style={{
+            visibility: location.pathname === "/" ? "hidden" : "visible",
+          }}
+        />
+      </button>
       <Link
         to="/"
         style={{
