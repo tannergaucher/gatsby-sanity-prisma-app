@@ -9,7 +9,6 @@ import { BlockContent } from "../styles"
 export default function PlaceCard({ postPlace }) {
   return (
     <Card
-      mx={[2]}
       my={[5]}
       p={[2]}
       boxShadow="0px 4px 12px rgba(0, 0, 0, .2)"

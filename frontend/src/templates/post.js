@@ -4,7 +4,7 @@ import { graphql, Link } from "gatsby"
 import { Bookmark } from "grommet-icons"
 import { Heading, Flex, Button, Card, Box } from "rebass"
 
-import { PostPlaces, Share } from "../components/post"
+import { PostPlaces, Share, Author } from "../components/post"
 import { BlockContent } from "../components/styles"
 
 export default function PostTemplate({ data }) {
@@ -50,8 +50,9 @@ export default function PostTemplate({ data }) {
         </Box>
       </Box>
 
-      <Box as="article">
-        <BlockContent blocks={sanityPost._rawBody} mb={[4]} p={[3]} />
+      <Box as="article" mb={[4]} p={[3]}>
+        <BlockContent blocks={sanityPost._rawBody} />
+        <Author author={sanityPost.author} />
         <PostPlaces postPlaces={sanityPost.postPlaces} />
       </Box>
     </Card>

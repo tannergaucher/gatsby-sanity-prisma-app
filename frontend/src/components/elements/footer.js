@@ -9,7 +9,7 @@ export default function Footer() {
       <NavLink text="About" to="/about" />
       <NavLink text="Contact" to="/contact" />
       <NavLink text="Sign Up" to="signup" />
-      <NavLink text="Download the app" to="/download" />
+      <NavLink text="Download our app" to="/download" />
     </Box>
   )
 }
