@@ -1,15 +1,15 @@
 import React from "react"
-import { Heading } from "rebass"
+import { Heading, Box } from "rebass"
 import { Link } from "gatsby"
 
 import { HeroCard } from "../components/styles"
 
 export default function CategoryTag({ pageContext, data }) {
   return (
-    <>
-      <Heading textAlign="center" fontWeight="900" fontSize={[5]} mb={[2]}>
+    <Box px={[2]} my={[4]}>
+      {/* <Heading textAlign="center" fontWeight="900" fontSize={[5]} mb={[2]}>
         {data.tag.tag}
-      </Heading>
+      </Heading> */}
       {data.posts.edges.map(edge => (
         <Link
           to={`/posts/${edge.node.category.slug.current}/${edge.node.slug.current}`}
@@ -21,7 +21,7 @@ export default function CategoryTag({ pageContext, data }) {
           />
         </Link>
       ))}
-    </>
+    </Box>
   )
 }
 

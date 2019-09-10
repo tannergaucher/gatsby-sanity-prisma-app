@@ -12,7 +12,7 @@ export default function Header({ location }) {
       justifyContent="space-between"
       bg="var(--light-1)"
       p={[2]}
-      opacity=".95"
+      opacity=".92"
     >
       <button
         onClick={e => {
@@ -21,7 +21,7 @@ export default function Header({ location }) {
         }}
       >
         <Previous
-          color="var(--dark-1)"
+          color="var(--dark-3)"
           style={{
             visibility: location.pathname === "/" ? "hidden" : "visible",
           }}
@@ -33,7 +33,7 @@ export default function Header({ location }) {
           textDecoration: `none`,
         }}
       >
-        <Heading fontSize={[3]} fontWeight="lighter">
+        <Heading fontSize={[3]} fontWeight="lighter" color="var(--dark-3)">
           Untrip
         </Heading>
       </Link>

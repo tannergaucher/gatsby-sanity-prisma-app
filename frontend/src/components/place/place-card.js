@@ -34,7 +34,13 @@ export default function PlaceCard({ postPlace }) {
         <AddToListModal place={postPlace} />
       </Flex>
       <Img fluid={postPlace.place.image.asset.fluid} />
-      <Text fontWeight="100" fontSize={[3]} mt={[3]} color="var(--dark-2)">
+      <Text
+        fontWeight="lighter"
+        fontSize={[2]}
+        mt={[2]}
+        mb={[4]}
+        style={{ fontStyle: `italic` }}
+      >
         {postPlace.place.imageCaption}
       </Text>
       {/* TODO: position absolute photo credit over image */}

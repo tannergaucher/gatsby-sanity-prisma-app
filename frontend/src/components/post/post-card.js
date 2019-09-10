@@ -18,12 +18,11 @@ export default function PostCard({ post }) {
         />
         <Heading
           fontSize={[1]}
-          fontWeight="500"
-          color="var(--dark-2)"
-          letterSpacing="1px"
+          fontWeight="lighter"
           mb={2}
           px={[3]}
           pt={[3]}
+          style={{ textTransform: `uppercase` }}
         >
           {post.category.category}
         </Heading>

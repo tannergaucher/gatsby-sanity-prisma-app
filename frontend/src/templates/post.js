@@ -51,7 +51,7 @@ export default function PostTemplate({ data }) {
       </Box>
 
       <Box as="article">
-        <BlockContent blocks={sanityPost._rawBody} mb={[4]} p={[2]} />
+        <BlockContent blocks={sanityPost._rawBody} mb={[4]} p={[3]} />
         <PostPlaces postPlaces={sanityPost.postPlaces} />
       </Box>
     </Card>

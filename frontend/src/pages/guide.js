@@ -1,15 +1,12 @@
 import React from "react"
-import { Heading } from "rebass"
+import { Heading, Box } from "rebass"
 
 import { Categories } from "../components/category"
 
 export default function Guide() {
   return (
-    <>
-      <Heading mb={[3]} textAlign="center" fontWeight="900" fontSize={[5]}>
-        Guide
-      </Heading>
+    <Box px={[2]} my={[4]}>
       <Categories />
-    </>
+    </Box>
   )
 }

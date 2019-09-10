@@ -1,5 +1,5 @@
 import React from "react"
-import { Heading } from "rebass"
+import { Heading, Box } from "rebass"
 import { Link } from "gatsby"
 
 import { HeroCard } from "../components/styles"
@@ -9,10 +9,10 @@ export default function CategoryTemplate({ pageContext, data }) {
   const { edges } = data.allSanityTag
 
   return (
-    <>
-      <Heading textAlign="center" fontWeight="900" fontSize={[5]} mb={[2]}>
+    <Box px={[2]} my={[4]}>
+      {/* <Heading textAlign="center" fontWeight="900" fontSize={[5]} mb={[2]}>
         {category}
-      </Heading>
+      </Heading> */}
       {edges.map(edge => (
         <Link
           key={edge.node.id}
@@ -21,7 +21,7 @@ export default function CategoryTemplate({ pageContext, data }) {
           <HeroCard text={edge.node.tag} fluid={edge.node.image.asset.fluid} />
         </Link>
       ))}
-    </>
+    </Box>
   )
 }
 

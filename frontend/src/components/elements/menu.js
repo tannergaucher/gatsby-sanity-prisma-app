@@ -17,7 +17,7 @@ export default function Menu() {
   return (
     <>
       <button onClick={() => setShow(!show)}>
-        <MenuIcon color="var(--dark-1)" />
+        <MenuIcon color="var(--dark-3)" />
       </button>
       {show && (
         <Layer
@@ -29,7 +29,7 @@ export default function Menu() {
           <Flex flex={1} flexDirection="column" p={[2]} bg="var(--light-1)">
             <Flex justifyContent="flex-end">
               <button onClick={() => setShow(false)}>
-                <Close color="var(--dark-1)" />
+                <Close color="var(--dark-3)" />
               </button>
             </Flex>
             <MenuNav />
