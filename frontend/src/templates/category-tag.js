@@ -7,13 +7,7 @@ import { HeroCard } from "../components/styles"
 export default function CategoryTag({ pageContext, data }) {
   return (
     <>
-      <Heading
-        textAlign="center"
-        fontFamily="var(--sans)"
-        fontWeight="900"
-        fontSize={[5]}
-        mb={[2]}
-      >
+      <Heading textAlign="center" fontWeight="900" fontSize={[5]} mb={[2]}>
         {data.tag.tag}
       </Heading>
       {data.posts.edges.map(edge => (

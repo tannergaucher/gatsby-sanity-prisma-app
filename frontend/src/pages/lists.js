@@ -12,13 +12,7 @@ export default function ListsPage() {
 
   return (
     <>
-      <Heading
-        mb={[3]}
-        textAlign="center"
-        fontFamily="var(--sans)"
-        fontWeight="900"
-        fontSize={[5]}
-      >
+      <Heading mb={[3]} textAlign="center" fontWeight="900" fontSize={[5]}>
         Untrips
       </Heading>
       {loading && `Loading...`}

@@ -17,24 +17,15 @@ export default function PlaceCard({ postPlace }) {
     >
       <Flex justifyContent="space-between" alignItems="center" mb={[3]}>
         <Box px={[2]}>
-          <Heading
-            fontSize={[4]}
-            fontWeight="900"
-            style={{ fontFamily: `var(--sans)` }}
-          >
+          <Heading fontSize={[4]} fontWeight="900">
             {postPlace.place.name}
           </Heading>
           <Flex>
-            <Heading fontSize={[1]} fontFamily="var(--sans)" fontWeight="100">
+            <Heading fontSize={[1]} fontWeight="100">
               {postPlace.place.placeType.type}
             </Heading>
             {postPlace.place.tags.map(tag => (
-              <Heading
-                fontSize={[1]}
-                fontFamily="var(--sans)"
-                fontWeight="100"
-                key={tag.id}
-              >
+              <Heading fontSize={[1]} fontWeight="100" key={tag.id}>
                 , {tag.tag}
               </Heading>
             ))}
@@ -43,17 +34,11 @@ export default function PlaceCard({ postPlace }) {
         <AddToListModal place={postPlace} />
       </Flex>
       <Img fluid={postPlace.place.image.asset.fluid} />
-      <Text
-        fontWeight="100"
-        fontSize={[3]}
-        mt={[3]}
-        color="var(--dark-2)"
-        fontFamily="var(--sans)"
-      >
+      <Text fontWeight="100" fontSize={[3]} mt={[3]} color="var(--dark-2)">
         {postPlace.place.imageCaption}
       </Text>
       {/* TODO: position absolute photo credit over image */}
-      <BlockContent blocks={postPlace._rawText} fontFamily="var(--sans)" />
+      <BlockContent blocks={postPlace._rawText} />
       <PlaceDetails place={postPlace} />
     </Card>
   )

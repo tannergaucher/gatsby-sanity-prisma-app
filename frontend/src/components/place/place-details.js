@@ -29,9 +29,6 @@ export default function PlaceDetails({ place }) {
                 fontSize={[1]}
                 color="var(--dark-2)"
                 href="#"
-                style={{
-                  fontFamily: `var(--sans)`,
-                }}
               >
                 On Google Maps
               </RebassLink>
@@ -45,9 +42,6 @@ export default function PlaceDetails({ place }) {
                 ml={[3]}
                 fontSize={[1]}
                 color="var(--dark-2)"
-                style={{
-                  fontFamily: `var(--sans)`,
-                }}
               >
                 Facebook
               </RebassLink>
@@ -61,9 +55,6 @@ export default function PlaceDetails({ place }) {
                 ml={[3]}
                 fontSize={[1]}
                 color="var(--dark-2)"
-                style={{
-                  fontFamily: `var(--sans)`,
-                }}
               >
                 Instagram
               </RebassLink>
@@ -77,9 +68,6 @@ export default function PlaceDetails({ place }) {
                 ml={[3]}
                 fontSize={[1]}
                 color="var(--dark-2)"
-                style={{
-                  fontFamily: `var(--sans)`,
-                }}
               >
                 Twitter
               </RebassLink>
@@ -93,9 +81,6 @@ export default function PlaceDetails({ place }) {
                 ml={[3]}
                 fontSize={[1]}
                 color="var(--dark-2)"
-                style={{
-                  fontFamily: `var(--sans)`,
-                }}
               >
                 Visit Website
               </RebassLink>
@@ -104,14 +89,7 @@ export default function PlaceDetails({ place }) {
           {place.place.phoneNumber && (
             <Flex mt={[3]}>
               <Phone size="18px" />
-              <Text
-                ml={[3]}
-                fontSize={[1]}
-                color="var(--dark-2)"
-                style={{
-                  fontFamily: `var(--sans)`,
-                }}
-              >
+              <Text ml={[3]} fontSize={[1]} color="var(--dark-2)">
                 {place.place.phoneNumber}
               </Text>
             </Flex>

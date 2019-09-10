@@ -81,7 +81,6 @@ const MenuNavItem = ({ text, to, icon }) => (
         ml={[2]}
         fontSize={[5]}
         color="var(--dark-1)"
-        fontFamily="var(--sans)"
         fontWeight="900"
       >
         {text}

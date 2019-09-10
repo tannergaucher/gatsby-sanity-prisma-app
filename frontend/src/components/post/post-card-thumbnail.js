@@ -21,9 +21,7 @@ export default function PostCardThumbnail({ post }) {
             />
           </Box>
           <Box width={1} pl={[2]}>
-            <Heading fontFamily="var(--sans)" fontSize={[4]}>
-              {post.title}
-            </Heading>
+            <Heading fontSize={[4]}>{post.title}</Heading>
           </Box>
         </Flex>
       </Link>

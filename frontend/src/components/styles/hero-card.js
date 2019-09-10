@@ -13,7 +13,6 @@ export default function HeroCard({ text, fluid }) {
       <Heading
         color="var(--light-1)"
         fontSize={[4]}
-        fontFamily="var(--sans)"
         fontWeight="400"
         style={{
           zIndex: `1`,

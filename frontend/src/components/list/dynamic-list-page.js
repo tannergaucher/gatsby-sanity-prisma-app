@@ -19,13 +19,7 @@ export default function ListPage(props) {
       {error && `Error: ${error.message}`}
       {data && data.list && (
         <>
-          <Heading
-            mb={[3]}
-            textAlign="center"
-            fontFamily="var(--sans)"
-            fontWeight="900"
-            fontSize={[5]}
-          >
+          <Heading mb={[3]} textAlign="center" fontWeight="900" fontSize={[5]}>
             {data.list.title}
           </Heading>
 
@@ -34,7 +28,7 @@ export default function ListPage(props) {
           {data.list.places.map(place => (
             <Box key={place.id}>
               <Link to={`/place/${place.placeSlug}`}>
-                <Heading fontFamily="var(--sans)">{place.placeName}</Heading>
+                <Heading>{place.placeName}</Heading>
                 <Img fluid={JSON.parse(place.placeImageUrl)} />
               </Link>
             </Box>

@@ -21,7 +21,6 @@ export default function PostTemplate({ data }) {
           <Heading
             fontSize={[1]}
             fontWeight="500"
-            fontFamily="var(--sans)"
             color="var(--light-1)"
             letterSpacing="1px"
             mt={[2]}
@@ -41,7 +40,6 @@ export default function PostTemplate({ data }) {
             lineHeight="1.1"
             letterSpacing="-.5px"
             color="var(--light-1)"
-            style={{ fontFamily: `var(--sans)` }}
             fontWeight="900"
           >
             {sanityPost.title}

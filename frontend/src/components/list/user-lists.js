@@ -17,9 +17,7 @@ export default function UserLists({ place }) {
 
   return (
     <>
-      <Heading mb={[2]} fontFamily="var(--sans)">
-        Add {place.name}...
-      </Heading>
+      <Heading mb={[2]}>Add {place.name}...</Heading>
       {data &&
         data.me &&
         data.me.lists.map(list => (
@@ -28,7 +26,7 @@ export default function UserLists({ place }) {
 
       <Box my={[3]}>
         <Button
-          label={<Text fontFamily="var(--sans)"> New list</Text>}
+          label={<Text> New list</Text>}
           icon={<Add size="small" color="var(--dark-1)" />}
           plain
           onClick={() => setShow(true)}

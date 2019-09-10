@@ -33,7 +33,7 @@ export default function Header({ location }) {
           textDecoration: `none`,
         }}
       >
-        <Heading fontSize={[3]} fontWeight="lighter" fontFamily="var(--sans)">
+        <Heading fontSize={[3]} fontWeight="lighter">
           Untrip
         </Heading>
       </Link>
