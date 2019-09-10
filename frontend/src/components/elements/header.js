@@ -1,30 +1,30 @@
 import React from "react"
+import { Previous } from "grommet-icons"
 import { Flex, Heading } from "rebass"
 
 import { Link } from "../styles"
 import { Menu } from "."
 
-// THIS HOOK ERRORS IN DEV MODE
-// import { useSiteMetadata } from "../hooks"
-
-export default function Header() {
-  // const { title } = useSiteMetadata()
-
+export default function Header({ location }) {
   return (
-    <Flex as="header" justifyContent="space-between">
+    <Flex
+      as="header"
+      justifyContent="space-between"
+      bg="var(--light-1)"
+      p={[2]}
+      opacity=".95"
+    >
+      <Previous
+        color="var(--dark-1)"
+        style={{ visibility: location.pathname === "/" ? "hidden" : "visible" }}
+      />
       <Link
         to="/"
         style={{
           textDecoration: `none`,
         }}
       >
-        <Heading
-          fontSize={[3]}
-          fontWeight="lighter"
-          fontFamily="var(--sans)"
-          style={{ textDecoration: `uppercase` }}
-        >
-          {/*GATSBY BUG: NOT WORKING IN DEV  {title} */}
+        <Heading fontSize={[3]} fontWeight="lighter" fontFamily="var(--sans)">
           Untrip
         </Heading>
       </Link>

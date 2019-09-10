@@ -28,10 +28,6 @@ export default function PostTemplate({ data }) {
             mb={[2]}
             style={{ textTransform: `uppercase` }}
           >
-            <Link to="/" style={{ textDecoration: `none`, color: `inherit` }}>
-              Untrip
-            </Link>{" "}
-            /{" "}
             <Link
               to={`/guide/categories/${sanityPost.category.slug.current}`}
               style={{ textDecoration: `none`, color: `inherit` }}

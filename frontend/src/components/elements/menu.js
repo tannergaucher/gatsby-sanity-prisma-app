@@ -27,22 +27,7 @@ export default function Menu() {
           onClickCapture={() => setShow(false)}
         >
           <Flex flex={1} flexDirection="column" p={[2]} bg="var(--light-1)">
-            <Flex justifyContent="space-between">
-              <Link
-                to="/"
-                style={{
-                  textDecoration: `none`,
-                  color: `inherit`,
-                }}
-              >
-                <Heading
-                  fontSize={[3]}
-                  fontWeight="lighter"
-                  color="var(--dark-1)"
-                >
-                  Untrip
-                </Heading>
-              </Link>
+            <Flex justifyContent="flex-end">
               <button onClick={() => setShow(false)}>
                 <Close color="var(--dark-1)" />
               </button>
