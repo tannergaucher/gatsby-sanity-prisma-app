@@ -7,7 +7,6 @@ export default function HeroCard({ text, fluid }) {
     <Card
       mb={[3]}
       boxShadow="0px 10px 12px rgba(0, 0, 0, .2)"
-      borderRadius="25px"
       style={{ position: `relative` }}
     >
       <Heading
@@ -31,7 +30,6 @@ export default function HeroCard({ text, fluid }) {
         style={{
           filter: `brightness(.5)`,
           height: "250px",
-          borderRadius: `25px 25px 25px 25px`,
         }}
       />
     </Card>

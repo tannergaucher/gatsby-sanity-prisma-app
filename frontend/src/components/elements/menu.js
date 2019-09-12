@@ -46,7 +46,6 @@ const MenuNav = () => (
     flexDirection="column"
     justifyContent="center"
     alignItems="center"
-    bg="var(--light-1)"
   >
     <MenuNavItem
       text="Home"

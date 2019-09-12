@@ -18,7 +18,7 @@ function NavLink({ to, text }) {
   return (
     <Link to={to}>
       <Heading
-        color="var(--light-1)"
+        color="var(--light-3)"
         fontSize={[1]}
         fontWeight="lighter"
         style={{ textTransform: `uppercase` }}

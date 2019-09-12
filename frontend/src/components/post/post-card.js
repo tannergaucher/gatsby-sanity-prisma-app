@@ -2,41 +2,32 @@ import React from "react"
 import Img from "gatsby-image"
 import { Heading, Card } from "rebass"
 
-import { Link } from "../styles"
-
 export default function PostCard({ post }) {
   return (
-    <Link to={`/posts/${post.category.slug.current}/${post.slug.current}`}>
-      <Card
-        mb={[5]}
-        boxShadow="0px 10px 12px rgba(0, 0, 0, .2)"
-        borderRadius="25px"
+    <Card mb={[5]} m={[2]} boxShadow="var(--elevation-1)">
+      <Img fluid={post.mainImage.asset.fluid} />
+      <Heading
+        fontSize={[1]}
+        fontWeight="lighter"
+        mb={2}
+        px={[3]}
+        pt={[3]}
+        textAlign="center"
+        style={{ textTransform: `uppercase` }}
       >
-        <Img
-          fluid={post.mainImage.asset.fluid}
-          style={{ borderRadius: "25px 25px 0px 0px" }}
-        />
-        <Heading
-          fontSize={[1]}
-          fontWeight="lighter"
-          mb={2}
-          px={[3]}
-          pt={[3]}
-          style={{ textTransform: `uppercase` }}
-        >
-          {post.category.category}
-        </Heading>
-        <Heading
-          fontSize={[5, 6]}
-          px={3}
-          pb={[3]}
-          lineHeight="1.1"
-          letterSpacing="-.5px"
-          fontWeight="900"
-        >
-          {post.title}
-        </Heading>
-      </Card>
-    </Link>
+        {post.category.category}
+      </Heading>
+      <Heading
+        fontSize={[5, 6]}
+        px={3}
+        pb={[3]}
+        lineHeight="1.1"
+        letterSpacing="-.5px"
+        fontWeight="900"
+        textAlign="center"
+      >
+        {post.title}
+      </Heading>
+    </Card>
   )
 }

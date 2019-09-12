@@ -5,6 +5,7 @@ import Posts from "./posts"
 import Author from "./author"
 import Share from "./share"
 import PostCardThumbnail from "./post-card-thumbnail"
+import ImageCard from "./image-card"
 
 export {
   Posts,
@@ -14,4 +15,5 @@ export {
   PostPlaces,
   Share,
   PostCardThumbnail,
+  ImageCard,
 }
