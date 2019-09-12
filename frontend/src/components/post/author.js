@@ -6,6 +6,7 @@ import { Link } from "../styles"
 
 export default function Author({ author }) {
   console.log(author)
+
   return (
     <Flex alignItems="center">
       <Flex alignItems="center">

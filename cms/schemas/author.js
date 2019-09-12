@@ -18,6 +18,11 @@ export default {
       },
     },
     {
+      name: 'authorSocial',
+      title: 'Social',
+      type: 'authorSocial',
+    },
+    {
       name: 'image',
       title: 'Image',
       type: 'image',
