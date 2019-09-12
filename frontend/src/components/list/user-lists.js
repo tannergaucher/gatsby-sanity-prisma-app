@@ -1,12 +1,12 @@
 import React, { useState } from "react"
-import { useMutation, useQuery } from "@apollo/react-hooks"
+import { useQuery } from "@apollo/react-hooks"
 import { Heading, Text, Box } from "rebass"
-import { CheckBox, Button } from "grommet"
 import { Add } from "grommet-icons"
 
 import { CreateList, TogglePlaceCheckBox } from "."
-import { isPlaceInList } from "../../utils"
-import { CURRENT_USER_QUERY, TOGGLE_PLACE_MUTATION } from "../apollo/graphql"
+import { Button } from "../styles"
+
+import { CURRENT_USER_QUERY } from "../apollo/graphql"
 
 export default function UserLists({ place }) {
   const [show, setShow] = useState(false)
