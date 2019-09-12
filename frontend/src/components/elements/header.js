@@ -13,6 +13,9 @@ export default function Header({ location }) {
       bg="var(--light-1)"
       p={[2]}
       opacity=".92"
+      style={{
+        borderBottom: `1px solid var(--light-2)`,
+      }}
     >
       <button
         onClick={e => {

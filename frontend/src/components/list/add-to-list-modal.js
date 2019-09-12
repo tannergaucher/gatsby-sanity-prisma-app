@@ -47,7 +47,7 @@ export default function AddToListModal({ place }) {
 function PleaseSignIn() {
   return (
     <>
-      <Heading>You must be signed in to do that.</Heading>
+      <Heading>You must be logged in to do that.</Heading>
       <AuthTabs />
     </>
   )

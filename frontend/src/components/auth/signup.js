@@ -1,7 +1,8 @@
 import React, { useState } from "react"
-import { Heading, Text } from "rebass"
-import { TextInput, Button } from "grommet"
+import { Text } from "rebass"
 import { useMutation, useApolloClient } from "@apollo/react-hooks"
+
+import { TextInput, Button } from "../styles"
 
 import { SIGN_UP_MUTATION } from "../apollo/graphql"
 
@@ -14,9 +15,9 @@ export default function Signup() {
   const client = useApolloClient()
 
   return (
-    <fieldset disabled={loading}>
+    <fieldset disabled={loading} style={{ border: `none` }}>
       {error && <Text color="var(--warning)">Error: {error.message}</Text>}
-      <Heading>Sign up for an account</Heading>
+
       <form
         onSubmit={async e => {
           e.preventDefault()
@@ -37,6 +38,7 @@ export default function Signup() {
             placeholder="Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
+            mt={[2]}
           />
         </label>
         <label htmlFor="password">
@@ -45,9 +47,10 @@ export default function Signup() {
             placeholder="Password"
             value={password}
             onChange={e => setPassword(e.target.value)}
+            mt={[2]}
           />
         </label>
-        <Button type="submit" label="Sign Up" />
+        <Button type="submit" label="Sign Up" mt={[2]} fill primary />
       </form>
     </fieldset>
   )

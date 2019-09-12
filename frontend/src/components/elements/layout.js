@@ -23,7 +23,7 @@ export default function Layout({ children, location }) {
           position: `sticky`,
           top: `0`,
           zIndex: `1`,
-          boxShadow: `var(--elevation-2)`,
+          // boxShadow: `var(--elevation-2)`,
         }}
       >
         <Header location={location} />

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { Heading } from "rebass"
-import { TextInput, Button } from "grommet"
+
+import { Button, TextInput } from "../styles"
 
 import { LOGIN_MUTATION } from "../apollo/graphql"
 import { useMutation, useApolloClient } from "@apollo/react-hooks"
@@ -14,8 +14,7 @@ export default function Login() {
   const client = useApolloClient()
 
   return (
-    <fieldset disabled={loading}>
-      <Heading>Log in to your account</Heading>
+    <fieldset disabled={loading} style={{ border: `none` }}>
       {error && `Error: ${error.message}`}
       <form
         onSubmit={async e => {
@@ -37,6 +36,7 @@ export default function Login() {
             placeholder="Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
+            mt={[2]}
           />
         </label>
         <label htmlFor="password">
@@ -45,9 +45,10 @@ export default function Login() {
             placeholder="Password"
             value={password}
             onChange={e => setPassword(e.target.value)}
+            mt={[2]}
           />
         </label>
-        <Button type="submit" label="Log In" />
+        <Button type="submit" label="Log In" mt={[2]} fill primary />
       </form>
     </fieldset>
   )
