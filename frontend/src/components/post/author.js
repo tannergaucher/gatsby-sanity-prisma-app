@@ -1,12 +1,26 @@
 import React from "react"
 import Img from "gatsby-image"
-import { Flex, Heading, Box } from "rebass"
+import { Flex, Heading } from "rebass"
 
-import { Link } from "../styles"
+import { Facebook, Instagram, Twitter, Link } from "grommet-icons"
+
+function renderSocialIcon(site) {
+  if (site === `Facebook`) {
+    return <Facebook size="small" color="var(--dark-1)" />
+  }
+
+  if (site === `Instagram`) {
+    return <Instagram size="small" color="var(--dark-1)" />
+  }
+
+  if (site === `Twitter`) {
+    return <Twitter size="small" color="var(--dark-1)" />
+  }
+
+  return <Link size="small" color="var(--dark-1)" />
+}
 
 export default function Author({ author }) {
-  console.log(author)
-
   return (
     <Flex alignItems="center">
       <Flex alignItems="center">
@@ -15,15 +29,16 @@ export default function Author({ author }) {
           style={{ borderRadius: `100%` }}
         />
       </Flex>
-      <Flex ml={[2]} alignItems="center">
-        <Link to={author.slug.current}>
+      <Flex ml={[2]} flexDirection="column">
+        <Heading fontSize={[1]} fontWeight="lighter">
+          {author.name}
+        </Heading>
+        <a href={`${author.social.site.siteUrl}/${author.social.handle}`}>
           <Heading fontSize={[1]} fontWeight="lighter">
-            {author.name}
+            {renderSocialIcon(author.social.site.siteName)}{" "}
+            {`@${author.social.handle}`}
           </Heading>
-          <Heading fontSize={[1]} fontWeight="lighter">
-            @IG
-          </Heading>
-        </Link>
+        </a>
       </Flex>
     </Flex>
   )

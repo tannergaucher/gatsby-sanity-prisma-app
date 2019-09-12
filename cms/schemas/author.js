@@ -18,7 +18,7 @@ export default {
       },
     },
     {
-      name: 'authorSocial',
+      name: 'social',
       title: 'Social',
       type: 'authorSocial',
     },

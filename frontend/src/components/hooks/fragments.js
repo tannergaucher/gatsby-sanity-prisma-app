@@ -47,6 +47,13 @@ export const SANITY_AUTHOR_FRAGMENT = graphql`
         }
       }
     }
+    social {
+      site {
+        siteName
+        siteUrl
+      }
+      handle
+    }
   }
 `
 
