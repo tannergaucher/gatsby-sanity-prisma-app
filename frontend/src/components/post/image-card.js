@@ -2,12 +2,9 @@ import React from "react"
 import Img from "gatsby-image"
 import { Heading, Box } from "rebass"
 
-import { Link } from "../styles"
 import { Share } from "."
 
 export default function ImageCard({ post }) {
-  console.log(post)
-
   return (
     <Box
       style={{

@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Heading } from "rebass"
+import { Box } from "rebass"
 import { useQuery } from "@apollo/react-hooks"
 
 import { AuthTabs } from "../components/auth"
@@ -12,9 +12,6 @@ export default function ListsPage() {
 
   return (
     <>
-      <Heading mb={[3]} textAlign="center" fontWeight="900" fontSize={[5]}>
-        Untrips
-      </Heading>
       {loading && `Loading...`}
       {error && `Error: ${error.message}`}
       {data && data.isLoggedIn ? <UserLists /> : <AuthTabs />}
@@ -26,7 +23,7 @@ function UserLists() {
   const { loading, error, data } = useQuery(CURRENT_USER_QUERY)
 
   return (
-    <>
+    <Box my={[2]} px={[2]}>
       {loading && `Loading...`}
       {error && `Error: ${error.message}`}
       {data &&
@@ -34,7 +31,7 @@ function UserLists() {
         // TODO: Handle case of user not having any lists. Display you have no lists message
         // TODO: Handle case of list not having any places. Display this list has no places message and default to generic background img
         data.me.lists.map(list => (
-          <Link to={`/app/lists/list/${list.id}`}>
+          <Link to={`/app/lists/list/${list.id}`} key={list.id}>
             {/* TODO: ADD edit and delete list icons on hover to hero card */}
             <HeroCard
               key={list.id}
@@ -43,6 +40,6 @@ function UserLists() {
             />
           </Link>
         ))}
-    </>
+    </Box>
   )
 }

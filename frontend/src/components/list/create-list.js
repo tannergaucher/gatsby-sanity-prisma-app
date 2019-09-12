@@ -44,7 +44,7 @@ export default function CreateList({ place, setShow }) {
     <Form
       onSubmit={async e => {
         e.preventDefault()
-        const { data } = await createList()
+        await createList()
         setShow(false)
       }}
     >

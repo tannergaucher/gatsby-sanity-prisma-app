@@ -37,6 +37,7 @@ export default function Login() {
             value={email}
             onChange={e => setEmail(e.target.value)}
             mt={[2]}
+            disabled={loading}
           />
         </label>
         <label htmlFor="password">
@@ -46,9 +47,17 @@ export default function Login() {
             value={password}
             onChange={e => setPassword(e.target.value)}
             mt={[2]}
+            disabled={loading}
           />
         </label>
-        <Button type="submit" label="Log In" mt={[2]} fill primary />
+        <Button
+          type="submit"
+          label="Log In"
+          mt={[2]}
+          fill
+          primary
+          disabled={loading}
+        />
       </form>
     </fieldset>
   )

@@ -1,5 +1,5 @@
 import React from "react"
-import { Heading, Box } from "rebass"
+import { Box } from "rebass"
 
 import { Categories } from "../components/category"
 

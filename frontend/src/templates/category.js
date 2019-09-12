@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import { HeroCard } from "../components/styles"
 
 export default function CategoryTemplate({ pageContext, data }) {
-  const { category, categorySlug } = pageContext
+  const { categorySlug } = pageContext
   const { edges } = data.allSanityTag
 
   return (

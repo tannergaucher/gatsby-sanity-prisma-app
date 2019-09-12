@@ -4,11 +4,7 @@ import { Card, Heading } from "rebass"
 
 export default function HeroCard({ text, fluid }) {
   return (
-    <Card
-      mb={[2]}
-      boxShadow="0px 10px 12px rgba(0, 0, 0, .2)"
-      style={{ position: `relative` }}
-    >
+    <Card mb={[2]} style={{ position: `relative` }}>
       <Heading
         color="var(--light-1)"
         fontSize={[4]}

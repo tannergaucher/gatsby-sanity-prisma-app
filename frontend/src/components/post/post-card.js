@@ -19,7 +19,7 @@ export default function PostCard({ post }) {
       <Heading
         fontSize={[5, 6]}
         px={[2]}
-        pb={[3]}
+        pb={[2]}
         lineHeight="1.1"
         letterSpacing="-.5px"
         fontWeight="900"

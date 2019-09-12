@@ -3,11 +3,11 @@ import { Box, Text } from "rebass"
 import { CheckBox } from "grommet"
 
 import { useMutation } from "@apollo/react-hooks"
-import { TOGGLE_PLACE_MUTATION, CURRENT_USER_QUERY } from "../apollo/graphql"
+import { TOGGLE_PLACE_MUTATION } from "../apollo/graphql"
 import { isPlaceInList } from "../../utils"
 
 export default function TogglePlaceCheckBox({ place, list }) {
-  const [togglePlace, { loading, error }] = useMutation(TOGGLE_PLACE_MUTATION, {
+  const [togglePlace, { loading }] = useMutation(TOGGLE_PLACE_MUTATION, {
     variables: {
       listId: list.id,
       placeSanityId: place.id,
@@ -45,7 +45,7 @@ export default function TogglePlaceCheckBox({ place, list }) {
         label={<Text>{list.title}</Text>}
         checked={isPlaceInList(list.places, place.id)}
         onChange={async e => {
-          const res = await togglePlace()
+          await togglePlace()
         }}
       />
     </Box>

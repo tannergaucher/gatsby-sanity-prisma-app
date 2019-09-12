@@ -1,10 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
 import { Box } from "rebass"
 import { useQuery } from "@apollo/react-hooks"
 
-import { Header, IndexHeader, Footer } from "."
+import { Header, Footer } from "."
 import { CURRENT_USER_QUERY } from "../apollo/graphql"
 import "./layout.css"
 
@@ -23,7 +22,6 @@ export default function Layout({ children, location }) {
           position: `sticky`,
           top: `0`,
           zIndex: `1`,
-          // boxShadow: `var(--elevation-2)`,
         }}
       >
         <Header location={location} />

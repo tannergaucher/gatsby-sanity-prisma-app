@@ -1,12 +1,12 @@
 import React, { useState } from "react"
-import { Flex, Link as RebassLink, Text, Heading } from "rebass"
+import { Flex, Box, Link as RebassLink, Text, Heading } from "rebass"
 import { Facebook, Instagram, Twitter, Domain, Phone, Map } from "grommet-icons"
 
 export default function PlaceDetails({ place }) {
   const [show, setShow] = useState(false)
 
   return (
-    <>
+    <Box pb={[2]}>
       <button
         style={{
           fontFamily: `var(--sans)`,
@@ -96,6 +96,6 @@ export default function PlaceDetails({ place }) {
           )}
         </Flex>
       )}
-    </>
+    </Box>
   )
 }

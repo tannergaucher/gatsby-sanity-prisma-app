@@ -1,8 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
 import { graphql, Link } from "gatsby"
-import { Bookmark } from "grommet-icons"
-import { Heading, Flex, Button, Card, Box } from "rebass"
+import { Heading, Card, Box } from "rebass"
 
 import { PostPlaces, Share, Author } from "../components/post"
 import { BlockContent } from "../components/styles"
@@ -23,8 +22,8 @@ export default function PostTemplate({ data }) {
             fontWeight="500"
             color="var(--light-1)"
             letterSpacing="var(--letter-spacing)"
-            mt={[2]}
-            mb={[2]}
+            mt={1}
+            mb={[1]}
             style={{ textTransform: `uppercase` }}
           >
             <Link
@@ -46,12 +45,12 @@ export default function PostTemplate({ data }) {
           </Heading>
         </Box>
         <Box style={{ position: `absolute`, top: `calc(100% - 44px)` }}>
-          <Share />
+          <Share post={data.sanityPost} />
         </Box>
       </Box>
 
       <Box as="article" mb={[4]} p={[3]}>
-        <BlockContent blocks={sanityPost._rawBody} />
+        <BlockContent blocks={sanityPost._rawBody} mb={[4]} />
         <PostPlaces postPlaces={sanityPost.postPlaces} />
         <Author author={sanityPost.author} />
       </Box>

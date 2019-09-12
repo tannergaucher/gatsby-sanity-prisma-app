@@ -8,7 +8,7 @@ export default function Footer() {
     <Box as="footer" bg="var(--dark-1)" px={[4]} py={[5]}>
       <NavLink text="About" to="/about" />
       <NavLink text="Contact" to="/contact" />
-      <NavLink text="Sign Up" to="signup" />
+      <NavLink text="Sign Up" to="/signup" />
       <NavLink text="Download our app" to="/download" />
     </Box>
   )

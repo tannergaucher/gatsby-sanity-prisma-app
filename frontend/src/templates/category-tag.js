@@ -1,5 +1,5 @@
 import React from "react"
-import { Heading, Box } from "rebass"
+import { Box } from "rebass"
 import { Link } from "gatsby"
 
 import { HeroCard } from "../components/styles"
@@ -10,6 +10,7 @@ export default function CategoryTag({ pageContext, data }) {
       {data.posts.edges.map(edge => (
         <Link
           to={`/posts/${edge.node.category.slug.current}/${edge.node.slug.current}`}
+          key={edge.node.id}
         >
           <HeroCard
             key={edge.node.id}

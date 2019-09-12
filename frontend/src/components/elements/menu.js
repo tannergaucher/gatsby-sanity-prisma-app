@@ -59,7 +59,7 @@ const MenuNav = () => (
     />
     <MenuNavItem
       text="Untrips"
-      to="lists"
+      to="untrips"
       icon={<List color="var(--dark-1)" size="40px" />}
     />
     <MenuNavItem
