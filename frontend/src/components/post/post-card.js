@@ -4,30 +4,29 @@ import { Heading, Card } from "rebass"
 
 export default function PostCard({ post }) {
   return (
-    <Card mb={[5]} m={[2]} boxShadow="var(--elevation-1)">
-      <Img fluid={post.mainImage.asset.fluid} />
+    <Card mb={[5]}>
       <Heading
         fontSize={[1]}
         fontWeight="lighter"
-        mb={2}
-        px={[3]}
-        pt={[3]}
-        textAlign="center"
+        color="var(--dark-2)"
+        px={[2]}
+        mb={[1]}
         style={{ textTransform: `uppercase` }}
+        letterSpacing="var(--letter-spacing)"
       >
         {post.category.category}
       </Heading>
       <Heading
         fontSize={[5, 6]}
-        px={3}
+        px={[2]}
         pb={[3]}
         lineHeight="1.1"
         letterSpacing="-.5px"
         fontWeight="900"
-        textAlign="center"
       >
         {post.title}
       </Heading>
+      <Img fluid={post.mainImage.asset.fluid} />
     </Card>
   )
 }
