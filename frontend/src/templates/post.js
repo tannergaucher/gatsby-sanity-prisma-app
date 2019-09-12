@@ -22,7 +22,7 @@ export default function PostTemplate({ data }) {
             fontSize={[1]}
             fontWeight="500"
             color="var(--light-1)"
-            letterSpacing="1px"
+            letterSpacing="var(--letter-spacing)"
             mt={[2]}
             mb={[2]}
             style={{ textTransform: `uppercase` }}
@@ -52,8 +52,8 @@ export default function PostTemplate({ data }) {
 
       <Box as="article" mb={[4]} p={[3]}>
         <BlockContent blocks={sanityPost._rawBody} />
-        <Author author={sanityPost.author} />
         <PostPlaces postPlaces={sanityPost.postPlaces} />
+        <Author author={sanityPost.author} />
       </Box>
     </Card>
   )
