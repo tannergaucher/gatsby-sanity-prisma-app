@@ -5,7 +5,7 @@ import { Card, Heading } from "rebass"
 export default function HeroCard({ text, fluid }) {
   return (
     <Card
-      mb={[3]}
+      mb={[2]}
       boxShadow="0px 10px 12px rgba(0, 0, 0, .2)"
       style={{ position: `relative` }}
     >

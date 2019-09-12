@@ -21,6 +21,7 @@ function NavLink({ to, text }) {
         color="var(--light-3)"
         fontSize={[1]}
         fontWeight="lighter"
+        my={[1]}
         style={{ textTransform: `uppercase` }}
       >
         {text}

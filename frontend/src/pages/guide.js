@@ -5,7 +5,7 @@ import { Categories } from "../components/category"
 
 export default function Guide() {
   return (
-    <Box bg="black">
+    <Box my={[2]} px={[2]}>
       <Categories />
     </Box>
   )

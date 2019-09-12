@@ -6,10 +6,7 @@ import { HeroCard } from "../components/styles"
 
 export default function CategoryTag({ pageContext, data }) {
   return (
-    <Box px={[2]} my={[4]}>
-      {/* <Heading textAlign="center" fontWeight="900" fontSize={[5]} mb={[2]}>
-        {data.tag.tag}
-      </Heading> */}
+    <Box my={[2]} px={[2]}>
       {data.posts.edges.map(edge => (
         <Link
           to={`/posts/${edge.node.category.slug.current}/${edge.node.slug.current}`}
