@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Untrip`,
-    description: `Insider's Guide to Kuala Lumpur`,
+    description: `Untrip.app, An Insider's Guide to Kuala Lumpur`,
     author: `Tanner Gaucher <tannermichaelgaucher@gmail.com>`,
     social: {
       github: `http://github.com/tannergaucher`,

@@ -4,7 +4,7 @@ import Helmet from "react-helmet"
 
 import { useSiteMetadata } from "../hooks"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title, image, url }) {
   const {
     description: hooksDescription,
     title: hooksTitle,
@@ -52,6 +52,14 @@ function SEO({ description, lang, meta, title }) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:image`,
+          content: image,
+        },
+        {
+          name: `twitter:site`,
+          content: url,
         },
       ].concat(meta)}
     />

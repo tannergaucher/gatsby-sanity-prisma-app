@@ -12,7 +12,11 @@ export default function PostTemplate({ data }) {
 
   return (
     <>
-      <SEO title={data.sanityPost.title} />
+      <SEO
+        title={data.sanityPost.title}
+        image={data.sanityPost.mainImage.asset.fluid.src}
+        url={`https://untrip.app/posts/${data.sanityPost.category.slug.current}/${data.sanityPost.slug.current}`}
+      />
       <Box style={{ position: `relative` }}>
         <Img
           fluid={sanityPost.mainImage.asset.fluid}
