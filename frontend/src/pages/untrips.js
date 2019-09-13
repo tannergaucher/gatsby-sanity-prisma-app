@@ -44,18 +44,29 @@ function UserLists() {
         {data && data.me && data.me.lists.length === 0 && (
           <Message message="You don't have any lists yet." />
         )}
+
         {data &&
-        data.me && // TODO: Handle case of list not having any places. Display this list has no places message and default to generic background img
-          data.me.lists.map(list => (
-            <Link to={`/app/lists/list/${list.id}`} key={list.id}>
-              {/* TODO: ADD edit and delete list icons on hover to hero card */}
-              <HeroCard
-                key={list.id}
-                text={list.title}
-                fluid={JSON.parse(list.places[0].placeImageUrl)}
-              />
-            </Link>
-          ))}
+          data.me &&
+          data.me.lists.map(list => {
+            //Handle case of list not having any places. Display this list has no places message and default to generic background img
+            if (list.places.length === 0) {
+              return (
+                <Message message={`Oops, ${list.title} has no places yet.`} />
+              )
+            }
+
+            // Finally, render list places
+            return (
+              <Link to={`/app/lists/list/${list.id}`} key={list.id}>
+                {/* TODO: ADD edit and delete list icons on hover to hero card */}
+                <HeroCard
+                  key={list.id}
+                  text={list.title}
+                  fluid={JSON.parse(list.places[0].placeImageUrl)}
+                />
+              </Link>
+            )
+          })}
       </Box>
     </>
   )

@@ -108,8 +108,8 @@ export const TOGGLE_PLACE_MUTATION = gql`
     $placeName: String!
     $placeImageUrl: String!
     $placeSlug: String!
-    $lat: Float
-    $lng: Float
+    $lat: Float!
+    $lng: Float!
   ) {
     togglePlace(
       listId: $listId
