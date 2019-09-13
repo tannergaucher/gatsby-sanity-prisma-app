@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useQuery } from "@apollo/react-hooks"
 import { Heading, Text, Box } from "rebass"
-import { Add } from "grommet-icons"
+import { Add, New } from "grommet-icons"
 
 import { CreateList, TogglePlaceCheckBox } from "."
 import { Button } from "../styles"
@@ -26,10 +26,14 @@ export default function UserLists({ place }) {
 
       <Box my={[3]}>
         <Button
-          label={<Text> New list</Text>}
-          icon={<Add size="small" color="var(--dark-1)" />}
+          label={
+            <Text m={[0]} p={[0]}>
+              New list
+            </Text>
+          }
+          icon={<New size="small" color="var(--dark-1)" />}
           plain
-          onClick={() => setShow(true)}
+          onClick={() => setShow(!show)}
         />
       </Box>
       {show && <CreateList place={place} setShow={setShow} />}

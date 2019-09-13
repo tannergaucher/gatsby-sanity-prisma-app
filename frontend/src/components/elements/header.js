@@ -24,7 +24,7 @@ export default function Header({ location }) {
         }}
       >
         <Previous
-          color="var(--dark-3)"
+          color="var(--dark-1)"
           style={{
             visibility: location.pathname === "/" ? "hidden" : "visible",
           }}
@@ -36,12 +36,7 @@ export default function Header({ location }) {
           textDecoration: `none`,
         }}
       >
-        <Heading
-          fontSize={[3]}
-          fontWeight="lighter"
-          color="var(--dark-1)"
-          letterSpacing="-.5px"
-        >
+        <Heading fontSize={[3]} color="var(--dark-1)" letterSpacing="-.5px">
           Untrip
         </Heading>
       </Link>
