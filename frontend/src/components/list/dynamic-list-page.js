@@ -10,6 +10,8 @@ export default function ListPage({ listId }) {
     variables: { listId },
   })
 
+  console.log(data)
+
   return (
     <>
       {loading && <Loading message="Loading list..." />}
@@ -21,7 +23,6 @@ export default function ListPage({ listId }) {
             {data.list.title}
           </Heading>
           <Map />
-
           <ul>
             {data.list.places.map(place => (
               <li key={place.id}>{place.placeName}</li>

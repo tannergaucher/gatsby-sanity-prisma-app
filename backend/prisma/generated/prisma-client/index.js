@@ -20,6 +20,6 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `https://untrip-4b79800630.herokuapp.com/untrip-prod/prod`
+  endpoint: `https://untrip-4b79800630.herokuapp.com/untrip-backend/dev`
 });
 exports.prisma = new exports.Prisma();

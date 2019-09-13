@@ -4,13 +4,14 @@ import { Heading, Text, Box } from "rebass"
 
 import { CreateList, TogglePlaceCheckBox } from "."
 import { Button } from "../styles"
+import { Loading } from "../elements"
 import { CURRENT_USER_QUERY } from "../apollo/graphql"
 
 export default function UserLists({ place }) {
   const [show, setShow] = useState(false)
   const { loading, error, data } = useQuery(CURRENT_USER_QUERY)
 
-  if (loading) return `Loading...`
+  if (loading) return <Loading message="Loading your untrips..." />
   if (error) return `Error: ${error.message}`
 
   return (

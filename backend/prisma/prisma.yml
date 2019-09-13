@@ -1,4 +1,5 @@
-endpoint: https://untrip-4b79800630.herokuapp.com/untrip-prod/prod
+#endpoint: ''
+endpoint: https://untrip-4b79800630.herokuapp.com/untrip-backend/dev
 datamodel: datamodel.prisma
 
 generate:

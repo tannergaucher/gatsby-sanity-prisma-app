@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Box, Heading } from "rebass"
+import { Box, Heading, Flex } from "rebass"
 import { useQuery } from "@apollo/react-hooks"
 
 import { AuthTabs } from "../components/auth"
@@ -14,8 +14,20 @@ export default function ListsPage() {
   return (
     <>
       {error && `Error: ${error.message}`}
-      {data && data.isLoggedIn ? <UserLists /> : <AuthTabs />}
+      {data && data.isLoggedIn ? (
+        <UserLists />
+      ) : (
+        <AuthTabs message="Log in to view your untrips" fullHeight />
+      )}
     </>
+  )
+}
+
+function Message({ message }) {
+  return (
+    <Flex style={{ height: `calc(100vh - 50px)` }} justifyContent="center">
+      <Heading mt={[4]}>{message}</Heading>
+    </Flex>
   )
 }
 
@@ -30,7 +42,7 @@ function UserLists() {
         {error && `Error: ${error.message}`}
         {/* handle case of user not having any lists  */}
         {data && data.me && data.me.lists.length === 0 && (
-          <Heading>You have not lists</Heading>
+          <Message message="You don't have any lists yet." />
         )}
         {data &&
         data.me && // TODO: Handle case of list not having any places. Display this list has no places message and default to generic background img

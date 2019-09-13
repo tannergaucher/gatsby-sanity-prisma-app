@@ -33,16 +33,6 @@ export const LIST_FRAGMENT = gql`
   }
 `
 
-export const PLACE_FRAGMENT = gql`
-  fragment PlaceFragment on Place {
-    id
-    placeSanityId
-    placeName
-    placeImageUrl
-    placeSlug
-  }
-`
-
 export const IS_LOGGED_IN = gql`
   query IS_LOGGED_IN {
     isLoggedIn @client
