@@ -3,25 +3,25 @@ import { Heading } from "rebass"
 import { useQuery } from "@apollo/react-hooks"
 
 import { LIST_QUERY } from "../apollo/graphql"
-import { SEO } from "../elements"
-// import { Map } from "../elements"
+import { SEO, Map, Loading } from "../elements"
 
-export default function ListPage(props) {
+export default function ListPage({ listId }) {
   const { loading, error, data } = useQuery(LIST_QUERY, {
-    variables: { listId: props.listId },
+    variables: { listId },
   })
 
   return (
     <>
-      {loading && `Loading list...`}
+      {loading && <Loading message="Loading list..." />}
       {error && `Error: ${error.message}`}
       {data && data.list && (
         <>
           <SEO title={`${data.list.title} | Untrip`} />
-          <Heading mb={[3]} textAlign="center" fontWeight="900" fontSize={[5]}>
+          <Heading my={[3]} textAlign="center" fontWeight="900" fontSize={[4]}>
             {data.list.title}
           </Heading>
-          {/* GOOGLE MAP HERE  */}
+          <Map />
+
           <ul>
             {data.list.places.map(place => (
               <li key={place.id}>{place.placeName}</li>

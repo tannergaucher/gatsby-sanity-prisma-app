@@ -5,7 +5,7 @@ import { SEO } from "../components/elements"
 import { Posts } from "../components/post"
 
 const IndexPage = () => (
-  <Box my={[4]}>
+  <Box>
     <SEO title="Home" />
     <Posts />
   </Box>

@@ -3,7 +3,7 @@ import { Map, Marker, GoogleApiWrapper } from "google-maps-react"
 
 class MapContainer extends React.Component {
   render() {
-    const { google, lat, lng, zoom, style, name } = this.props
+    const { google, zoom, style, name, lat, lng } = this.props
 
     return (
       <Map

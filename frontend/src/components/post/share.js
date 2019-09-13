@@ -5,7 +5,9 @@ import { FacebookOption, Twitter, Pinterest } from "grommet-icons"
 export default function Share() {
   return (
     <Flex flexWrap="wrap" pl={[3]}>
-      <a href="http://facebook.com">
+      {/* TODO: ADD APP ID */}
+
+      <a href="http://facebook.com/dialog/share?app_id=145634995501895&display=popup">
         <button mr={[2]}>
           <FacebookOption color="var(--light-1)" />
         </button>

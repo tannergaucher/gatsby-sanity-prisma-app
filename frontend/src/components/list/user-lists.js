@@ -1,18 +1,16 @@
 import React, { useState } from "react"
 import { useQuery } from "@apollo/react-hooks"
 import { Heading, Text, Box } from "rebass"
-import { Add, New } from "grommet-icons"
 
 import { CreateList, TogglePlaceCheckBox } from "."
 import { Button } from "../styles"
-
 import { CURRENT_USER_QUERY } from "../apollo/graphql"
 
 export default function UserLists({ place }) {
   const [show, setShow] = useState(false)
   const { loading, error, data } = useQuery(CURRENT_USER_QUERY)
 
-  if (loading) return `Loading lists...`
+  if (loading) return `Loading...`
   if (error) return `Error: ${error.message}`
 
   return (
@@ -26,12 +24,7 @@ export default function UserLists({ place }) {
 
       <Box my={[3]}>
         <Button
-          label={
-            <Text m={[0]} p={[0]}>
-              New list
-            </Text>
-          }
-          icon={<New size="small" color="var(--dark-1)" />}
+          label={<Text ml={[2]}>New list</Text>}
           plain
           onClick={() => setShow(!show)}
         />

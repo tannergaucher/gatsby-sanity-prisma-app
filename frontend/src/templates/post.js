@@ -55,7 +55,7 @@ export default function PostTemplate({ data }) {
         </Box>
       </Box>
 
-      <Box as="article" mb={[4]} p={[3]}>
+      <Box as="article" mb={[4]} p={[2]}>
         <BlockContent blocks={sanityPost._rawBody} mb={[4]} />
         <PostPlaces postPlaces={sanityPost.postPlaces} />
         <Author author={sanityPost.author} />
