@@ -21,6 +21,8 @@ type Mutation {
     placeName: String!
     placeImageUrl: String!
     placeSlug: String!
+    lat: Float!
+    lng: Float!
   ): List!
 
   # CHANGE NAMING
@@ -35,5 +37,7 @@ type Mutation {
     placeName: String
     placeImageUrl: String
     placeSlug: String
+    lat: Float!
+    lng: Float!
   ): List!
 }
