@@ -14,6 +14,8 @@ export default function TogglePlaceCheckBox({ place, list }) {
       placeName: place.name,
       placeImageUrl: JSON.stringify(place.image.asset.fluid),
       placeSlug: place.slug.current,
+      lat: place.location.lat,
+      lng: place.location.lng,
     },
     optimisticResponse: {
       __typename: "Mutation",
@@ -31,6 +33,8 @@ export default function TogglePlaceCheckBox({ place, list }) {
             placeName: place.name,
             placeImageUrl: JSON.stringify(place.image.asset.fluid),
             placeSlug: place.slug.current,
+            lat: place.location.lat,
+            lng: place.location.lng,
           },
         ],
       },

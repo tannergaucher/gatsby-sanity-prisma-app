@@ -46,7 +46,7 @@ const Mutation = {
   },
   createList: async (
     parent,
-    { title, placeSanityId, placeName, placeImageUrl, placeSlug },
+    { title, placeSanityId, placeName, placeImageUrl, placeSlug, lat, lng },
     context
   ) => {
     const userId = getUserId(context)
@@ -63,6 +63,8 @@ const Mutation = {
           placeName,
           placeImageUrl,
           placeSlug,
+          lat,
+          lng,
         },
       },
       user: {
@@ -77,7 +79,7 @@ const Mutation = {
 
   togglePlace: async (
     parent,
-    { listId, placeSanityId, placeName, placeImageUrl, placeSlug },
+    { listId, placeSanityId, placeName, placeImageUrl, placeSlug, lat, lng },
     context
   ) => {
     const userId = getUserId(context)
@@ -127,6 +129,8 @@ const Mutation = {
               placeName: placeName,
               placeImageUrl: placeImageUrl,
               placeSlug: placeSlug,
+              lat: lat,
+              lng: lng,
             },
           },
         },

@@ -284,6 +284,8 @@ type Place {
   placeName: String
   placeImageUrl: String
   placeSlug: String
+  lat: Float
+  lng: Float
   list: List
 }
 
@@ -299,6 +301,8 @@ input PlaceCreateInput {
   placeName: String
   placeImageUrl: String
   placeSlug: String
+  lat: Float
+  lng: Float
   list: ListCreateOneWithoutPlacesInput
 }
 
@@ -313,6 +317,8 @@ input PlaceCreateWithoutListInput {
   placeName: String
   placeImageUrl: String
   placeSlug: String
+  lat: Float
+  lng: Float
 }
 
 type PlaceEdge {
@@ -331,6 +337,10 @@ enum PlaceOrderByInput {
   placeImageUrl_DESC
   placeSlug_ASC
   placeSlug_DESC
+  lat_ASC
+  lat_DESC
+  lng_ASC
+  lng_DESC
 }
 
 type PlacePreviousValues {
@@ -339,6 +349,8 @@ type PlacePreviousValues {
   placeName: String
   placeImageUrl: String
   placeSlug: String
+  lat: Float
+  lng: Float
 }
 
 input PlaceScalarWhereInput {
@@ -412,6 +424,22 @@ input PlaceScalarWhereInput {
   placeSlug_not_starts_with: String
   placeSlug_ends_with: String
   placeSlug_not_ends_with: String
+  lat: Float
+  lat_not: Float
+  lat_in: [Float!]
+  lat_not_in: [Float!]
+  lat_lt: Float
+  lat_lte: Float
+  lat_gt: Float
+  lat_gte: Float
+  lng: Float
+  lng_not: Float
+  lng_in: [Float!]
+  lng_not_in: [Float!]
+  lng_lt: Float
+  lng_lte: Float
+  lng_gt: Float
+  lng_gte: Float
   AND: [PlaceScalarWhereInput!]
   OR: [PlaceScalarWhereInput!]
   NOT: [PlaceScalarWhereInput!]
@@ -440,6 +468,8 @@ input PlaceUpdateInput {
   placeName: String
   placeImageUrl: String
   placeSlug: String
+  lat: Float
+  lng: Float
   list: ListUpdateOneWithoutPlacesInput
 }
 
@@ -448,6 +478,8 @@ input PlaceUpdateManyDataInput {
   placeName: String
   placeImageUrl: String
   placeSlug: String
+  lat: Float
+  lng: Float
 }
 
 input PlaceUpdateManyMutationInput {
@@ -455,6 +487,8 @@ input PlaceUpdateManyMutationInput {
   placeName: String
   placeImageUrl: String
   placeSlug: String
+  lat: Float
+  lng: Float
 }
 
 input PlaceUpdateManyWithoutListInput {
@@ -479,6 +513,8 @@ input PlaceUpdateWithoutListDataInput {
   placeName: String
   placeImageUrl: String
   placeSlug: String
+  lat: Float
+  lng: Float
 }
 
 input PlaceUpdateWithWhereUniqueWithoutListInput {
@@ -563,6 +599,22 @@ input PlaceWhereInput {
   placeSlug_not_starts_with: String
   placeSlug_ends_with: String
   placeSlug_not_ends_with: String
+  lat: Float
+  lat_not: Float
+  lat_in: [Float!]
+  lat_not_in: [Float!]
+  lat_lt: Float
+  lat_lte: Float
+  lat_gt: Float
+  lat_gte: Float
+  lng: Float
+  lng_not: Float
+  lng_in: [Float!]
+  lng_not_in: [Float!]
+  lng_lt: Float
+  lng_lte: Float
+  lng_gt: Float
+  lng_gte: Float
   list: ListWhereInput
   AND: [PlaceWhereInput!]
   OR: [PlaceWhereInput!]

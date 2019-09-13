@@ -189,7 +189,11 @@ export type PlaceOrderByInput =
   | "placeImageUrl_ASC"
   | "placeImageUrl_DESC"
   | "placeSlug_ASC"
-  | "placeSlug_DESC";
+  | "placeSlug_DESC"
+  | "lat_ASC"
+  | "lat_DESC"
+  | "lng_ASC"
+  | "lng_DESC";
 
 export type ListOrderByInput =
   | "id_ASC"
@@ -282,6 +286,22 @@ export interface PlaceWhereInput {
   placeSlug_not_starts_with?: Maybe<String>;
   placeSlug_ends_with?: Maybe<String>;
   placeSlug_not_ends_with?: Maybe<String>;
+  lat?: Maybe<Float>;
+  lat_not?: Maybe<Float>;
+  lat_in?: Maybe<Float[] | Float>;
+  lat_not_in?: Maybe<Float[] | Float>;
+  lat_lt?: Maybe<Float>;
+  lat_lte?: Maybe<Float>;
+  lat_gt?: Maybe<Float>;
+  lat_gte?: Maybe<Float>;
+  lng?: Maybe<Float>;
+  lng_not?: Maybe<Float>;
+  lng_in?: Maybe<Float[] | Float>;
+  lng_not_in?: Maybe<Float[] | Float>;
+  lng_lt?: Maybe<Float>;
+  lng_lte?: Maybe<Float>;
+  lng_gt?: Maybe<Float>;
+  lng_gte?: Maybe<Float>;
   list?: Maybe<ListWhereInput>;
   AND?: Maybe<PlaceWhereInput[] | PlaceWhereInput>;
   OR?: Maybe<PlaceWhereInput[] | PlaceWhereInput>;
@@ -404,6 +424,8 @@ export interface PlaceCreateWithoutListInput {
   placeName?: Maybe<String>;
   placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
 }
 
 export interface UserCreateOneWithoutListsInput {
@@ -453,6 +475,8 @@ export interface PlaceUpdateWithoutListDataInput {
   placeName?: Maybe<String>;
   placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
 }
 
 export interface PlaceUpsertWithWhereUniqueWithoutListInput {
@@ -532,6 +556,22 @@ export interface PlaceScalarWhereInput {
   placeSlug_not_starts_with?: Maybe<String>;
   placeSlug_ends_with?: Maybe<String>;
   placeSlug_not_ends_with?: Maybe<String>;
+  lat?: Maybe<Float>;
+  lat_not?: Maybe<Float>;
+  lat_in?: Maybe<Float[] | Float>;
+  lat_not_in?: Maybe<Float[] | Float>;
+  lat_lt?: Maybe<Float>;
+  lat_lte?: Maybe<Float>;
+  lat_gt?: Maybe<Float>;
+  lat_gte?: Maybe<Float>;
+  lng?: Maybe<Float>;
+  lng_not?: Maybe<Float>;
+  lng_in?: Maybe<Float[] | Float>;
+  lng_not_in?: Maybe<Float[] | Float>;
+  lng_lt?: Maybe<Float>;
+  lng_lte?: Maybe<Float>;
+  lng_gt?: Maybe<Float>;
+  lng_gte?: Maybe<Float>;
   AND?: Maybe<PlaceScalarWhereInput[] | PlaceScalarWhereInput>;
   OR?: Maybe<PlaceScalarWhereInput[] | PlaceScalarWhereInput>;
   NOT?: Maybe<PlaceScalarWhereInput[] | PlaceScalarWhereInput>;
@@ -547,6 +587,8 @@ export interface PlaceUpdateManyDataInput {
   placeName?: Maybe<String>;
   placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
 }
 
 export interface UserUpdateOneRequiredWithoutListsInput {
@@ -576,6 +618,8 @@ export interface PlaceCreateInput {
   placeName?: Maybe<String>;
   placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
   list?: Maybe<ListCreateOneWithoutPlacesInput>;
 }
 
@@ -595,6 +639,8 @@ export interface PlaceUpdateInput {
   placeName?: Maybe<String>;
   placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
   list?: Maybe<ListUpdateOneWithoutPlacesInput>;
 }
 
@@ -622,6 +668,8 @@ export interface PlaceUpdateManyMutationInput {
   placeName?: Maybe<String>;
   placeImageUrl?: Maybe<String>;
   placeSlug?: Maybe<String>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
 }
 
 export interface UserCreateInput {
@@ -829,6 +877,8 @@ export interface Place {
   placeName?: String;
   placeImageUrl?: String;
   placeSlug?: String;
+  lat?: Float;
+  lng?: Float;
 }
 
 export interface PlacePromise extends Promise<Place>, Fragmentable {
@@ -837,6 +887,8 @@ export interface PlacePromise extends Promise<Place>, Fragmentable {
   placeName: () => Promise<String>;
   placeImageUrl: () => Promise<String>;
   placeSlug: () => Promise<String>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
   list: <T = ListPromise>() => T;
 }
 
@@ -848,6 +900,8 @@ export interface PlaceSubscription
   placeName: () => Promise<AsyncIterator<String>>;
   placeImageUrl: () => Promise<AsyncIterator<String>>;
   placeSlug: () => Promise<AsyncIterator<String>>;
+  lat: () => Promise<AsyncIterator<Float>>;
+  lng: () => Promise<AsyncIterator<Float>>;
   list: <T = ListSubscription>() => T;
 }
 
@@ -859,6 +913,8 @@ export interface PlaceNullablePromise
   placeName: () => Promise<String>;
   placeImageUrl: () => Promise<String>;
   placeSlug: () => Promise<String>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
   list: <T = ListPromise>() => T;
 }
 
@@ -1193,6 +1249,8 @@ export interface PlacePreviousValues {
   placeName?: String;
   placeImageUrl?: String;
   placeSlug?: String;
+  lat?: Float;
+  lng?: Float;
 }
 
 export interface PlacePreviousValuesPromise
@@ -1203,6 +1261,8 @@ export interface PlacePreviousValuesPromise
   placeName: () => Promise<String>;
   placeImageUrl: () => Promise<String>;
   placeSlug: () => Promise<String>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
 }
 
 export interface PlacePreviousValuesSubscription
@@ -1213,6 +1273,8 @@ export interface PlacePreviousValuesSubscription
   placeName: () => Promise<AsyncIterator<String>>;
   placeImageUrl: () => Promise<AsyncIterator<String>>;
   placeSlug: () => Promise<AsyncIterator<String>>;
+  lat: () => Promise<AsyncIterator<Float>>;
+  lng: () => Promise<AsyncIterator<Float>>;
 }
 
 export interface UserSubscriptionPayload {
@@ -1272,6 +1334,11 @@ export type ID_Output = string;
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
 export type String = string;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+*/
+export type Float = number;
 
 /*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.

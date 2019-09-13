@@ -14,7 +14,10 @@ export default function CreateList({ place, setShow }) {
       placeName: place.name,
       placeImageUrl: JSON.stringify(place.image.asset.fluid),
       placeSlug: place.slug.current,
+      lat: place.location.lat,
+      lng: place.location.lng,
     },
+
     update: (cache, payload) => {
       const data = cache.readQuery({ query: CURRENT_USER_QUERY })
       data.me.lists = [...data.me.lists, payload.data.createList]
@@ -34,6 +37,8 @@ export default function CreateList({ place, setShow }) {
             placeName: place.name,
             placeImageUrl: JSON.stringify(place.image.asset.fluid),
             placeSlug: place.slug.current,
+            lat: place.location.lat,
+            lng: place.location.lng,
           },
         ],
       },

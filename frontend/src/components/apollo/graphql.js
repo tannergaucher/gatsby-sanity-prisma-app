@@ -14,6 +14,8 @@ export const USER_FRAGMENT = gql`
         placeName
         placeImageUrl
         placeSlug
+        lat
+        lng
       }
     }
   }
@@ -29,6 +31,8 @@ export const LIST_FRAGMENT = gql`
       placeName
       placeImageUrl
       placeSlug
+      lat
+      lng
     }
   }
 `
@@ -79,6 +83,8 @@ export const CREATE_LIST_MUTATION = gql`
     $placeName: String!
     $placeImageUrl: String!
     $placeSlug: String!
+    $lat: Float!
+    $lng: Float!
   ) {
     createList(
       title: $title
@@ -86,6 +92,8 @@ export const CREATE_LIST_MUTATION = gql`
       placeName: $placeName
       placeImageUrl: $placeImageUrl
       placeSlug: $placeSlug
+      lat: $lat
+      lng: $lng
     ) {
       ...ListFragment
     }
@@ -100,6 +108,8 @@ export const TOGGLE_PLACE_MUTATION = gql`
     $placeName: String!
     $placeImageUrl: String!
     $placeSlug: String!
+    $lat: Float
+    $lng: Float
   ) {
     togglePlace(
       listId: $listId
@@ -107,6 +117,8 @@ export const TOGGLE_PLACE_MUTATION = gql`
       placeName: $placeName
       placeImageUrl: $placeImageUrl
       placeSlug: $placeSlug
+      lat: $lat
+      lng: $lng
     ) {
       ...ListFragment
     }
