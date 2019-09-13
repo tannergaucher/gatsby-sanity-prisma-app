@@ -1,16 +1,18 @@
 import React from "react"
 import Img from "gatsby-image"
 import { graphql, Link } from "gatsby"
-import { Heading, Card, Box } from "rebass"
+import { Heading, Box } from "rebass"
 
 import { PostPlaces, Share, Author } from "../components/post"
 import { BlockContent } from "../components/styles"
+import { SEO } from "../components/elements"
 
 export default function PostTemplate({ data }) {
   const { sanityPost } = data
 
   return (
-    <Card>
+    <>
+      <SEO title={data.sanityPost.title} />
       <Box style={{ position: `relative` }}>
         <Img
           fluid={sanityPost.mainImage.asset.fluid}
@@ -54,7 +56,7 @@ export default function PostTemplate({ data }) {
         <PostPlaces postPlaces={sanityPost.postPlaces} />
         <Author author={sanityPost.author} />
       </Box>
-    </Card>
+    </>
   )
 }
 

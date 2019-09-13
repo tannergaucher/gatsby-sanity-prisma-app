@@ -3,23 +3,27 @@ import { Box } from "rebass"
 import { Link } from "gatsby"
 
 import { HeroCard } from "../components/styles"
+import { SEO } from "../components/elements"
 
-export default function CategoryTag({ pageContext, data }) {
+export default function CategoryTag({ data }) {
   return (
-    <Box my={[2]} px={[2]}>
-      {data.posts.edges.map(edge => (
-        <Link
-          to={`/posts/${edge.node.category.slug.current}/${edge.node.slug.current}`}
-          key={edge.node.id}
-        >
-          <HeroCard
+    <>
+      <SEO title={`Posts | Untrip`} />
+      <Box my={[2]} px={[2]}>
+        {data.posts.edges.map(edge => (
+          <Link
+            to={`/posts/${edge.node.category.slug.current}/${edge.node.slug.current}`}
             key={edge.node.id}
-            text={edge.node.title}
-            fluid={edge.node.mainImage.asset.fluid}
-          />
-        </Link>
-      ))}
-    </Box>
+          >
+            <HeroCard
+              key={edge.node.id}
+              text={edge.node.title}
+              fluid={edge.node.mainImage.asset.fluid}
+            />
+          </Link>
+        ))}
+      </Box>
+    </>
   )
 }
 
