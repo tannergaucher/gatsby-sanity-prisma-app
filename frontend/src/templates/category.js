@@ -11,7 +11,7 @@ export default function CategoryTemplate({ pageContext, data }) {
 
   return (
     <>
-      <SEO title={`Tags | Untrip`} />
+      <SEO title={`Tags`} />
       <Box my={[2]} px={[2]}>
         {edges.map(edge => (
           <Link

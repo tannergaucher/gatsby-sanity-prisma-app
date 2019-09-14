@@ -6,9 +6,11 @@ import { HeroCard } from "../components/styles"
 import { SEO } from "../components/elements"
 
 export default function CategoryTag({ data }) {
+  console.log(data)
+
   return (
     <>
-      <SEO title={`Posts | Untrip`} />
+      <SEO title={`${data.tag.tag} Posts`} />
       <Box my={[2]} px={[2]}>
         {data.posts.edges.map(edge => (
           <Link

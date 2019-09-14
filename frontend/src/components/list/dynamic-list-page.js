@@ -1,5 +1,4 @@
 import React from "react"
-import { Heading } from "rebass"
 import { useQuery } from "@apollo/react-hooks"
 
 import { LIST_QUERY } from "../apollo/graphql"
@@ -19,10 +18,12 @@ export default function ListPage({ listId }) {
       {data && data.list && (
         <>
           <SEO title={`${data.list.title} | Untrip`} />
-          <Heading my={[3]} textAlign="center" fontWeight="900" fontSize={[4]}>
-            {data.list.title}
-          </Heading>
-          <Map />
+          <Map
+            lat={42.02}
+            lng={-77.01}
+            zoom={11}
+            style={{ height: `calc(100vh - 50px - 50px)` }}
+          />
           <ul>
             {data.list.places.map(place => (
               <li key={place.id}>{place.placeName}</li>
