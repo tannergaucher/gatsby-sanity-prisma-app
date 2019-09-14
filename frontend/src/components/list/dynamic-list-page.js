@@ -19,16 +19,13 @@ export default function ListPage({ listId }) {
         <>
           <SEO title={`${data.list.title} | Untrip`} />
           <Map
-            lat={42.02}
-            lng={-77.01}
+            lat={3.139}
+            lng={101.6869}
             zoom={11}
+            places={data.list.places}
             style={{ height: `calc(100vh - 50px - 50px)` }}
+            name={data.list.title}
           />
-          <ul>
-            {data.list.places.map(place => (
-              <li key={place.id}>{place.placeName}</li>
-            ))}
-          </ul>
         </>
       )}
     </>

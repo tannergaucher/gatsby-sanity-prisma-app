@@ -3,7 +3,22 @@ import { Map, Marker, GoogleApiWrapper } from "google-maps-react"
 
 class MapContainer extends React.Component {
   render() {
-    const { google, zoom, style, name, lat, lng } = this.props
+    const { google, zoom, style, name, lat, lng, places } = this.props
+
+    let points = []
+
+    places.map(place => {
+      points.push({
+        lat: place.lat,
+        lng: place.lng,
+      })
+    })
+
+    let bounds = new google.maps.LatLngBounds()
+
+    for (var i = 0; i < points.length; i++) {
+      bounds.extend(points[i])
+    }
 
     return (
       <Map
@@ -11,8 +26,19 @@ class MapContainer extends React.Component {
         initialCenter={{ lat, lng }}
         zoom={zoom}
         style={style}
+        bounds={bounds}
+        name={name}
       >
-        <Marker title={name} name={name} position={{ lat, lng }} />
+        {places.map(place => (
+          <Marker
+            key={place.id}
+            name={place.placeName}
+            position={{
+              lat: place.lat,
+              lng: place.lng,
+            }}
+          />
+        ))}
       </Map>
     )
   }
