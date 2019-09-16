@@ -24,6 +24,7 @@ export default function HeroCard({ text, fluid }) {
         style={{
           filter: `brightness(.7)`,
           height: "250px",
+          // borderRadius: `10px`,
         }}
       />
     </Card>

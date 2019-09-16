@@ -12,7 +12,7 @@ export default function PlaceCard({ postPlace }) {
       mb={[5]}
       p={[2]}
       boxShadow="0px 4px 12px rgba(0, 0, 0, .2)"
-      borderRadius="12px"
+      borderRadius="10px"
     >
       <Flex justifyContent="space-between" alignItems="center" mb={[3]}>
         <Box px={[2]}>
@@ -32,11 +32,14 @@ export default function PlaceCard({ postPlace }) {
         </Box>
         <AddToListModal place={postPlace} />
       </Flex>
-      <Img fluid={postPlace.place.image.asset.fluid} />
+      <Img
+        fluid={postPlace.place.image.asset.fluid}
+        style={{ borderRadius: `10px` }}
+      />
       <Text
         fontWeight="lighter"
         fontSize={[2]}
-        mt={[2]}
+        mt={[3]}
         mb={[4]}
         style={{ fontStyle: `italic` }}
       >

@@ -10,6 +10,11 @@ export default function PlaceDetails({ place }) {
       <button
         style={{
           fontFamily: `var(--sans)`,
+          background: `var(--light-2)`,
+          border: `none`,
+          borderRadius: `10px`,
+          color: `var(--dark-2)`,
+          fontFamily: `var(--sans)`,
         }}
         onClick={() => {
           setShow(!show)

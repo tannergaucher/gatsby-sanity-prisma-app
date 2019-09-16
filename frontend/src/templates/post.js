@@ -17,6 +17,7 @@ export default function PostTemplate({ data }) {
         image={data.sanityPost.mainImage.asset.fluid.src}
         url={`https://untrip.app/posts/${data.sanityPost.category.slug.current}/${data.sanityPost.slug.current}`}
       />
+
       <Box style={{ position: `relative` }}>
         <Img
           fluid={sanityPost.mainImage.asset.fluid}
