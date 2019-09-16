@@ -58,7 +58,9 @@ export default function CreateList({ place, setShow }) {
         value={listTitle}
         onChange={e => setListTitle(e.target.value)}
       />
-      <Button type="submit" label="Create" fill primary mt={[3]} />
+      <Button type="submit" fill primary mt={[3]}>
+        Create List
+      </Button>
     </Form>
   )
 }
