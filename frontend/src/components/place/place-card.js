@@ -32,10 +32,7 @@ export default function PlaceCard({ postPlace }) {
         </Box>
         <AddToListModal place={postPlace} />
       </Flex>
-      <Img
-        fluid={postPlace.place.image.asset.fluid}
-        style={{ borderRadius: `10px` }}
-      />
+      <Img fluid={postPlace.place.image.asset.fluid} />
       <Text
         fontWeight="lighter"
         fontSize={[2]}

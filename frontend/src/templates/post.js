@@ -1,10 +1,11 @@
 import React from "react"
 import Img from "gatsby-image"
-import { graphql, Link } from "gatsby"
-import { Heading, Box } from "rebass"
+import { graphql } from "gatsby"
+import { Heading, Box, Flex } from "rebass"
+import { navigate } from "@reach/router"
 
 import { PostPlaces, Share, Author } from "../components/post"
-import { BlockContent } from "../components/styles"
+import { BlockContent, Button } from "../components/styles"
 import { SEO } from "../components/elements"
 
 export default function PostTemplate({ data }) {
@@ -17,45 +18,32 @@ export default function PostTemplate({ data }) {
         image={data.sanityPost.mainImage.asset.fluid.src}
         url={`https://untrip.app/posts/${data.sanityPost.category.slug.current}/${data.sanityPost.slug.current}`}
       />
+      <Box px={[3]}>
+        <Flex justifyContent="center" my={[3]}>
+          <Button
+            fontFamily="var(--sans)"
+            variant="outline"
+            alignSelf="center"
+            onClick={() => {
+              navigate(`/guide/categories/${sanityPost.category.slug.current}`)
+            }}
+          >
+            {sanityPost.category.category}
+          </Button>
+        </Flex>
 
-      <Box style={{ position: `relative` }}>
-        <Img
-          fluid={sanityPost.mainImage.asset.fluid}
-          style={{ filter: `brightness(.5)` }}
-        />
-        <Box style={{ position: `absolute`, top: `0` }} p={[3]}>
-          <Heading
-            fontSize={[1]}
-            fontWeight="500"
-            color="var(--light-1)"
-            letterSpacing="var(--letter-spacing)"
-            mt={1}
-            mb={[1]}
-            style={{ textTransform: `uppercase` }}
-          >
-            <Link
-              to={`/guide/categories/${sanityPost.category.slug.current}`}
-              style={{ textDecoration: `none`, color: `inherit` }}
-            >
-              {sanityPost.category.category}
-            </Link>
-          </Heading>
-          <Heading
-            fontSize={[5, 6]}
-            mb={[2]}
-            lineHeight="1.1"
-            letterSpacing="-.5px"
-            color="var(--light-1)"
-            fontWeight="900"
-          >
-            {sanityPost.title}
-          </Heading>
-        </Box>
-        <Box style={{ position: `absolute`, top: `calc(100% - 44px)` }}>
-          <Share post={data.sanityPost} />
-        </Box>
+        <Heading
+          fontSize={[5]}
+          my={[3]}
+          lineHeight="1.1"
+          fontWeight="900"
+          textAlign={["", "center"]}
+        >
+          {sanityPost.title}
+        </Heading>
       </Box>
-
+      <Img fluid={sanityPost.mainImage.asset.fluid} />
+      <Share post={data.sanityPost} />
       <Box as="article" mb={[4]} p={[2]}>
         <BlockContent blocks={sanityPost._rawBody} mb={[4]} />
         <PostPlaces postPlaces={sanityPost.postPlaces} />

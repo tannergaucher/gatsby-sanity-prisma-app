@@ -10,19 +10,12 @@ export default function PostCard({ post }) {
       <Heading
         fontSize={[1]}
         color="var(--dark-3)"
-        letterSpacing="var(--letter-spacing)"
         style={{ textTransform: `uppercase` }}
         mt={[2]}
       >
         {post.category.category}
       </Heading>
-      <Heading
-        fontSize={[4]}
-        lineHeight="1.1"
-        letterSpacing="-.5px"
-        fontWeight="900"
-        mt={[1]}
-      >
+      <Heading fontSize={[4]} lineHeight="1.1" fontWeight="900" mt={[1]}>
         {post.title}
       </Heading>
     </Card>

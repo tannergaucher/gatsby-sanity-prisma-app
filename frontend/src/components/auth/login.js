@@ -50,14 +50,9 @@ export default function Login() {
             disabled={loading}
           />
         </label>
-        <Button
-          type="submit"
-          label="Log In"
-          mt={[2]}
-          fill
-          primary
-          disabled={loading}
-        />
+        <Button type="submit" mt={[2]} disabled={loading} width={[1]}>
+          Log in
+        </Button>
       </form>
     </fieldset>
   )

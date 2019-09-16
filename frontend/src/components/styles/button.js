@@ -1,12 +1,6 @@
 import React from "react"
-import { Button as GrommetButton } from "grommet"
-import styled from "styled-components"
-import { space } from "styled-system"
+import { Button } from "rebass"
 
-const StyledGrommetButton = styled(GrommetButton)`
-  ${space};
-`
+const MyButton = props => <Button bg="black" {...props} />
 
-const Button = props => <StyledGrommetButton {...props} />
-
-export default Button
+export default MyButton

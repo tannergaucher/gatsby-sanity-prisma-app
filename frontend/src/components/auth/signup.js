@@ -52,14 +52,9 @@ export default function Signup() {
             disabled={loading}
           />
         </label>
-        <Button
-          type="submit"
-          label="Sign Up"
-          mt={[2]}
-          fill
-          primary
-          disabled={loading}
-        />
+        <Button type="submit" mt={[2]} disabled={loading} width={[1]}>
+          Sign up
+        </Button>
       </form>
     </fieldset>
   )

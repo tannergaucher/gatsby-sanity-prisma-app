@@ -23,13 +23,10 @@ export default function UserLists({ place }) {
           <TogglePlaceCheckBox key={list.id} list={list} place={place} />
         ))}
 
-      <Box my={[3]}>
-        <Button
-          label={<Text ml={[2]}>New list</Text>}
-          plain
-          onClick={() => setShow(!show)}
-        />
-      </Box>
+      <Button width={[1]} mt={[3]} onClick={() => setShow(!show)}>
+        New List
+      </Button>
+
       {show && <CreateList place={place} setShow={setShow} />}
     </>
   )

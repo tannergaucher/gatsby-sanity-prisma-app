@@ -1,5 +1,5 @@
 import React from "react"
-import { Heading } from "rebass"
+import { Heading, Box } from "rebass"
 import { useQuery } from "@apollo/react-hooks"
 
 import { AuthTabs, Logout } from "../components/auth"
@@ -12,27 +12,24 @@ export default function AccountPage() {
     <>
       {loading && `Loading...`}
       {error && `Error: ${error.message}`}
-      {data && data.isLoggedIn ? <UserProfile /> : <AuthTabs />}
+      {data && data.isLoggedIn ? <UserAccount /> : <AuthTabs />}
     </>
   )
 }
 
-function UserProfile() {
+function UserAccount() {
   const { loading, error, data } = useQuery(CURRENT_USER_QUERY)
 
   return (
-    <>
-      <Heading mb={[3]} textAlign="center" fontWeight="900" fontSize={[5]}>
-        Profile Page
-      </Heading>
+    <Box p={[2]}>
       {loading && `Loading...`}
       {error && `Error: ${error.message}`}
       {data && data.me && (
         <>
-          <Heading>{data.me.email}</Heading>
+          <Heading textAlign={"center"}>{data.me.email}</Heading>
           <Logout />
         </>
       )}
-    </>
+    </Box>
   )
 }
