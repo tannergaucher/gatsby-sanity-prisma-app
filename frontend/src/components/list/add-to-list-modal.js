@@ -29,7 +29,6 @@ export default function AddToListModal({ place }) {
           onEsc={() => setShow(false)}
           onClickOutside={() => setShow(false)}
           responsive={false}
-          style={{ width: `85vw` }}
         >
           <Flex width={1} flexDirection="column" p={[2]}>
             {data && data.isLoggedIn ? (

@@ -24,9 +24,8 @@ class MapContainer extends React.Component {
       <Map
         google={google}
         initialCenter={{ lat, lng }}
-        zoom={zoom}
-        style={style}
         bounds={bounds}
+        style={style}
         name={name}
       >
         {places.map(place => (

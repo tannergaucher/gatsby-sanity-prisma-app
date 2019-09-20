@@ -2,6 +2,9 @@ import React from "react"
 import { Flex } from "rebass"
 import { FacebookOption, Twitter, Pinterest } from "grommet-icons"
 
+import styled from "styled-components"
+import { space } from "styled-system"
+
 export default function Share() {
   return (
     <Flex flexWrap="wrap">

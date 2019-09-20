@@ -1,11 +1,10 @@
 import React from "react"
 import Img from "gatsby-image"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { Heading, Box, Flex } from "rebass"
-import { navigate } from "@reach/router"
 
 import { PostPlaces, Share, Author } from "../components/post"
-import { BlockContent, Button } from "../components/styles"
+import { BlockContent } from "../components/styles"
 import { SEO } from "../components/elements"
 
 export default function PostTemplate({ data }) {
@@ -19,22 +18,17 @@ export default function PostTemplate({ data }) {
         url={`https://untrip.app/posts/${data.sanityPost.category.slug.current}/${data.sanityPost.slug.current}`}
       />
       <Box px={[3]}>
-        <Flex justifyContent="center" my={[3]}>
-          <Button
-            fontFamily="var(--sans)"
-            variant="outline"
-            alignSelf="center"
-            onClick={() => {
-              navigate(`/guide/categories/${sanityPost.category.slug.current}`)
-            }}
-          >
+        <Link
+          to={`/guide/categories/${sanityPost.category.slug.current}`}
+          style={{ color: `inherit`, textDecoration: `none` }}
+        >
+          <Heading mt={[3]} fontSize={[2]} fontWeight="400">
             {sanityPost.category.category}
-          </Button>
-        </Flex>
-
+          </Heading>
+        </Link>
         <Heading
           fontSize={[5]}
-          my={[3]}
+          my={[2]}
           lineHeight="1.1"
           fontWeight="900"
           textAlign={["", "center"]}
@@ -43,7 +37,10 @@ export default function PostTemplate({ data }) {
         </Heading>
       </Box>
       <Img fluid={sanityPost.mainImage.asset.fluid} />
-      <Share post={data.sanityPost} />
+
+      {/* <Box ml={[1]} mt={[2]}>
+        <Share post={data.sanityPost} />
+      </Box> */}
       <Box as="article" mb={[4]} p={[2]}>
         <BlockContent blocks={sanityPost._rawBody} mb={[4]} />
         <PostPlaces postPlaces={sanityPost.postPlaces} />

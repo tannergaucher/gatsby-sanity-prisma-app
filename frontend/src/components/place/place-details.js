@@ -2,14 +2,17 @@ import React, { useState } from "react"
 import { Flex, Box, Link as RebassLink, Text } from "rebass"
 import { Facebook, Instagram, Twitter, Domain, Phone, Map } from "grommet-icons"
 
-import { Button } from "../styles"
-
 export default function PlaceDetails({ place }) {
   const [show, setShow] = useState(false)
 
   return (
     <Box pb={[2]}>
-      <Button onClick={() => setShow(!show)}>Details</Button>
+      <button
+        style={{ fontFamily: `var(--sans)` }}
+        onClick={() => setShow(!show)}
+      >
+        Details
+      </button>
       {show && (
         <Flex flexDirection="column" mt={[3]} ml={[1]}>
           {place.place.location && (

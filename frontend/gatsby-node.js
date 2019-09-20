@@ -68,6 +68,7 @@ exports.createPages = async ({ graphql, actions }) => {
             categoryWithTags.tags.push(tag.slug.current)
           }
         })
+        //TODO:  also map postPlaces in push each postPlace tag into  categoryWithTags.tags
       }
     })
   })
