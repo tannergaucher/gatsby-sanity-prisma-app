@@ -28,7 +28,8 @@ export default function PostTemplate({ data }) {
         </Link>
         <Heading
           fontSize={[5]}
-          my={[2]}
+          mb={[3]}
+          mt={[2]}
           lineHeight="1.1"
           fontWeight="900"
           textAlign={["", "center"]}
@@ -37,10 +38,9 @@ export default function PostTemplate({ data }) {
         </Heading>
       </Box>
       <Img fluid={sanityPost.mainImage.asset.fluid} />
-
-      {/* <Box ml={[1]} mt={[2]}>
+      <Flex mt={[4]} px={[2]} justifyContent="center">
         <Share post={data.sanityPost} />
-      </Box> */}
+      </Flex>
       <Box as="article" mb={[4]} p={[2]}>
         <BlockContent blocks={sanityPost._rawBody} mb={[4]} />
         <PostPlaces postPlaces={sanityPost.postPlaces} />
