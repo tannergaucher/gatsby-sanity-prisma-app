@@ -49,8 +49,8 @@ export default function CreateList({ place, setShow }) {
     <Form
       onSubmit={async e => {
         e.preventDefault()
-        await createList()
         setShow(false)
+        await createList()
       }}
     >
       <FormField

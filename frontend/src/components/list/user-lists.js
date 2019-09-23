@@ -22,11 +22,11 @@ export default function UserLists({ place }) {
         data.me.lists.map(list => (
           <TogglePlaceCheckBox key={list.id} list={list} place={place} />
         ))}
-
-      <Button width={[1]} mt={[3]} onClick={() => setShow(!show)}>
-        New List
-      </Button>
-
+      {!show && (
+        <Button width={[1]} mt={[3]} onClick={() => setShow(!show)}>
+          New List
+        </Button>
+      )}
       {show && <CreateList place={place} setShow={setShow} />}
     </>
   )

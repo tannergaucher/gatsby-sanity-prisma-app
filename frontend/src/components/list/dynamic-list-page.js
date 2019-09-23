@@ -9,8 +9,6 @@ export default function ListPage({ listId }) {
     variables: { listId },
   })
 
-  console.log(data)
-
   return (
     <>
       {loading && <Loading message="Loading list..." />}
@@ -23,7 +21,6 @@ export default function ListPage({ listId }) {
             lng={101.6869}
             zoom={11}
             places={data.list.places}
-            style={{ height: `calc(100vh - 50px - 50px)` }}
             name={data.list.title}
           />
         </>

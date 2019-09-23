@@ -19,13 +19,13 @@ export default function PlaceCard({ postPlace }) {
           <Heading fontSize={[4]} fontWeight="900">
             {postPlace.place.name}
           </Heading>
-          <Flex>
-            <Heading fontSize={[1]} fontWeight="100">
+          <Flex flexWrap="wrap">
+            <Heading fontSize={[1]} fontWeight="100" mr={[2]}>
               {postPlace.place.placeType.type}
             </Heading>
             {postPlace.place.tags.map(tag => (
-              <Heading fontSize={[1]} fontWeight="100" key={tag.id}>
-                , {tag.tag}
+              <Heading fontSize={[1]} fontWeight="100" key={tag.id} mr={[2]}>
+                {tag.tag}
               </Heading>
             ))}
           </Flex>

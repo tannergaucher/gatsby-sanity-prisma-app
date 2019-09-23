@@ -30,7 +30,7 @@ export default function AddToListModal({ place }) {
           onClickOutside={() => setShow(false)}
           responsive={false}
         >
-          <Flex width={1} flexDirection="column" p={[2]}>
+          <Flex flexDirection="column" p={[2, 4]}>
             {data && data.isLoggedIn ? (
               <UserLists place={place.place} />
             ) : (

@@ -20,9 +20,14 @@ export default function PostTemplate({ data }) {
       <Box px={[3]}>
         <Link
           to={`/guide/categories/${sanityPost.category.slug.current}`}
-          style={{ color: `inherit`, textDecoration: `none` }}
+          style={{ color: `inherit`, textDecoration: `` }}
         >
-          <Heading mt={[3]} fontSize={[2]} fontWeight="400">
+          <Heading
+            mt={[3]}
+            fontSize={[2]}
+            fontWeight="400"
+            textAlign={["", "center"]}
+          >
             {sanityPost.category.category}
           </Heading>
         </Link>
@@ -44,7 +49,10 @@ export default function PostTemplate({ data }) {
       <Box as="article" mb={[4]} p={[2]}>
         <BlockContent blocks={sanityPost._rawBody} mb={[4]} />
         <PostPlaces postPlaces={sanityPost.postPlaces} />
-        <Author author={sanityPost.author} />
+
+        <Flex justifyContent="center">
+          <Author author={sanityPost.author} />
+        </Flex>
       </Box>
     </>
   )

@@ -7,11 +7,10 @@ export default function PlaceDetails({ place }) {
 
   return (
     <Box pb={[2]}>
-      <button
-        style={{ fontFamily: `var(--sans)` }}
-        onClick={() => setShow(!show)}
-      >
-        Details
+      <button onClick={() => setShow(!show)}>
+        <Text fontFamily="var(--sans)" fontSize={[2]}>
+          Details
+        </Text>
       </button>
       {show && (
         <Flex flexDirection="column" mt={[3]} ml={[1]}>
