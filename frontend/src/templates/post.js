@@ -20,11 +20,11 @@ export default function PostTemplate({ data }) {
       <Box px={[3]}>
         <Link
           to={`/guide/categories/${sanityPost.category.slug.current}`}
-          style={{ color: `inherit`, textDecoration: `` }}
+          style={{ color: `inherit`, textDecoration: `none` }}
         >
           <Heading
             mt={[3]}
-            fontSize={[2]}
+            fontSize={[2, 3]}
             fontWeight="400"
             textAlign={["", "center"]}
           >
@@ -32,9 +32,9 @@ export default function PostTemplate({ data }) {
           </Heading>
         </Link>
         <Heading
-          fontSize={[5]}
-          mb={[3]}
-          mt={[2]}
+          fontSize={[5, 6]}
+          mb={[3, 4]}
+          mt={[2.3]}
           lineHeight="1.1"
           fontWeight="900"
           textAlign={["", "center"]}
