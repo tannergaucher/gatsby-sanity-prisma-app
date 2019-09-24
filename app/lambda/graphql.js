@@ -45,7 +45,7 @@ const typeDefs = gql`
     placeSanityId: String
     placeName: String
     placeImageUrl: String
-    placeSlug: Float
+    placeSlug: String
     lat: Float
     lng: Float
     list: List
