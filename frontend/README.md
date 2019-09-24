@@ -1,1 +1,0 @@
-# Untrip.app Frontend
